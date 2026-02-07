@@ -60,8 +60,8 @@
 
       <p>
         I currently work on a VTOL drone with Carolina Skylab, develop production software
-        at MindUnite, and support neuroimaging research through computational analysis.
-        I’m especially interested in feedback-driven systems under real-world constraints.
+        at MindUnite, and am a Spring Software Eningeering Intern at POZzlePiece Inc where I am working with AR/VR.
+        I’m especially interested in inventing innovative solutions to just about anything, so I'm always down to chat!
       </p>
 
       <p class="quote">
@@ -261,10 +261,10 @@
           2025<br><span>BeReal</span>
         </button>
         <button data-target="success">
-          2023<br><span>Success</span>
+          2023<br><span>Success Admissions</span>
         </button>
         <button data-target="nawarat">
-          2021–24<br><span>Nawarat</span>
+          2021–24<br><span>Nawarat Autoparts</span>
         </button>
       </aside>
 
@@ -330,8 +330,7 @@
     <details class="faq-item">
       <summary>Am I Waisian?</summary>
       <p>
-        Nope, I’m ethnically Burmese–Arakanese — but it is surprisingly the most commonly
-        asked question.
+        Naur.
       </p>
     </details>
 
@@ -370,6 +369,26 @@
 
   </div>
 </section>
+<script>
+  const buttons = document.querySelectorAll('.pm-timeline button');
+  const roles = document.querySelectorAll('.pm-role');
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      const target = button.dataset.target;
+
+      // remove active from all buttons + roles
+      buttons.forEach(b => b.classList.remove('active'));
+      roles.forEach(r => r.classList.remove('active'));
+
+      // activate clicked button + matching role
+      button.classList.add('active');
+      document
+        .querySelector(`.pm-role[data-role="${target}"]`)
+        .classList.add('active');
+    });
+  });
+</script>
 
 </body>
 </html>
