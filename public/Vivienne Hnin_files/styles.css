@@ -165,7 +165,7 @@ body{
 
 /* PROJECTS */
 .projects{
-  background:#000;
+  background:#000000;
   padding:120px 8vw 140px;
   color:#fff;
 }
@@ -183,8 +183,8 @@ body{
 .project-grid{
   display:grid;
   grid-template-columns:repeat(3, minmax(0, 1fr));
-  gap:48px;
-  max-width:1400px;
+  gap:28px;
+  max-width:1150px;
   margin:0 auto;
 }
 
@@ -206,7 +206,7 @@ body{
 
 .project-image img{
   width:100%;
-  height:220px;
+  height:160px;
   object-fit:cover;
   display:block;
 }
