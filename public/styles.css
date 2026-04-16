@@ -1,890 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Vivienne Hnin — AI Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
 :root{
-  --bg:#00357a;
-  --accent:#0a4ea3;
-  --white:#ffffff;
+  --bg:#03000a;
+  --bg2:#07020f;
+  --surface:rgba(16,7,28,0.7);
+  --surface-solid:#100717;
+  --border:rgba(192,132,252,0.14);
+  --border-hi:rgba(192,132,252,0.55);
+  --accent:#c084fc;
+  --accent-dim:#9b4dca;
+  --pink:#f06292;
+  --text:#ede8f5;
+  --dim:#9585b3;
+  --dim2:#6b5f88;
+  --white:#fff;
+  --font-display:'Orbitron',sans-serif;
+  --font-body:'Barlow',sans-serif;
+  --font-cond:'Barlow Condensed',sans-serif;
 }
 
-/* RESET */
-*{ box-sizing:border-box; margin:0; padding:0; }
+html{scroll-behavior:smooth}
 
 body{
-  font-family:'Inter',sans-serif;
   background:var(--bg);
-  color:var(--white);
-}
-
-/* HERO */
-.hero{
+  color:var(--text);
+  font-family:var(--font-body);
+  font-weight:300;
+  line-height:1.7;
+  overflow-x:hidden;
   min-height:100vh;
-  padding:64px 8vw 96px;
 }
 
-/* HEADER */
-.hero-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  margin-bottom:16px;
+/* ── CANVAS ── */
+#snow{
+  position:fixed;inset:0;
+  width:100%;height:100%;
+  z-index:0;pointer-events:none;
 }
 
-.name{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(3.6rem,6vw,6.4rem);
-  letter-spacing:.08em;
-  line-height:1;
-}
-
-/* CONTACT LINKS */
-.top-links{ text-align:right; }
-.top-links a{
-  display:block;
-  font-size:.75rem;
-  letter-spacing:.16em;
-  color:var(--white);
-  text-decoration:none;
-  margin-bottom:6px;
-  opacity:.9;
-}
-.top-links a:hover{ text-decoration:underline; }
-
-/* TECH STACK */
-.tech{
-  font-size:.75rem;
-  letter-spacing:.22em;
-  opacity:.65;
-  margin-bottom:88px;
-}
-
-/* LAYOUT */
-.layout{
-  display:grid;
-  grid-template-columns:420px 1fr;
-  gap:120px;
-  align-items:start;
-  max-width:1280px;
-}
-
-/* IMAGE BLOCK */
-.image-block{
-  position:relative;
-  width:380px;
-  max-width:100%;
-  overflow:visible;
-}
-
-.image-block::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  transform: translate(34px, 34px);
-  background: var(--accent);
+/* Nebula glow layers */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 55% 40% at 15% 35%, rgba(130,40,200,0.09) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 82% 65%, rgba(90,20,160,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 35% 30% at 55% 5%,  rgba(170,60,230,0.06) 0%, transparent 70%);
+  pointer-events:none;
   z-index:0;
 }
 
-.portrait{
-  position:relative;
-  z-index:1;
-  width:100%;
-  display:block;
-  filter:grayscale(100%);
-}
+.page{position:relative;z-index:1}
 
-/* TEXT */
-.text{
-  max-width:72ch;
-  margin-left:24px;
-}
-
-.text p{
-  font-family:'Playfair Display',serif;
-  font-size:1rem;
-  line-height:1.95;
-  margin-bottom:36px;
-}
-
-.text .lead{
-  font-size:1rem;
-}
-
-.quote{
-  font-size:1rem;
-  font-style:italic;
-  opacity:.75;
-  margin-top:56px;
-  max-width:68ch;
-}
-
-/* VISION */
-.vision{
-  display:flex;
-  gap:56px;
-  margin-top:28px;
-  align-items:center;
-}
-
-.vision-item{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:10px;
-  cursor:pointer;
-}
-
-.vision-item img{
-  height:72px;
-  width:auto;
-  transition:transform .25s ease, filter .25s ease;
-}
-
-.vision-item:hover img{
-  transform:translateY(-4px) scale(1.04);
-  filter:drop-shadow(0 10px 25px rgba(255,255,255,.25));
-}
-
-.vision-item span{
-  font-family:'Playfair Display',serif;
-  font-size:.9rem;
-  opacity:.85;
-}
-/* =========================
-   VISION BUTTON TEXT COLOR FIX
-========================= */
-
-.vision-item span{
-  color:#ffffff;          /* force white */
-}
-
-/* override link states explicitly */
-.vision-item:link span,
-.vision-item:visited span,
-.vision-item:hover span,
-.vision-item:active span{
-  color:#ffffff;
-}
-
-
-/* PROJECTS */
-.projects{
-  background:#000;
-  padding:120px 8vw 140px;
-  color:#fff;
-}
-
-.projects-header{
-  margin-bottom:72px;
-}
-
-.projects h2{
-  font-family:'Playfair Display',serif;
-  font-size:2.4rem;
-}
-
-/* GRID */
-.project-grid{
-  display:grid;
-  grid-template-columns:repeat(3, minmax(0, 1fr));
-  gap:48px;
-  max-width:1400px;
+/* ── LAYOUT ── */
+.container{
+  width:min(1080px,calc(100% - 48px));
   margin:0 auto;
 }
 
-/* CARD */
-.project-card{
-  background:#000;
-  border-radius:14px;
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-  height:100%;
-  transition:transform .35s ease, box-shadow .35s ease;
+section{padding:80px 0}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;
+  z-index:200;
+  padding:0 32px;
+  height:56px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(3,0,10,0.78);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(14px);
 }
 
-.project-card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 40px 90px rgba(0,136,255,.35);
-}
-
-.project-image img{
-  width:100%;
-  height:220px;
-  object-fit:cover;
-  display:block;
-}
-
-.project-body{
-  padding:24px;
-  flex:1;
-}
-
-.project-body h3{
-  font-size:1.15rem;
-  margin-bottom:10px;
-}
-
-.project-body p{
-  font-size:.9rem;
-  line-height:1.55;
-  opacity:.85;
-}
-
-.project-footer{
-  display:flex;
-  flex-wrap:wrap;
-  gap:16px;
-  align-items:center;
-}
-
-.project-footer a{
-  color:#fff;
+.nav-logo{
+  font-family:var(--font-display);
+  font-size:0.68rem;
+  font-weight:700;
+  letter-spacing:0.22em;
+  color:var(--accent);
   text-decoration:none;
-  font-size:.75rem;
-  letter-spacing:.14em;
-  border-bottom:1px solid rgba(255,255,255,.65);
 }
 
-.project-footer a:hover{opacity:.75;}
-
-.project-tech{
-  margin-left:auto;
-  font-size:.65rem;
-  letter-spacing:.12em;
-  opacity:.6;
+.nav-links{
+  display:flex;gap:32px;list-style:none;
 }
 
-.soon{opacity:.8;}
-/* =========================
-   PRODUCT MANAGEMENT — FIX
-   Blue section with sidebar
-========================= */
-
-/* =========================
-   PRODUCT MANAGEMENT — FIXED
-========================= */
-
-.pm-section{
-  background:var(--bg);
-  color:#fff;
-  padding:140px 8vw;
+.nav-links a{
+  font-family:var(--font-display);
+  font-size:0.58rem;
+  letter-spacing:0.18em;
+  color:var(--dim);
+  text-decoration:none;
+  text-transform:uppercase;
+  transition:color 0.2s;
 }
 
-.pm-header{
-  margin-bottom:80px;
+.nav-links a:hover{color:var(--accent)}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding-top:56px;
 }
 
-.pm-header h2{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(3rem,6vw,5.2rem);
-  letter-spacing:.08em;
-}
-
-.pm-sub{
-  margin-top:12px;
-  opacity:.7;
-  font-size:1.05rem;
-}
-
-/* LAYOUT */
-.pm-layout{
+.hero-grid{
   display:grid;
-  grid-template-columns: 1fr 120px;
+  grid-template-columns:1fr 280px;
   gap:80px;
-  max-width:1200px;
+  align-items:center;
+  width:100%;
 }
 
-/* CONTENT */
-.pm-content{
-  position:relative;
-  min-height:360px;
+/* Staggered entrance */
+.hero-grid>*{
+  animation:rise 0.9s cubic-bezier(0.16,1,0.3,1) both;
+}
+.hero-grid>*:nth-child(2){animation-delay:0.15s}
+
+@keyframes rise{
+  from{opacity:0;transform:translateY(28px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
-.pm-role{
-  display:none;
-  animation:fadeIn .4s ease;
+.eyebrow{
+  font-family:var(--font-display);
+  font-size:0.6rem;
+  letter-spacing:0.35em;
+  color:var(--accent);
+  opacity:0.75;
+  margin-bottom:20px;
+  text-transform:uppercase;
 }
 
-.pm-role.active{
-  display:block;
+.hero-name{
+  font-family:var(--font-display);
+  font-size:clamp(2.8rem,5.5vw,4.8rem);
+  font-weight:900;
+  line-height:0.95;
+  letter-spacing:0.03em;
+  color:var(--white);
 }
 
-.pm-role h3{
-  font-size:1.4rem;
-  margin-bottom:6px;
+.hero-name span{color:var(--accent)}
+
+.hero-role{
+  font-family:var(--font-cond);
+  font-size:1rem;
+  font-weight:600;
+  letter-spacing:0.22em;
+  color:var(--dim);
+  text-transform:uppercase;
+  margin-top:14px;
 }
 
-.pm-meta{
-  display:block;
-  font-size:.8rem;
-  letter-spacing:.12em;
-  opacity:.65;
-  margin-bottom:24px;
+/* Pill links */
+.hero-links{
+  display:flex;flex-wrap:wrap;gap:10px;
+  margin-top:24px;
 }
 
-.pm-role ul{
-  list-style:disc;
-  padding-left:20px;
-  margin-bottom:28px;
+.hero-links a{
+  font-family:var(--font-display);
+  font-size:0.6rem;
+  letter-spacing:0.18em;
+  color:var(--accent);
+  text-decoration:none;
+  border:1px solid var(--border-hi);
+  padding:7px 16px;
+  text-transform:uppercase;
+  background:rgba(192,132,252,0.04);
+  transition:all 0.2s;
+  position:relative;overflow:hidden;
 }
 
-.pm-role li{
-  margin-bottom:10px;
-  line-height:1.6;
+.hero-links a::after{
+  content:'';
+  position:absolute;inset:0;
+  background:var(--accent);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform 0.22s ease;
+  z-index:-1;
 }
 
-/* TAGS */
-.pm-tags{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
+.hero-links a:hover{color:#14081e}
+.hero-links a:hover::after{transform:scaleX(1)}
+
+.tech-line{
+  font-family:'Barlow',sans-serif;
+  font-size:0.75rem;
+  letter-spacing:0.08em;
+  color:var(--dim2);
+  margin-top:20px;
+  line-height:1.8;
 }
 
-.pm-tags span{
-  font-size:.7rem;
-  letter-spacing:.12em;
-  padding:6px 12px;
-  border-radius:999px;
-  background:rgba(255,255,255,.08);
+.hero-bio{
+  margin-top:22px;
+  font-size:1rem;
+  line-height:1.85;
+  color:#cfc6e4;
+  max-width:580px;
 }
 
-/* TIMELINE */
-.pm-timeline{
-  display:flex;
-  flex-direction:column;
-  gap:24px;
-  align-items:flex-start;
-  padding-top:12px;
+.hero-bio + .hero-bio{margin-top:12px}
+
+.hero-callout{
+  margin-top:22px;
+  padding:16px 20px;
+  border-left:2px solid var(--accent);
+  background:rgba(192,132,252,0.04);
+  font-size:0.88rem;
+  color:var(--dim);
+  line-height:1.75;
+  max-width:580px;
 }
 
-.pm-timeline button{
-  background:none;
-  border:none;
-  color:rgba(255,255,255,.5);
-  text-align:left;
-  font-family:'Inter',sans-serif;
-  font-size:.85rem;
-  letter-spacing:.12em;
-  cursor:pointer;
-  transition:color .25s ease, transform .25s ease;
-}
-
-.pm-timeline button span{
-  font-size:.7rem;
-  opacity:.7;
-}
-
-.pm-timeline button:hover{
-  color:#fff;
-  transform:translateX(4px);
-}
-
-.pm-timeline button.active{
-  color:#fff;
+.hero-callout strong{
+  color:var(--accent);
   font-weight:500;
 }
 
-/* ANIMATION */
-@keyframes fadeIn{
-  from{opacity:0; transform:translateY(6px);}
-  to{opacity:1; transform:translateY(0);}
-}
-
-/* RESPONSIVE */
-@media(max-width:900px){
-  .pm-layout{
-    grid-template-columns:1fr;
-  }
-  .pm-timeline{
-    flex-direction:row;
-    gap:32px;
-  }
-}
-
-/* =========================
-   ART SECTION — BLACK ONLY
-========================= */
-/* =========================
-   ART — GALLERY STYLE
-========================= */
-
-.art-section{
-  background:#000;
-  color:#fff;
-  padding:140px 8vw;
-}
-
-.art-header{
-  max-width:900px;
-  margin-bottom:90px;
-}
-
-.art-header h2{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(3rem,6vw,5rem);
-  letter-spacing:.08em;
-}
-
-.art-sub{
-  margin-top:14px;
-  font-size:1.05rem;
-  opacity:.65;
-}
-
-/* GALLERY WRAPPER */
-/* =========================
-/* =========================
-   ART — GALLERY ROOM
-========================= */
-
-.art-room{
-  background:#000;
-  color:#fff;
-  padding:140px 8vw 180px;
-}
-
-/* =========================
-   HEADER
-========================= */
-
-.art-header{
-  max-width:900px;
-  margin-bottom:120px;
-}
-
-.art-header h2{
-  font-family:'Playfair Display', serif;
-  font-size:clamp(3.2rem, 6vw, 5rem);
-  letter-spacing:.08em;
-}
-
-.art-header p{
-  margin-top:14px;
-  font-size:1.05rem;
-  opacity:.65;
-}
-
-/* =========================
-   GALLERY LAYOUT
-========================= */
-
-.gallery-wall{
-  max-width:1400px;
-  margin:0 auto;
-}
-
-.gallery-row{
-  display:grid;
-  grid-template-columns: 1fr 0.8fr 1fr;
-  gap:100px;
-  align-items:center;
-}
-
-/* =========================
-   ART FRAMES (LEFT & RIGHT)
-========================= */
-
-.art-frame{
-  text-align:center;
-}
-
-.art-frame img{
-  width:100%;
-  display:block;
-  filter:contrast(1.05);
-}
-
-.art-frame figcaption{
-  margin-top:14px;
-  font-size:.7rem;
-  letter-spacing:.14em;
-  opacity:.6;
-}
-
-/* Optional: keep right frame visually balanced */
-.art-frame-right{
-  max-width:380px;
-  justify-self:start;
-}
-
-/* =========================
-   POETRY PLACARD
-========================= */
-
-.art-placard{
-  position:relative;              /* anchor for crow */
-  font-family:'Playfair Display', serif;
-  text-align:center;
-  max-width:36ch;
-  margin:0 auto;
-}
-
-.art-placard h3{
-  font-size:1.2rem;
-  letter-spacing:.18em;
-  margin-bottom:26px;
-}
-
-.art-placard p{
-  font-size:1.05rem;
-  line-height:1.9;
-  opacity:.85;
-}
-
-.art-placard a{
-  display:inline-block;
-  margin-top:26px;
-  font-size:.75rem;
-  letter-spacing:.16em;
-  color:#fff;
-  text-decoration:none;
-  border-bottom:1px solid rgba(255,255,255,.4);
-}
-
-.art-placard a:hover{
-  opacity:.7;
-}
-
-/* =========================
-   CROW OVERLAY (FINAL)
-========================= */
-
-.crow-overlay{
-  position:absolute;
-
-  /* clearly ABOVE the poetry */
-  top:-220px;
-
-  /* centered over placard */
-  left:50%;
-  transform:translateX(-50%);
-
-  width:220px;
-  max-width:34vw;
-  height:auto;
-
-  pointer-events:none;
-  z-index:10;
-  opacity:0.9;
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media(max-width:1000px){
-  .gallery-row{
-    grid-template-columns:1fr;
-    gap:90px;
-  }
-
-  .crow-overlay{
-    top:-160px;
-    width:180px;
-  }
-}
-
-/* =========================
-   PM SECTION — CENTERED BLUE RECTANGLE (NOT A BANNER)
-   Paste at bottom of CSS
-========================= */
-
-#product.pm-section{
-  /* keep the page around it black so it transitions from Tech */
-  background:#000;
-  padding:140px 0;              /* top/bottom black breathing room */
-}
-
-/* this is the “balanced rectangle” */
-#product .pm-panel{
-  background: var(--bg);        /* your blue */
-  width: min(1200px, 86vw);     /* NOT full width */
-  margin: 0 auto;               /* center it */
-  padding: clamp(56px, 5.5vw, 96px);
-  min-height: 680px;            /* prevents “short banner” feel */
-  box-shadow: 0 40px 120px rgba(0,0,0,.55);
-}
-
-/* keep your layout inside looking clean */
-#product .pm-layout{
-  display:grid;
-  grid-template-columns: 1fr 160px;
-  gap: clamp(40px, 6vw, 90px);
-  align-items:start;
-  margin-top: clamp(42px, 5vw, 70px);
-}
-
-/* timeline stays right, visually lighter */
-#product .pm-timeline{
-  display:flex;
-  flex-direction:column;
-  gap:18px;
-  align-items:flex-end;
-}
-
-#product .pm-timeline button{
-  background: transparent;
-  border: 0;
-  color: rgba(255,255,255,.45);
-  text-align:right;
-  cursor:pointer;
-  padding: 6px 0;
-  letter-spacing:.12em;
-}
-
-#product .pm-timeline button.active{
-  color:#fff;
-  border: 1px solid rgba(255,255,255,.55);
-  padding: 8px 12px;
-}
-
-/* mobile: rectangle stays a rectangle */
-@media (max-width: 900px){
-  #product.pm-section{ padding: 90px 0; }
-  #product .pm-panel{
-    width: min(980px, 92vw);
-    min-height: auto;
-  }
-  #product .pm-layout{
-    grid-template-columns: 1fr;
-  }
-  #product .pm-timeline{
-    flex-direction:row;
-    justify-content:flex-start;
-    align-items:flex-start;
-    gap:22px;
-  }
-  #product .pm-timeline button{ text-align:left; }
-}
-
-.art-frame-right{
-  max-width:380px;
-  justify-self:start; /* pulls it toward center */
-}
-/* =========================
-   FAQ
-========================= */
-
-.faq-section{
-  background:#000;
-  color:#fff;
-  padding:140px 8vw;
-}
-
-.faq-header{
-  max-width:720px;
-  margin-bottom:80px;
-}
-
-.faq-header h2{
-  font-family:'Playfair Display', serif;
-  font-size:clamp(3rem, 6vw, 5rem);
-  letter-spacing:.08em;
-}
-
-.faq-header p{
-  margin-top:14px;
-  font-size:1.05rem;
-  opacity:.65;
-}
-
-.faq-list{
-  max-width:820px;
-}
-
-.faq-item{
-  border-bottom:1px solid rgba(255,255,255,.15);
-  padding:26px 0;
-}
-
-.faq-item summary{
-  list-style:none;
-  cursor:pointer;
-  font-family:'Playfair Display', serif;
-  font-size:1.25rem;
-  letter-spacing:.02em;
+/* Portrait */
+.portrait-wrap{
   position:relative;
-  padding-right:32px;
+  width:100%;
+  aspect-ratio:4/5;
 }
 
-.faq-item summary::-webkit-details-marker{
-  display:none;
-}
-
-.faq-item summary::after{
-  content:"+";
+.portrait-shadow{
   position:absolute;
-  right:0;
-  top:0;
-  font-size:1.4rem;
-  opacity:.6;
-  transition:transform .25s ease, opacity .25s ease;
+  inset:0;
+  transform:translate(12px,12px);
+  background:var(--pink);
+  opacity:0.6;
+  z-index:0;
 }
 
-.faq-item[open] summary::after{
-  content:"–";
-  opacity:1;
+.portrait-frame{
+  position:relative;z-index:1;
+  width:100%;height:100%;
+  overflow:hidden;
+  border:1px solid var(--border-hi);
+  background:var(--surface-solid);
 }
 
-.faq-item p{
-  margin-top:18px;
-  font-size:1.05rem;
-  line-height:1.85;
-  opacity:.85;
-  max-width:65ch;
+.portrait-frame img{
+  width:100%;height:100%;
+  object-fit:cover;display:block;
+  filter:grayscale(100%) contrast(1.05);
 }
 
-/* subtle open animation */
-.faq-item[open] p{
-  animation:faqFade .25s ease;
+.portrait-fallback{
+  width:100%;height:100%;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:12px;
 }
 
-@keyframes faqFade{
-  from{opacity:0; transform:translateY(4px);}
-  to{opacity:.85; transform:translateY(0);}
-}
-/* ================= TESTIMONIALS ================= */
-/* ================= TESTIMONIALS ================= */
-/* ================= TESTIMONIALS ================= */
-
-.testimonials-section {
-  padding: 120px 8%;
-  background: #0F3B78;
+.portrait-initials{
+  font-family:var(--font-display);
+  font-size:4.5rem;
+  font-weight:900;
+  color:var(--accent);
+  opacity:0.18;
+  letter-spacing:0.08em;
 }
 
-.testimonials-header {
-  text-align: center;
-  margin-bottom: 70px;
+.portrait-label{
+  font-family:var(--font-display);
+  font-size:0.55rem;
+  letter-spacing:0.3em;
+  color:var(--dim2);
+  text-transform:uppercase;
 }
 
-.testimonials-header h2 {
-  font-family: "Playfair Display", serif;
-  font-size: 2.6rem;
-  margin-bottom: 10px;
-  color: white;
+/* corner brackets */
+.portrait-frame::before,.portrait-frame::after,
+.portrait-wrap::before,.portrait-wrap::after{
+  content:'';
+  position:absolute;
+  width:18px;height:18px;
+  border-color:var(--accent);
+  border-style:solid;
+  opacity:0.55;
+  z-index:2;
+}
+.portrait-frame::before{top:10px;left:10px;border-width:1.5px 0 0 1.5px}
+.portrait-frame::after{top:10px;right:10px;border-width:1.5px 1.5px 0 0}
+.portrait-wrap::before{bottom:10px;left:10px;border-width:0 0 1.5px 1.5px;z-index:2;position:absolute}
+.portrait-wrap::after{bottom:10px;right:10px;border-width:0 1.5px 1.5px 0;z-index:2;position:absolute}
+
+/* ── SECTION HEADERS ── */
+.section-head{margin-bottom:40px}
+
+.section-label{
+  font-family:var(--font-display);
+  font-size:0.55rem;
+  letter-spacing:0.35em;
+  color:var(--accent);
+  opacity:0.7;
+  margin-bottom:10px;
+  text-transform:uppercase;
 }
 
-.testimonials-header p {
-  font-family: "Inter", sans-serif;
-  color: #d7e3f5;
+.section-title{
+  font-family:var(--font-display);
+  font-size:clamp(1.6rem,2.5vw,2.2rem);
+  font-weight:700;
+  letter-spacing:0.04em;
+  color:var(--white);
+  line-height:1;
 }
 
-.testimonial-container {
-  max-width: 1250px;
-  margin: auto;
-  position: relative;
+/* ── DIVIDER ── */
+.divider{
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  opacity:0.2;
+  margin:0;
 }
 
-.testimonial-slider {
-  display: flex;
-  gap: 40px;
+/* ── PROJECTS ── */
+.project-list{display:grid;gap:24px}
 
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-
-  padding: 20px 40px;
+.project-card{
+  display:grid;
+  grid-template-columns:1fr 240px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  overflow:hidden;
+  transition:transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+  backdrop-filter:blur(8px);
 }
 
-.testimonial-slider::-webkit-scrollbar {
-  display: none;
+.project-card:hover{
+  transform:translateY(-5px);
+  border-color:var(--border-hi);
+  box-shadow:0 28px 50px rgba(0,0,0,0.55), 0 0 22px rgba(192,132,252,0.12);
 }
 
-/* wider cards so full testimonials fit better */
+.project-body{padding:28px 28px 24px}
 
-.testimonial-card {
-  scroll-snap-align: center;
-
-  flex: 0 0 560px;
-  max-width: 560px;
-
-  background: white;
-  padding: 40px;
-
-  border-radius: 16px;
-
-  box-shadow: 0 12px 35px rgba(0,0,0,0.18);
-
-  font-family: "Inter", sans-serif;
-  line-height: 1.65;
-
-  transition: transform .25s ease;
+.project-tag{
+  font-family:var(--font-display);
+  font-size:0.55rem;
+  letter-spacing:0.2em;
+  color:var(--accent);
+  opacity:0.7;
+  margin-bottom:10px;
+  text-transform:uppercase;
 }
 
-.testimonial-card:hover {
-  transform: translateY(-6px);
+.project-name{
+  font-family:var(--font-display);
+  font-size:clamp(1rem,1.8vw,1.35rem);
+  font-weight:700;
+  line-height:1.2;
+  color:var(--white);
+  letter-spacing:0.03em;
+  margin-bottom:12px;
 }
 
-.testimonial-photo {
-  width: 60px;
-  height: 60px;
-
-  border-radius: 50%;
-  object-fit: cover;
-
-  margin-bottom: 20px;
-
-  border: 3px solid #f0f0f0;
+.project-desc{
+  font-size:0.95rem;
+  color:var(--dim);
+  line-height:1.75;
+  margin-bottom:14px;
 }
 
-.testimonial-card p {
-  margin-bottom: 22px;
-  color: #333;
-  font-size: 0.95rem;
+.project-metrics{
+  font-size:0.88rem;
+  color:#cfc6e4;
+  line-height:1.8;
+  margin-bottom:18px;
+  padding-left:0;
 }
 
-.testimonial-author strong {
-  display: block;
-  font-weight: 500;
+.metric-row{
+  display:flex;align-items:baseline;gap:8px;
+  margin-bottom:4px;
 }
 
-.testimonial-author span {
-  font-size: .85rem;
-  color: #777;
+.metric-row::before{
+  content:'›';
+  color:var(--accent);
+  font-size:1em;
+  flex-shrink:0;
 }
 
-/* arrows */
-
-.testimonial-arrow {
-  position: absolute;
-  top: 45%;
-
-  background: black;
-  color: white;
-
-  border: none;
-  font-size: 18px;
-
-  padding: 10px 14px;
-
-  cursor: pointer;
-  border-radius: 6px;
-
-  transition: .2s;
+.project-actions{
+  display:flex;flex-wrap:wrap;gap:12px;align-items:center;
 }
 
-.testimonial-arrow:hover {
-  transform: scale(1.05);
+.btn-link{
+  font-family:var(--font-display);
+  font-size:0.58rem;
+  letter-spacing:0.18em;
+  color:var(--accent);
+  text-decoration:none;
+  text-transform:uppercase;
+  padding:6px 14px;
+  border:1px solid rgba(192,132,252,0.3);
+  transition:all 0.18s;
+  background:transparent;
 }
 
-.testimonial-arrow.left {
-  left: -15px;
+.btn-link:hover{
+  border-color:var(--accent);
+  background:rgba(192,132,252,0.07);
 }
 
-.testimonial-arrow.right {
-  right: -15px;
-}
-.testimonial-header{
-display:flex;
-align-items:center;
-gap:14px;
-margin-bottom:18px;
-}
-
-.testimonial-author strong{
-display:block;
-font-weight:600;
-color:#111;
+.stack-tags{
+  font-family:'Barlow',sans-serif;
+  font-size:0.72rem;
+  letter-spacing:0.05em;
+  color:var(--dim2);
+  margin-top:10px;
+  opacity:0.8;
 }
 
-.testimonial-author span{
-font-size:.85rem;
-color:#666;
+.project-visual{
+  position:relative;
+  border-left:1px solid var(--border);
+  overflow:hidden;
+  cursor:pointer;
+  background:#08031a;
+  display:flex;align-items:center;justify-content:center;
 }
+
+.project-visual img{
+  width:100%;height:100%;
+  object-fit:cover;display:block;
+  transition:transform 0.4s ease, filter 0.4s ease;
+  filter:saturate(0.85);
+}
+
+.project-card:hover .project-visual img{
+  transform:scale(1.07);
+  filter:saturate(1.1) brightness(1.06);
+}
+
+.project-visual::after{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(to left, rgba(3,0,10,0.05), rgba(3,0,10,0.45));
+  pointer-events:none;
+}
+
+/* ASCII fallback for project images */
+.ascii-fallback{
+  font-family:'Barlow',monospace;
+  font-size:0.38rem;
+  line-height:1.25;
+  color:var(--accent);
+  opacity:0.18;
+  white-space:pre;
+  user-select:none;
+  padding:16px;
+  text-align:center;
+}
+
+.visual-label{
+  position:absolute;bottom:12px;right:14px;
+  font-family:var(--font-display);
+  font-size:0.5rem;
+  letter-spacing:0.22em;
+  color:var(--dim2);
+  text-transform:uppercase;
+  z-index:2;
+}
+
+/* ── EXPERIENCE ── */
+.exp-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:56px;
+  align-items:start;
+}
+
+.timeline{
+  border-left:1px solid rgba(192,132,252,0.3);
+  padding-left:20px;
+}
+
+.t-item{
+  margin-bottom:28px;
+  position:relative;
+}
+
+.t-item::before{
+  content:'';
+  position:absolute;
+  left:-25px;top:6px;
+  width:7px;height:7px;
+  background:var(--accent);
+  transform:rotate(45deg);
+  opacity:0.6;
+}
+
+.t-year{
+  font-family:var(--font-display);
+  font-size:0.55rem;
+  letter-spacing:0.22em;
+  color:var(--accent);
+  opacity:0.65;
+  margin-bottom:4px;
+}
+
+.t-role{
+  font-family:var(--font-display);
+  font-size:0.82rem;
+  font-weight:700;
+  color:var(--white);
+  letter-spacing:0.04em;
+  margin-bottom:2px;
+  line-height:1.25;
+}
+
+.t-company{
+  font-family:var(--font-cond);
+  font-size:0.8rem;
+  font-weight:600;
+  letter-spacing:0.14em;
+  color:var(--dim);
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+
+.t-desc{
+  font-size:0.88rem;
+  color:var(--dim);
+  line-height:1.7;
+}
+
+.t-badges{
+  display:flex;flex-wrap:wrap;gap:6px;
+  margin-top:8px;
+}
+
+.badge{
+  font-family:var(--font-display);
+  font-size:0.5rem;
+  letter-spacing:0.14em;
+  color:var(--accent);
+  border:1px solid rgba(192,132,252,0.25);
+  padding:3px 8px;
+  text-transform:uppercase;
+  opacity:0.75;
+}
+
+/* ── PRESS ── */
+.press-card{
+  display:grid;
+  grid-template-columns:1fr 260px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  overflow:hidden;
+  backdrop-filter:blur(8px);
+  transition:transform 0.28s ease,border-color 0.28s ease,box-shadow 0.28s ease;
+}
+
+.press-card:hover{
+  transform:translateY(-4px);
+  border-color:var(--border-hi);
+  box-shadow:0 22px 40px rgba(0,0,0,0.5), 0 0 20px rgba(192,132,252,0.12);
+}
+
+.press-body{padding:32px}
+
+.press-outlet{
+  font-family:var(--font-display);
+  font-size:0.55rem;
+  letter-spacing:0.3em;
+  color:var(--accent);
+  opacity:0.7;
+  margin-bottom:10px;
+  text-transform:uppercase;
+}
+
+.press-headline{
+  font-family:var(--font-display);
+  font-size:1.2rem;
+  font-weight:700;
+  color:var(--white);
+  letter-spacing:0.03em;
+  margin-bottom:14px;
+  line-height:1.3;
+}
+
+.press-text{
+  font-size:0.95rem;
+  color:var(--dim);
+  line-height:1.8;
+  margin-bottom:20px;
+}
+
+.press-visual{
+  border-left:1px solid var(--border);
+  overflow:hidden;
+  background:#08031a;
+}
+
+.press-visual img{
+  width:100%;height:100%;
+  object-fit:cover;display:block;
+  filter:grayscale(20%);
+  transition:transform 0.4s ease;
+}
+
+.press-card:hover .press-visual img{transform:scale(1.06)}
+
+/* ── RECOMMENDATIONS ── */
+.recs-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+}
+
+.rec-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  padding:26px;
+  backdrop-filter:blur(8px);
+  position:relative;
+  transition:transform 0.25s ease,border-color 0.25s ease,box-shadow 0.25s ease;
+}
+
+.rec-card::before{
+  content:'\201C';
+  position:absolute;
+  top:16px;right:20px;
+  font-size:3.5rem;
+  line-height:1;
+  color:var(--accent);
+  opacity:0.07;
+  font-family:Georgia,serif;
+  pointer-events:none;
+}
+
+.rec-card:hover{
+  transform:translateY(-4px);
+  border-color:var(--border-hi);
+  box-shadow:0 18px 34px rgba(0,0,0,0.45), 0 0 16px rgba(192,132,252,0.1);
+}
+
+.rec-text{
+  font-size:0.92rem;
+  color:#cfc6e4;
+  line-height:1.8;
+  margin-bottom:18px;
+}
+
+.rec-author-wrap{display:flex;align-items:center;gap:12px}
+
+.rec-avatar{
+  width:38px;height:38px;
+  background:var(--surface-solid);
+  border:1px solid var(--border-hi);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);
+  font-size:0.58rem;
+  font-weight:700;
+  color:var(--accent);
+  flex-shrink:0;
+  letter-spacing:0.04em;
+}
+
+.rec-author{
+  font-family:var(--font-cond);
+  font-size:0.95rem;
+  font-weight:600;
+  letter-spacing:0.1em;
+  color:var(--white);
+  text-transform:uppercase;
+}
+
+.rec-role{
+  font-size:0.78rem;
+  color:var(--dim2);
+  margin-top:2px;
+  line-height:1.4;
+}
+
+/* ── FOOTER ── */
+footer{
+  padding:28px 0 44px;
+  text-align:center;
+  border-top:1px solid var(--border);
+}
+
+.footer-logo{
+  font-family:var(--font-display);
+  font-size:0.6rem;
+  letter-spacing:0.3em;
+  color:var(--accent);
+  opacity:0.45;
+  margin-bottom:6px;
+}
+
+.footer-copy{
+  font-family:var(--font-display);
+  font-size:0.55rem;
+  letter-spacing:0.18em;
+  color:var(--dim2);
+  opacity:0.4;
+}
+
+/* ── MODAL ── */
+.modal{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,0.92);
+  display:flex;justify-content:center;align-items:center;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.22s ease;
+  z-index:9999;padding:24px;
+}
+
+.modal.active{opacity:1;pointer-events:auto}
+
+.modal img{
+  max-width:min(1000px,92vw);
+  max-height:90vh;
+  border:1px solid var(--border-hi);
+  display:block;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:rgba(192,132,252,0.35)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero-grid,.exp-grid{grid-template-columns:1fr}
+  .portrait-wrap{width:min(300px,80%)}
+  .project-card,.press-card{grid-template-columns:1fr}
+  .project-visual,.press-visual{min-height:200px;border-left:none;border-top:1px solid var(--border)}
+  .recs-grid{grid-template-columns:1fr}
+  nav .nav-links{display:none}
+}
+</style>
+</head>
+<body>
+<canvas id="snow"></canvas>
+
+<div class="page">
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">VH</a>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#press">Press</a></li>
+    <li><a href="#recommendations">Intel</a></li>
+    <li><a href="mailto:hwasa@unc.edu">Contact</a></li>
+  </ul>
+</nav>
+
+<main class="container">
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="eyebrow">// UNC Chapel Hill — CS · Neuroscience · Data Science</div>
+      <h1 class="hero-name">VIVIENNE<br><span>HNIN</span></h1>
+      <div class="hero-role">AI Engineer · Systems Builder · Autonomy</div>
+
+      <div class="hero-links">
+        <a href="https://www.linkedin.com/in/viviennehnin" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://github.com/sawwatihnin" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="mailto:hwasa@unc.edu">Contact</a>
+        <a href="#projects">Work</a>
+      </div>
+
+      <div class="tech-line">C++ · Java · JavaScript · TypeScript · Python · Swift · R · HTML · CSS</div>
+
+      <p class="hero-bio">
+        Computer Science junior at UNC Chapel Hill with minors in Neuroscience and Data Science, focused on autonomy, systems engineering, and applied research.
+      </p>
+      <p class="hero-bio">
+        Featured in <em>Business Insider</em> for breaking into tech. VTOL engineer at <strong>Carolina Skylabs</strong> building an autonomous drone platform. VP of Marketing at <strong>R.A.M Engineering</strong>. Incoming AI Engineering Intern at <strong>Utilyst</strong>.
+      </p>
+
+      <div class="hero-callout">
+        <strong>MEGAMIND!</strong> — dementia detection system scouted by Amazon · <strong>Northern Cardinal</strong> VTOL drone, X-1 Thorn inspired · <strong>600+ applications</strong> to break into tech
+      </div>
+    </div>
+
+    <div>
+      <div class="portrait-wrap">
+        <div class="portrait-shadow"></div>
+        <div class="portrait-frame">
+          <img src="/portrait.png" alt="Vivienne Hnin"
+               onerror="this.style.display='none';this.parentElement.querySelector('.portrait-fallback').style.display='flex'">
+          <div class="portrait-fallback" style="display:none">
+            <div class="portrait-initials">VH</div>
+            <div class="portrait-label">Vivienne Hnin</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ PROJECTS ══ -->
+<section id="projects">
+  <div class="section-head">
+    <div class="section-label">// Selected Work</div>
+    <h2 class="section-title">PROJECTS</h2>
+  </div>
+
+  <div class="project-list">
+
+    <article class="project-card">
+      <div class="project-body">
+        <div class="project-tag">Neural Systems · AWS · Computer Vision</div>
+        <h3 class="project-name">MEGAMIND! — Dementia Detection & Prevention</h3>
+        <p class="project-desc">Real-time cognitive monitoring platform using multimodal data, computer vision, and AWS infrastructure. Built to detect early signs of cognitive decline through behavioural analysis.</p>
+        <div class="project-metrics">
+          <div class="metric-row">Scouted and recognized by Amazon AWS Academia</div>
+          <div class="metric-row">CV + WebSocket pipeline for live metric streaming</div>
+          <div class="metric-row">Low-latency backend on EC2 + DynamoDB</div>
+        </div>
+        <div class="project-actions">
+          <a href="#" class="btn-link">Demo</a>
+          <a href="#" class="btn-link">View</a>
+          <a href="#" class="btn-link">Amazon Feature</a>
+          <a href="#" class="btn-link">FSM</a>
+        </div>
+        <div class="stack-tags">TS · React · JS · Python · AWS</div>
+      </div>
+      <div class="project-visual" onclick="openModal('/megamind.png')">
+        <img src="/megamind.png" alt="MEGAMIND preview"
+             onerror="this.style.display='none'">
+        <div class="ascii-fallback">
+█▀▄▀█ █▀▀ █▀▀ ▄▀█ █▀▄▀█ █ █▄░█ █▀▄
+█░▀░█ ██▄ █▄█ █▀█ █░▀░█ █ █░▀█ █▄▀</div>
+        <div class="visual-label">MEGAMIND</div>
+      </div>
+    </article>
+
+    <article class="project-card">
+      <div class="project-body">
+        <div class="project-tag">Embedded Systems · Autonomy · Control Theory</div>
+        <h3 class="project-name">VTOL Flight Control — Northern Cardinal</h3>
+        <p class="project-desc">Embedded control system for an autonomous VTOL aircraft across hover, transition, and forward flight. Inspired by the X-1 Thorn, built at Carolina Skylabs.</p>
+        <div class="project-metrics">
+          <div class="metric-row">FSM-based flight mode transitions with sensor fusion</div>
+          <div class="metric-row">Closed-loop feedback for stable hover and transition</div>
+          <div class="metric-row">Reduced unsafe mode changes and improved reliability</div>
+        </div>
+        <div class="project-actions">
+          <a href="#" class="btn-link">Demo</a>
+          <a href="#" class="btn-link">View</a>
+          <a href="#" class="btn-link">FSM Docs</a>
+        </div>
+        <div class="stack-tags">C++ · Embedded · Control Systems · Python</div>
+      </div>
+      <div class="project-visual" onclick="openModal('/vtol.png')">
+        <img src="/vtol.png" alt="VTOL preview" onerror="this.style.display='none'">
+        <div class="ascii-fallback">
+█░█ ▀█▀ █▀█ █░░
+▀▄▀ ░█░ █▄█ █▄▄</div>
+        <div class="visual-label">NORTHERN CARDINAL</div>
+      </div>
+    </article>
+
+    <article class="project-card">
+      <div class="project-body">
+        <div class="project-tag">Algorithms · Path Planning · Visualization</div>
+        <h3 class="project-name">Mars Rover Autonomous Navigation</h3>
+        <p class="project-desc">Autonomous path-planning simulation with obstacle avoidance, state-driven control logic, and a React-based observability layer for real-time debugging.</p>
+        <div class="project-metrics">
+          <div class="metric-row">A* + Dijkstra implemented in C++ for grid navigation</div>
+          <div class="metric-row">Modular FSM architecture separating planning and control</div>
+          <div class="metric-row">React visualization layer for interactive path inspection</div>
+        </div>
+        <div class="project-actions">
+          <a href="#" class="btn-link">Demo</a>
+          <a href="#" class="btn-link">View</a>
+          <a href="#" class="btn-link">State Machine</a>
+        </div>
+        <div class="stack-tags">C++ · JavaScript · React · Algorithms</div>
+      </div>
+      <div class="project-visual" onclick="openModal('/rover.png')">
+        <img src="/rover.png" alt="Rover preview" onerror="this.style.display='none'">
+        <div class="ascii-fallback">
+█▀█ █▀█ █░█ █▀▀ █▀█
+█▀▄ █▄█ ▀▄▀ ██▄ █▀▄</div>
+        <div class="visual-label">MARS ROVER</div>
+      </div>
+    </article>
+
+    <article class="project-card">
+      <div class="project-body">
+        <div class="project-tag">Community · AI Classification · Maps</div>
+        <h3 class="project-name">Gratitude — Community Resource Platform</h3>
+        <p class="project-desc">Local discovery platform connecting civilians to events, food assistance, volunteering ops, and community resources. AI-assisted classification across map, list, and split-view interfaces.</p>
+        <div class="project-metrics">
+          <div class="metric-row">AI-powered resource classification pipeline</div>
+          <div class="metric-row">Three interactive view modes for different discovery contexts</div>
+          <div class="metric-row">Real-time geospatial filtering across resource categories</div>
+        </div>
+        <div class="project-actions">
+          <a href="#" class="btn-link">Code</a>
+          <a href="#" class="btn-link">Devpost</a>
+        </div>
+        <div class="stack-tags">Next.js · React · Maps API · AI</div>
+      </div>
+      <div class="project-visual">
+        <div class="ascii-fallback">
+█▀▀ █▀█ ▄▀█ ▀█▀ █ ▀█▀ █░█ █▀▄ █▀▀
+█▄█ █▀▄ █▀█ ░█░ █ ░█░ █▄█ █▄▀ ██▄</div>
+        <div class="visual-label">GRATITUDE</div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ EXPERIENCE ══ -->
+<section id="experience">
+  <div class="section-head">
+    <div class="section-label">// Career Trajectory</div>
+    <h2 class="section-title">EXPERIENCE</h2>
+  </div>
+
+  <div class="exp-grid">
+    <div>
+      <div class="section-label" style="margin-bottom:20px">Product &amp; Operations</div>
+      <div class="timeline">
+        <div class="t-item">
+          <div class="t-year">2025</div>
+          <div class="t-role">Product Management Extern</div>
+          <div class="t-company">BeReal · Chapel Hill, NC</div>
+          <div class="t-desc">Analyzed 300+ user behavioral data points across external datasets. Identified onboarding bottlenecks at funnel level. Informed feature prioritization grounded in evidence.</div>
+          <div class="t-badges"><span class="badge">Analytics</span><span class="badge">Onboarding</span><span class="badge">GTM</span></div>
+        </div>
+        <div class="t-item">
+          <div class="t-year">2023</div>
+          <div class="t-role">Partnership Associate</div>
+          <div class="t-company">Success Admissions · Yangon, Burma</div>
+          <div class="t-desc">Built international partnership pipeline. Secured 3+ school contracts through value-aligned positioning. Launched digital campaigns generating 250K+ interactions.</div>
+          <div class="t-badges"><span class="badge">Partnerships</span><span class="badge">Growth</span><span class="badge">GTM</span></div>
+        </div>
+        <div class="t-item">
+          <div class="t-year">2021–24</div>
+          <div class="t-role">Product Management Intern</div>
+          <div class="t-company">Nawarat Autoparts · Yangon, Burma</div>
+          <div class="t-desc">Designed double-layer packaging reducing transit damage by 31%. Validated durability through 48–72h humidity stress testing. Improved QA workflows.</div>
+          <div class="t-badges"><span class="badge">Hardware</span><span class="badge">QA</span><span class="badge">Supply Chain</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-label" style="margin-bottom:20px">Engineering</div>
+      <div class="timeline">
+        <div class="t-item">
+          <div class="t-year">2025</div>
+          <div class="t-role">VTOL Project Engineer</div>
+          <div class="t-company">Carolina Skylabs · UNC Chapel Hill</div>
+          <div class="t-desc">Building autonomous drone platform nicknamed "The Northern Cardinal." Designing FSM-based flight control systems and embedded sensor pipelines.</div>
+          <div class="t-badges"><span class="badge">Embedded</span><span class="badge">Autonomy</span><span class="badge">C++</span></div>
+        </div>
+        <div class="t-item">
+          <div class="t-year">2024</div>
+          <div class="t-role">IT Student Apprentice</div>
+          <div class="t-company">Kenan-Flagler Business School · UNC</div>
+          <div class="t-desc">Resolved system bottlenecks and improved reliability across hardware, software, and networking for 7,900+ students and faculty.</div>
+          <div class="t-badges"><span class="badge">Systems</span><span class="badge">Support</span><span class="badge">Networking</span></div>
+        </div>
+        <div class="t-item">
+          <div class="t-year">Incoming</div>
+          <div class="t-role">AI Engineering Intern</div>
+          <div class="t-company">Utilyst</div>
+          <div class="t-desc">Developing geospatial AI systems for critical infrastructure analysis. Building end-to-end pipelines from data ingestion to model-powered insights.</div>
+          <div class="t-badges"><span class="badge">Geospatial AI</span><span class="badge">Python</span><span class="badge">Infrastructure</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ PRESS ══ -->
+<section id="press">
+  <div class="section-head">
+    <div class="section-label">// Media Coverage</div>
+    <h2 class="section-title">FEATURED</h2>
+  </div>
+
+  <article class="press-card">
+    <div class="press-body">
+      <div class="press-outlet">Business Insider</div>
+      <h3 class="press-headline">Breaking Into Tech Through 600+ Applications</h3>
+      <p class="press-text">
+        Featured for the journey of applying to over 600 roles, navigating rejection, and ultimately landing meaningful opportunities in engineering and AI. An account of persistence, strategy, and what it actually takes to break in.
+      </p>
+      <div class="project-actions">
+        <a href="#" class="btn-link">Read Article</a>
+      </div>
+    </div>
+    <div class="press-visual">
+      <img src="/news.png" alt="Business Insider feature" onerror="this.style.display='none'">
+    </div>
+  </article>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ RECOMMENDATIONS ══ -->
+<section id="recommendations">
+  <div class="section-head">
+    <div class="section-label">// Field Intelligence</div>
+    <h2 class="section-title">RECOMMENDATIONS</h2>
+  </div>
+
+  <div class="recs-grid">
+
+    <article class="rec-card">
+      <p class="rec-text">Vivienne Hnin is one of the finest IT Student Apprentices to ever be employed at UNC Kenan-Flagler Business School. She develops great customer service skills and improves the institution's trust in reliable IT service. When others have called out, she steps in — it shows a level of motivation and drive that we often lack.</p>
+      <div class="rec-author-wrap">
+        <div class="rec-avatar">TC</div>
+        <div>
+          <div class="rec-author">Anthony "T.C." Lo Ré</div>
+          <div class="rec-role">Supervisor · Kenan-Flagler Business School</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="rec-card">
+      <p class="rec-text">Vivienne is one of the most talented, determined, and diligent students I have had. She always took initiative to research, write, and learn. A truly multi-disciplinary talented person. I recommend her for any future opportunities with full confidence.</p>
+      <div class="rec-author-wrap">
+        <div class="rec-avatar">TZ</div>
+        <div>
+          <div class="rec-author">Thaw Zin Aung Gyi</div>
+          <div class="rec-role">CEO · Success Admissions · Ivy League + Oxford</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="rec-card">
+      <p class="rec-text">Vivienne consistently demonstrated strong troubleshooting skills, reliability, and professionalism while supporting hardware, software, and network issues. She learns quickly, communicates technical concepts clearly, and approaches challenges with a solution-oriented mindset.</p>
+      <div class="rec-author-wrap">
+        <div class="rec-avatar">AF</div>
+        <div>
+          <div class="rec-author">Aquil Farid</div>
+          <div class="rec-role">Asset Manager · IT Technician · Kenan-Flagler</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="rec-card">
+      <p class="rec-text">Vivienne is a smart, communicative, and outspoken individual with an impressive array of skills. Her writing ability is remarkable — she has a natural talent for crafting compelling content. Her intellect, warm personality, and passion make her a standout professional.</p>
+      <div class="rec-author-wrap">
+        <div class="rec-avatar">TM</div>
+        <div>
+          <div class="rec-author">Thazin Min Htun</div>
+          <div class="rec-role">CoWorker · Success Admissions · Chulalongkorn University</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="rec-card">
+      <p class="rec-text">I have been working with her for 2 years and I am quite impressed with her dedication to her work, including studies, research, and social work. She is excellent at multitasking and always manages to finish all the work on time.</p>
+      <div class="rec-author-wrap">
+        <div class="rec-avatar">SD</div>
+        <div>
+          <div class="rec-author">Saw Daniel Aung Khant Moe</div>
+          <div class="rec-role">CS Student · University of Calgary · Project Partner</div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">VIVIENNE HNIN</div>
+  <div class="footer-copy">© 2026 · UNC CHAPEL HILL · ALL SYSTEMS NOMINAL</div>
+</footer>
+
+</main>
+</div>
+
+<!-- MODAL -->
+<div id="modal" class="modal" onclick="closeModal()">
+  <img id="modal-img" alt="Expanded preview">
+</div>
+
+<script>
+// ── Modal ──
+function openModal(src){
+  document.getElementById('modal-img').src = src;
+  document.getElementById('modal').classList.add('active');
+}
+function closeModal(){
+  document.getElementById('modal').classList.remove('active');
+}
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+
+// ── Snowfall ──
+(function(){
+  const canvas = document.getElementById('snow');
+  const ctx    = canvas.getContext('2d');
+  let W, H, particles = [];
+
+  const palette = [
+    [255,255,255,0.75],
+    [220,200,255,0.55],
+    [200,180,255,0.45],
+    [255,225,255,0.5],
+  ];
+
+  function resize(){
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  function Particle(){
+    this.reset = function(initial){
+      this.x  = Math.random() * W;
+      this.y  = initial ? Math.random() * H : -8;
+      this.r  = Math.random() * 1.6 + 0.25;
+      this.vy = Math.random() * 0.35 + 0.07;
+      this.vx = (Math.random() - 0.5) * 0.14;
+      const c = palette[Math.floor(Math.random()*palette.length)];
+      this.col = `rgba(${c[0]},${c[1]},${c[2]},${c[3]})`;
+    };
+    this.reset(true);
+
+    this.update = function(){
+      this.y += this.vy;
+      this.x += this.vx;
+      if(this.y > H+10 || this.x < -20 || this.x > W+20) this.reset(false);
+    };
+
+    this.draw = function(){
+      // Draw a small 4-pointed star shape instead of a circle
+      const x=this.x, y=this.y, r=this.r;
+      ctx.save();
+      ctx.translate(x,y);
+      ctx.fillStyle = this.col;
+
+      if(r < 0.8){
+        // Tiny — just a soft dot
+        ctx.beginPath();
+        ctx.arc(0,0,r,0,Math.PI*2);
+        ctx.fill();
+      } else {
+        // Small cross/sparkle shape
+        const outer=r*2.2, inner=r*0.55;
+        ctx.beginPath();
+        for(let i=0;i<8;i++){
+          const angle = (i*Math.PI)/4;
+          const rad   = i%2===0 ? outer : inner;
+          const px    = Math.cos(angle)*rad;
+          const py    = Math.sin(angle)*rad;
+          i===0 ? ctx.moveTo(px,py) : ctx.lineTo(px,py);
+        }
+        ctx.closePath();
+        ctx.fill();
+
+        // Tiny centre glow dot
+        ctx.globalAlpha = 0.9;
+        ctx.beginPath();
+        ctx.arc(0,0,r*0.4,0,Math.PI*2);
+        ctx.fillStyle = 'rgba(255,255,255,0.9)';
+        ctx.fill();
+      }
+      ctx.restore();
+    };
+  }
+
+  function init(){
+    particles = [];
+    const count = Math.max(100, Math.floor((W*H)/16000));
+    for(let i=0;i<count;i++) particles.push(new Particle());
+  }
+
+  function loop(){
+    ctx.clearRect(0,0,W,H);
+    for(const p of particles){ p.update(); p.draw(); }
+    requestAnimationFrame(loop);
+  }
+
+  resize(); init(); loop();
+  window.addEventListener('resize',()=>{ resize(); init(); });
+})();
+
+// ── Scroll fade-in ──
+(function(){
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.style.opacity='1';
+        e.target.style.transform='translateY(0)';
+      }
+    });
+  },{threshold:0.08});
+
+  document.querySelectorAll('.project-card,.rec-card,.t-item,.press-card').forEach(el=>{
+    el.style.opacity='0';
+    el.style.transform='translateY(22px)';
+    el.style.transition='opacity 0.6s ease, transform 0.6s ease';
+    io.observe(el);
+  });
+})();
+</script>
+</body>
+</html>

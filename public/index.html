@@ -1,566 +1,1232 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vivienne Hnin</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Vivienne Hnin — AI Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap"
-    rel="stylesheet"
-  >
+:root{
+  --bg:#03000a;
+  --bg2:#07020f;
+  --surface:rgba(16,7,28,0.7);
+  --surface-solid:#100717;
+  --border:rgba(192,132,252,0.14);
+  --border-hi:rgba(192,132,252,0.55);
+  --accent:#c084fc;
+  --accent-dim:#9b4dca;
+  --pink:#f06292;
+  --text:#ede8f5;
+  --dim:#9585b3;
+  --dim2:#6b5f88;
+  --white:#fff;
+  --font-display:'Orbitron',sans-serif;
+  --font-body:'Barlow',sans-serif;
+  --font-cond:'Barlow Condensed',sans-serif;
+}
 
-  <link rel="stylesheet" href="styles.css" />
+html{scroll-behavior:smooth}
 
-  <!-- Smooth scroll -->
-  <style>
-    html { scroll-behavior: smooth; }
-  </style>
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-body);
+  font-weight:300;
+  line-height:1.7;
+  overflow-x:hidden;
+  min-height:100vh;
+}
+
+/* ── CANVAS ── */
+#snow{
+  position:fixed;inset:0;
+  width:100%;height:100%;
+  z-index:0;pointer-events:none;
+}
+
+/* Nebula glow layers */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 55% 40% at 15% 35%, rgba(130,40,200,0.09) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 82% 65%, rgba(90,20,160,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 35% 30% at 55% 5%,  rgba(170,60,230,0.06) 0%, transparent 70%);
+  pointer-events:none;
+  z-index:0;
+}
+
+.page{position:relative;z-index:1}
+
+/* ── LAYOUT ── */
+.container{
+  width:min(1080px,calc(100% - 48px));
+  margin:0 auto;
+}
+
+section{padding:80px 0}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;
+  z-index:200;
+  padding:0 32px;
+  height:56px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(3,0,10,0.78);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(14px);
+}
+
+.nav-logo{
+  font-family:var(--font-display);
+  font-size:0.68rem;
+  font-weight:700;
+  letter-spacing:0.22em;
+  color:var(--accent);
+  text-decoration:none;
+}
+
+.nav-links{
+  display:flex;gap:32px;list-style:none;
+}
+
+.nav-links a{
+  font-family:var(--font-display);
+  font-size:0.58rem;
+  letter-spacing:0.18em;
+  color:var(--dim);
+  text-decoration:none;
+  text-transform:uppercase;
+  transition:color 0.2s;
+}
+
+.nav-links a:hover{color:var(--accent)}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding-top:56px;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1fr 280px;
+  gap:80px;
+  align-items:center;
+  width:100%;
+}
+
+/* Staggered entrance */
+.hero-grid>*{
+  animation:rise 0.9s cubic-bezier(0.16,1,0.3,1) both;
+}
+.hero-grid>*:nth-child(2){animation-delay:0.15s}
+
+@keyframes rise{
+  from{opacity:0;transform:translateY(28px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.eyebrow{
+  font-family:var(--font-display);
+  font-size:0.6rem;
+  letter-spacing:0.35em;
+  color:var(--accent);
+  opacity:0.75;
+  margin-bottom:20px;
+  text-transform:uppercase;
+}
+
+.hero-name{
+  font-family:var(--font-display);
+  font-size:clamp(2.8rem,5.5vw,4.8rem);
+  font-weight:900;
+  line-height:0.95;
+  letter-spacing:0.03em;
+  color:var(--white);
+}
+
+.hero-name span{color:var(--accent)}
+
+.hero-role{
+  font-family:var(--font-cond);
+  font-size:1rem;
+  font-weight:600;
+  letter-spacing:0.22em;
+  color:var(--dim);
+  text-transform:uppercase;
+  margin-top:14px;
+}
+
+/* Pill links */
+.hero-links{
+  display:flex;flex-wrap:wrap;gap:10px;
+  margin-top:24px;
+}
+
+.hero-links a{
+  font-family:var(--font-display);
+  font-size:0.6rem;
+  letter-spacing:0.18em;
+  color:var(--accent);
+  text-decoration:none;
+  border:1px solid var(--border-hi);
+  padding:7px 16px;
+  text-transform:uppercase;
+  background:rgba(192,132,252,0.04);
+  transition:all 0.2s;
+  position:relative;overflow:hidden;
+}
+
+.hero-links a::after{
+  content:'';
+  position:absolute;inset:0;
+  background:var(--accent);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform 0.22s ease;
+  z-index:-1;
+}
+
+.hero-links a:hover{color:#14081e}
+.hero-links a:hover::after{transform:scaleX(1)}
+
+.tech-line{
+  font-family:'Barlow',sans-serif;
+  font-size:0.75rem;
+  letter-spacing:0.08em;
+  color:var(--dim2);
+  margin-top:20px;
+  line-height:1.8;
+}
+
+.hero-bio{
+  margin-top:22px;
+  font-size:1rem;
+  line-height:1.85;
+  color:#cfc6e4;
+  max-width:580px;
+}
+
+.hero-bio + .hero-bio{margin-top:12px}
+
+.hero-callout{
+  margin-top:22px;
+  padding:16px 20px;
+  border-left:2px solid var(--accent);
+  background:rgba(192,132,252,0.04);
+  font-size:0.88rem;
+  color:var(--dim);
+  line-height:1.75;
+  max-width:580px;
+}
+
+.hero-callout strong{
+  color:var(--accent);
+  font-weight:500;
+}
+
+/* Portrait */
+.portrait-wrap{
+  position:relative;
+  width:100%;
+  aspect-ratio:4/5;
+}
+
+.portrait-shadow{
+  position:absolute;
+  inset:0;
+  transform:translate(12px,12px);
+  background:var(--pink);
+  opacity:0.6;
+  z-index:0;
+}
+
+.portrait-frame{
+  position:relative;z-index:1;
+  width:100%;height:100%;
+  overflow:hidden;
+  border:1px solid var(--border-hi);
+  background:var(--surface-solid);
+}
+
+.portrait-frame img{
+  width:100%;height:100%;
+  object-fit:cover;display:block;
+  filter:grayscale(100%) contrast(1.05);
+}
+
+.portrait-fallback{
+  width:100%;height:100%;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:12px;
+}
+
+.portrait-initials{
+  font-family:var(--font-display);
+  font-size:4.5rem;
+  font-weight:900;
+  color:var(--accent);
+  opacity:0.18;
+  letter-spacing:0.08em;
+}
+
+.portrait-label{
+  font-family:var(--font-display);
+  font-size:0.55rem;
+  letter-spacing:0.3em;
+  color:var(--dim2);
+  text-transform:uppercase;
+}
+
+/* corner brackets */
+.portrait-frame::before,.portrait-frame::after,
+.portrait-wrap::before,.portrait-wrap::after{
+  content:'';
+  position:absolute;
+  width:18px;height:18px;
+  border-color:var(--accent);
+  border-style:solid;
+  opacity:0.55;
+  z-index:2;
+}
+.portrait-frame::before{top:10px;left:10px;border-width:1.5px 0 0 1.5px}
+.portrait-frame::after{top:10px;right:10px;border-width:1.5px 1.5px 0 0}
+.portrait-wrap::before{bottom:10px;left:10px;border-width:0 0 1.5px 1.5px;z-index:2;position:absolute}
+.portrait-wrap::after{bottom:10px;right:10px;border-width:0 1.5px 1.5px 0;z-index:2;position:absolute}
+
+/* ── SECTION HEADERS ── */
+.section-head{margin-bottom:40px}
+
+.section-label{
+  font-family:var(--font-display);
+  font-size:0.55rem;
+  letter-spacing:0.35em;
+  color:var(--accent);
+  opacity:0.7;
+  margin-bottom:10px;
+  text-transform:uppercase;
+}
+
+.section-title{
+  font-family:var(--font-display);
+  font-size:clamp(1.6rem,2.5vw,2.2rem);
+  font-weight:700;
+  letter-spacing:0.04em;
+  color:var(--white);
+  line-height:1;
+}
+
+/* ── DIVIDER ── */
+.divider{
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  opacity:0.2;
+  margin:0;
+}
+
+/* ── PROJECTS ── */
+.project-list{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+}
+
+.project-card{
+  display:flex;
+  flex-direction:column;
+  background:var(--surface);
+  border:1px solid var(--border);
+  overflow:hidden;
+  transition:transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+  backdrop-filter:blur(8px);
+}
+
+.project-card:hover{
+  transform:translateY(-5px);
+  border-color:var(--border-hi);
+  box-shadow:0 28px 50px rgba(0,0,0,0.55), 0 0 22px rgba(192,132,252,0.12);
+}
+
+.project-body{
+  padding:26px 26px 22px;
+  display:flex;
+  flex-direction:column;
+  flex:1;
+}
+
+.project-tag{
+  font-family:var(--font-display);
+  font-size:0.55rem;
+  letter-spacing:0.2em;
+  color:var(--accent);
+  opacity:0.7;
+  margin-bottom:10px;
+  text-transform:uppercase;
+}
+
+.project-name{
+  font-family:var(--font-display);
+  font-size:clamp(1rem,1.8vw,1.35rem);
+  font-weight:700;
+  line-height:1.2;
+  color:var(--white);
+  letter-spacing:0.03em;
+  margin-bottom:12px;
+}
+
+.project-desc{
+  font-size:0.95rem;
+  color:var(--dim);
+  line-height:1.75;
+  margin-bottom:14px;
+}
+
+.project-metrics{
+  font-size:0.88rem;
+  color:#cfc6e4;
+  line-height:1.8;
+  margin-bottom:18px;
+  padding-left:0;
+}
+
+.metric-row{
+  display:flex;align-items:baseline;gap:8px;
+  margin-bottom:4px;
+}
+
+.metric-row::before{
+  content:'›';
+  color:var(--accent);
+  font-size:1em;
+  flex-shrink:0;
+}
+
+.project-actions{
+  display:flex;flex-wrap:wrap;gap:12px;align-items:center;
+}
+
+.btn-link{
+  font-family:var(--font-display);
+  font-size:0.58rem;
+  letter-spacing:0.18em;
+  color:var(--accent);
+  text-decoration:none;
+  text-transform:uppercase;
+  padding:6px 14px;
+  border:1px solid rgba(192,132,252,0.3);
+  transition:all 0.18s;
+  background:transparent;
+}
+
+.btn-link:hover{
+  border-color:var(--accent);
+  background:rgba(192,132,252,0.07);
+}
+
+.stack-tags{
+  font-family:'Barlow',sans-serif;
+  font-size:0.72rem;
+  letter-spacing:0.05em;
+  color:var(--dim2);
+  margin-top:10px;
+  opacity:0.8;
+}
+
+/* ── EXPERIENCE ── */
+.exp-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:56px;
+  align-items:start;
+}
+
+.timeline{
+  border-left:1px solid rgba(192,132,252,0.3);
+  padding-left:20px;
+}
+
+.t-item{
+  margin-bottom:28px;
+  position:relative;
+}
+
+.t-item::before{
+  content:'';
+  position:absolute;
+  left:-25px;top:6px;
+  width:7px;height:7px;
+  background:var(--accent);
+  transform:rotate(45deg);
+  opacity:0.6;
+}
+
+.t-year{
+  font-family:var(--font-display);
+  font-size:0.55rem;
+  letter-spacing:0.22em;
+  color:var(--accent);
+  opacity:0.65;
+  margin-bottom:4px;
+}
+
+.t-role{
+  font-family:var(--font-display);
+  font-size:0.82rem;
+  font-weight:700;
+  color:var(--white);
+  letter-spacing:0.04em;
+  margin-bottom:2px;
+  line-height:1.25;
+}
+
+.t-company{
+  font-family:var(--font-cond);
+  font-size:0.8rem;
+  font-weight:600;
+  letter-spacing:0.14em;
+  color:var(--dim);
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+
+.t-desc{
+  font-size:0.88rem;
+  color:var(--dim);
+  line-height:1.7;
+}
+
+.t-badges{
+  display:flex;flex-wrap:wrap;gap:6px;
+  margin-top:8px;
+}
+
+.badge{
+  font-family:var(--font-display);
+  font-size:0.5rem;
+  letter-spacing:0.14em;
+  color:var(--accent);
+  border:1px solid rgba(192,132,252,0.25);
+  padding:3px 8px;
+  text-transform:uppercase;
+  opacity:0.75;
+}
+
+/* ── PRESS ── */
+.press-card{
+  display:grid;
+  grid-template-columns:1fr 260px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  overflow:hidden;
+  backdrop-filter:blur(8px);
+  transition:transform 0.28s ease,border-color 0.28s ease,box-shadow 0.28s ease;
+}
+
+.press-card:hover{
+  transform:translateY(-4px);
+  border-color:var(--border-hi);
+  box-shadow:0 22px 40px rgba(0,0,0,0.5), 0 0 20px rgba(192,132,252,0.12);
+}
+
+.press-body{padding:32px}
+
+.press-outlet{
+  font-family:var(--font-display);
+  font-size:0.55rem;
+  letter-spacing:0.3em;
+  color:var(--accent);
+  opacity:0.7;
+  margin-bottom:10px;
+  text-transform:uppercase;
+}
+
+.press-headline{
+  font-family:var(--font-display);
+  font-size:1.2rem;
+  font-weight:700;
+  color:var(--white);
+  letter-spacing:0.03em;
+  margin-bottom:14px;
+  line-height:1.3;
+}
+
+.press-text{
+  font-size:0.95rem;
+  color:var(--dim);
+  line-height:1.8;
+  margin-bottom:20px;
+}
+
+.press-visual{
+  border-left:1px solid var(--border);
+  overflow:hidden;
+  background:#08031a;
+}
+
+.press-visual img{
+  width:100%;height:100%;
+  object-fit:cover;display:block;
+  filter:grayscale(20%);
+  transition:transform 0.4s ease;
+}
+
+.press-card:hover .press-visual img{transform:scale(1.06)}
+
+/* ── RECOMMENDATIONS ── */
+.recs-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+}
+
+.rec-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  padding:26px;
+  backdrop-filter:blur(8px);
+  position:relative;
+  transition:transform 0.25s ease,border-color 0.25s ease,box-shadow 0.25s ease;
+}
+
+.rec-card::before{
+  content:'\201C';
+  position:absolute;
+  top:16px;right:20px;
+  font-size:3.5rem;
+  line-height:1;
+  color:var(--accent);
+  opacity:0.07;
+  font-family:Georgia,serif;
+  pointer-events:none;
+}
+
+.rec-card:hover{
+  transform:translateY(-4px);
+  border-color:var(--border-hi);
+  box-shadow:0 18px 34px rgba(0,0,0,0.45), 0 0 16px rgba(192,132,252,0.1);
+}
+
+.rec-text{
+  font-size:0.92rem;
+  color:#cfc6e4;
+  line-height:1.8;
+  margin-bottom:18px;
+}
+
+.rec-author-wrap{display:flex;align-items:center;gap:12px}
+
+.rec-avatar{
+  width:38px;height:38px;
+  background:var(--surface-solid);
+  border:1px solid var(--border-hi);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);
+  font-size:0.58rem;
+  font-weight:700;
+  color:var(--accent);
+  flex-shrink:0;
+  letter-spacing:0.04em;
+}
+
+.rec-author{
+  font-family:var(--font-cond);
+  font-size:0.95rem;
+  font-weight:600;
+  letter-spacing:0.1em;
+  color:var(--white);
+  text-transform:uppercase;
+}
+
+.rec-role{
+  font-size:0.78rem;
+  color:var(--dim2);
+  margin-top:2px;
+  line-height:1.4;
+}
+
+/* ── FOOTER ── */
+footer{
+  padding:28px 0 44px;
+  text-align:center;
+  border-top:1px solid var(--border);
+}
+
+.footer-logo{
+  font-family:var(--font-display);
+  font-size:0.6rem;
+  letter-spacing:0.3em;
+  color:var(--accent);
+  opacity:0.45;
+  margin-bottom:6px;
+}
+
+.footer-copy{
+  font-family:var(--font-display);
+  font-size:0.55rem;
+  letter-spacing:0.18em;
+  color:var(--dim2);
+  opacity:0.4;
+}
+
+/* ── MODAL ── */
+.modal{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,0.92);
+  display:flex;justify-content:center;align-items:center;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.22s ease;
+  z-index:9999;padding:24px;
+}
+
+.modal.active{opacity:1;pointer-events:auto}
+
+.modal img{
+  max-width:min(1000px,92vw);
+  max-height:90vh;
+  border:1px solid var(--border-hi);
+  display:block;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:rgba(192,132,252,0.35)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero-grid,.exp-grid{grid-template-columns:1fr}
+  .portrait-wrap{width:min(300px,80%)}
+  .project-list{grid-template-columns:1fr}
+  .press-card{grid-template-columns:1fr}
+  .press-visual{min-height:200px;border-left:none;border-top:1px solid var(--border)}
+  .recs-grid{grid-template-columns:1fr}
+  nav .nav-links{display:none}
+}
+</style>
 </head>
-
 <body>
+<canvas id="snow"></canvas>
 
-<!-- ================= HERO ================= -->
+<div class="page">
 
-<main class="hero">
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">VH</a>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#press">Press</a></li>
+    <li><a href="#recommendations">Recommendations</a></li>
+    <li><a href="mailto:hwasa@unc.edu">Contact</a></li>
+  </ul>
+</nav>
 
-  <header class="hero-header">
-    <h1 class="name">VIVIENNE HNIN</h1>
+<main class="container">
 
-    <nav class="top-links">
-      <a href="https://www.linkedin.com/in/viviennehnin" target="_blank" rel="noreferrer">LINKEDIN</a>
-      <a href="https://github.com/sawwatihnin" target="_blank" rel="noreferrer">GITHUB</a>
-      <a href="mailto:hwasa@unc.edu">CONTACT</a>
-      <a href="#faq">FAQ</a>
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="eyebrow">// UNC Chapel Hill — CS · Neuroscience · Data Science</div>
+      <h1 class="hero-name">VIVIENNE<br><span>HNIN</span></h1>
+      <div class="hero-role">AI Engineer · Systems Builder · Autonomy</div>
 
-    </nav>
-  </header>
+      <div class="hero-links">
+        <a href="https://www.linkedin.com/in/viviennehnin" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://github.com/sawwatihnin" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="mailto:hwasa@unc.edu">Contact</a>
+        <a href="#projects">Work</a>
+      </div>
 
-  <p class="tech">
-    C++ · JAVA · JAVASCRIPT · TYPESCRIPT · PYTHON · ASSEMBLY · SWIFT · R · HTML · CSS
-  </p>
-  
+      <div class="tech-line">C++ · Java · JavaScript · TypeScript · Python · Swift · R · HTML · CSS</div>
 
-  <section class="layout">
-
-    <!-- IMAGE -->
-    <div class="image-block">
-      <img src="/portrait.png" alt="Portrait" class="portrait" />
-    </div>
-
-    <!-- TEXT -->
-    <div class="text">
-      <p class="lead">
-        Hello, world! I’m a Computer Science junior at the University of North Carolina at Chapel Hill,
-        with minors in Neuroscience and Data Science, focused on autonomy, systems
-        engineering, and applied research.
+      <p class="hero-bio">
+        Computer Science junior at UNC Chapel Hill with minors in Neuroscience and Data Science, focused on autonomy, systems engineering, and applied research.
+      </p>
+      <p class="hero-bio">
+        Featured in <em>Business Insider</em> for breaking into tech. VTOL engineer at <strong>Carolina Skylabs</strong> building an autonomous drone platform. VP of Marketing at <strong>R.A.M Engineering</strong>. Incoming AI Engineering Intern at <strong>Utilyst</strong>.
       </p>
 
-<p>
-  I was recently featured in <i>Business Insider</i> for my journey breaking into tech. I am a VTOL project engineer with <i>Carolina Skylabs</i>, building an autonomous drone platform nicknamed <i>"The Northern Cardinal"</i>, inspired by the X-1 Thorn, and serve as VP of Marketing at <i>R.A.M Engineering</i>, leading growth and outreach initiatives. This summer, I will join <i>Utilyst</i> as an AI Engineering Intern, developing geospatial AI systems for critical infrastructure. I enjoy building end-to-end systems across both hardware and software, and I am always open to connecting.
-</p>
-
-      <p class="quote">
-        “Jack of all trades, master of none, but often times better than a master of one.”
-        Pick a trade:
-      </p>
-
-      <!-- ===== VISION NAVIGATION ===== -->
-      <div class="vision">
-
-        <a href="#tech" class="vision-item">
-          <img src="/1.png" alt="Tech" />
-          <span>tech</span>
-        </a>
-
-        <a href="#product" class="vision-item">
-          <img src="/4.png" alt="Product Management" />
-          <span>product management</span>
-        </a>
-
-        <a href="#art" class="vision-item">
-          <img src="/3.png" alt="Art" />
-          <span>art</span>
-          
-        </a>
-                <a href="#testimonials" class="vision-item">
-          <img src="/4.webp" alt="Testimonials" />
-          <span>testimonials</span>
-        </a>
-
+      <div class="hero-callout">
+        <strong>MEGAMIND!</strong> — dementia detection system scouted by Amazon · <strong>Northern Cardinal</strong> VTOL drone, X-1 Thorn inspired · <strong>600+ applications</strong> to break into tech
       </div>
     </div>
 
-  </section>
+    <div>
+      <div class="portrait-wrap">
+        <div class="portrait-shadow"></div>
+        <div class="portrait-frame">
+          <img src="/portrait.png" alt="Vivienne Hnin"
+               onerror="this.style.display='none';this.parentElement.querySelector('.portrait-fallback').style.display='flex'">
+          <div class="portrait-fallback" style="display:none">
+            <div class="portrait-initials">VH</div>
+            <div class="portrait-label">Vivienne Hnin</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ PROJECTS ══ -->
+<section id="projects">
+  <div class="section-head">
+    <h2 class="section-title">PROJECTS</h2>
+  </div>
+
+  <div class="project-list">
+
+    <!-- MEGAMIND -->
+    <article class="project-card">
+      <div class="project-body">
+        <div class="project-tag">Neural Systems · AWS · Computer Vision</div>
+        <h3 class="project-name">MEGAMIND! — AI Cognitive Testing System</h3>
+        <p class="project-desc">Real-time AI-driven cognitive testing platform integrating computer vision, WebSockets, and AWS to simulate cerebellum-style reflex evaluation and performance tracking.</p>
+        <div class="project-metrics">
+          <div class="metric-row">Scouted by Amazon to join AWS Academia</div>
+          <div class="metric-row">CV + WebSocket pipeline for live metric streaming</div>
+          <div class="metric-row">Low-latency backend on EC2 + DynamoDB for persistent storage</div>
+        </div>
+        <div class="project-actions">
+          <a href="https://www.linkedin.com/in/viviennehnin/details/projects/" class="btn-link">Demo</a>
+          <a href="https://megamind-lac.vercel.app/" class="btn-link">View</a>
+          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7430429165079740416/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BGcI2KafZSr%2Bj3f2jLpAXAQ%3D%3D" class="btn-link">Amazon Feature</a>
+        </div>
+        <div class="stack-tags">TypeScript · React · JavaScript · Python · AWS</div>
+      </div>
+    </article>
+
+    <!-- NORTHERN CARDINAL -->
+    <article class="project-card">
+      <div class="project-body">
+        <div class="project-tag">Embedded Systems · Autonomy · Control Theory</div>
+        <h3 class="project-name">NC-1 The Northern Cardinal — Embedded Flight Control</h3>
+        <p class="project-desc">State-driven flight control software for a VTOL aircraft spanning hover, transition, and forward-flight modes. Built at Carolina Skylabs, inspired by the X-1 Thorn.</p>
+        <div class="project-metrics">
+          <div class="metric-row">Prevented multi-mode coordination failures via FSM-based flight logic</div>
+          <div class="metric-row">Closed-loop feedback using sensor data for stability and responsiveness</div>
+          <div class="metric-row">Integrated FSM logic with sensor-driven loops for safe mode transitions</div>
+        <div class="stack-tags">C++ · Embedded · Control Systems · Python</div>
+      </div>
+    </article>
+
+    <!-- MARS ROVER -->
+    <article class="project-card">
+      <div class="project-body">
+        <div class="project-tag">Algorithms · Path Planning · Visualization</div>
+        <h3 class="project-name">Mars Rover Simulation — Autonomous Navigation</h3>
+        <p class="project-desc">Autonomous path-planning engine with obstacle avoidance, modular FSM control architecture, and a React observability layer for interactive debugging.</p>
+        <div class="project-metrics">
+          <div class="metric-row">A* + Dijkstra in C++ for efficient grid-based route selection</div>
+          <div class="metric-row">Modular planning + visualization architecture to eliminate debug bottlenecks</div>
+          <div class="metric-row">Real-time React layer for demo-ready system-level observability</div>
+        </div>
+        <div class="project-actions">
+          <a href="linkedin.com/feed/update/urn:li:activity:7417249168416477184/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_projects_details%3BrT6XPgZPQH2NLaY2vxnblw%3D%3D" class="btn-link">Demo</a>
+          <a href="https://mars-simulator-final.vercel.app/" class="btn-link">View</a>
+          <a href="https://www.linkedin.com/in/viviennehnin/overlay/Project/1637914127/treasury/?profileId=ACoAAEFznkkBS5p-TnO8_0cUQN-O0-NRwXJJ6XM" class="btn-link">State Machine</a>
+        </div>
+        <div class="stack-tags">C++ · JavaScript · React · Algorithms</div>
+      </div>
+    </article>
+
+    <!-- GRATITUDE -->
+    <article class="project-card">
+      <div class="project-body">
+        <div class="project-tag">Community · AI Classification · Maps</div>
+        <h3 class="project-name">Gratitude — Community Resource Discovery Platform (Afropix 1st place winners)</h3>
+        <p class="project-desc">Local discovery platform connecting users to nearby events, volunteering, food assistance, and community resources via map, list, and split-view interfaces with AI classification.</p>
+        <div class="project-metrics">
+          <div class="metric-row">AI-assisted resource classification pipeline</div>
+          <div class="metric-row">Three interactive view modes for different discovery contexts</div>
+          <div class="metric-row">Real-time geospatial filtering across resource categories</div>
+        </div>
+        <div class="project-actions">
+          <a href="linkedin.com/feed/update/urn:li:activity:7433636443069071360/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_projects_details%3BrT6XPgZPQH2NLaY2vxnblw%3D%3D" class="btn-link">DEMO</a>
+          <a href="https://devpost.com/software/gratitude-afropix-26" class="btn-link">Devpost</a>
+        </div>
+        <div class="stack-tags">Next.js · React · Maps API · AI</div>
+      </div>
+    </article>
+
+    <!-- EMPL*YMENT -->
+    <article class="project-card">
+      <div class="project-body">
+        <div class="project-tag">Interactive · Hardware · 3D · AI Voice</div>
+        <h3 class="project-name">EMPL*YMENT! — Horror Game About Internship Applications</h3>
+        <p class="project-desc">A horror game turning the internship interview process into a stress-driven survival experience, powered by 3D visuals, text-to-speech AI, and an Arduino ultrasonic sensor strapped to the player.</p>
+        <div class="project-metrics">
+          <div class="metric-row">Arduino-based haptic feedback via ultrasonic neck sensor</div>
+          <div class="metric-row">Real-time 3D visuals with ElevenLabs AI voice synthesis</div>
+          <div class="metric-row">Built at PearlHacks — awarded top recognition</div>
+        </div>
+        <div class="project-actions">
+          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7431373945838137344/" class="btn-link">Demo</a>
+          <a href="https://devpost.com/software/empl-yment" class="btn-link">Devpost</a>
+        </div>
+        <div class="stack-tags">Arduino · Three.js · JavaScript · ElevenLabs · Blender</div>
+      </div>
+    </article>
+
+    <!-- PINCHAPIC -->
+    <article class="project-card">
+      <div class="project-body">
+        <div class="project-tag">Computer Vision · Gesture Control · Events</div>
+        <h3 class="project-name">PinchAPic — Gesture-Controlled Photobooth</h3>
+        <p class="project-desc">Real-time gesture-controlled photobooth with a custom strip-maker for special events. Control the camera with only your hand using MediaPipe hand tracking — no buttons needed.</p>
+        <div class="project-metrics">
+          <div class="metric-row">Pinch-to-capture gesture recognition via MediaPipe</div>
+          <div class="metric-row">Custom photo strip layout generator for event output</div>
+          <div class="metric-row">Full-stack React + Next.js with live webcam pipeline</div>
+        </div>
+        <div class="project-actions">
+          <a href="linkedin.com/feed/update/urn:li:activity:7426812741325131776/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_projects_details%3BrT6XPgZPQH2NLaY2vxnblw%3D%3D" class="btn-link">Demo</a>
+          <a href="https://admirable-croissant-dc549f.netlify.app/booth/name" class="btn-link">View</a>
+          <a href="https://www.linkedin.com/in/viviennehnin/overlay/Project/1375384900/treasury/?profileId=ACoAAEFznkkBS5p-TnO8_0cUQN-O0-NRwXJJ6XM" class="btn-link">FSM</a>
+        </div>
+        <div class="stack-tags">Python · OpenCV · MediaPipe · React · Next.js · Tailwind</div>
+      </div>
+    </article>
+
+    <!-- SOLEADA -->
+    <article class="project-card">
+      <div class="project-body">
+        <div class="project-tag">Full-Stack · Social · AI-Assisted</div>
+        <h3 class="project-name">Soleada — Social Platform</h3>
+        <p class="project-desc">Full-stack social platform built with a focus on modular design, privacy, and interactive user experiences. Developed production APIs and AI-assisted components under early-stage startup constraints.</p>
+        <div class="project-metrics">
+          <div class="metric-row">Contributed frontend and backend development of an MVP social platform</div>
+          <div class="metric-row">Collaborated on AI-assisted and VR-integrated components</div>
+          <div class="metric-row">Emphasis on modular design, privacy, and system reliability</div>
+        </div>
+        <div class="project-actions">
+          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7444074447369752577/" target="_blank" rel="noreferrer" class="btn-link">LinkedIn</a>
+        </div>
+        <div class="stack-tags">React · Node.js · FastAPI · AI · VR</div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ EXPERIENCE ══ -->
+<section id="experience">
+  <div class="section-head">
+    <h2 class="section-title">EXPERIENCE</h2>
+  </div>
+
+  <div class="exp-grid">
+    <div>
+      <div class="section-label" style="margin-bottom:20px">Product &amp; Operations</div>
+      <div class="timeline">
+        <div class="t-item">
+          <div class="t-year">2025</div>
+          <div class="t-role">Product Management Extern</div>
+          <div class="t-company">BeReal · Chapel Hill, NC</div>
+          <div class="t-desc">Analyzed 300+ user behavioral data points across external datasets. Identified onboarding bottlenecks at funnel level. Informed feature prioritization grounded in evidence.</div>
+          <div class="t-badges"><span class="badge">Analytics</span><span class="badge">Onboarding</span><span class="badge">GTM</span></div>
+        </div>
+        <div class="t-item">
+          <div class="t-year">2023</div>
+          <div class="t-role">Partnership Associate</div>
+          <div class="t-company">Success Admissions · Yangon, Burma</div>
+          <div class="t-desc">Built international partnership pipeline. Secured 3+ school contracts through value-aligned positioning. Launched digital campaigns generating 250K+ interactions.</div>
+          <div class="t-badges"><span class="badge">Partnerships</span><span class="badge">Growth</span><span class="badge">GTM</span></div>
+        </div>
+        <div class="t-item">
+          <div class="t-year">2021–24</div>
+          <div class="t-role">Product Management Intern</div>
+          <div class="t-company">Nawarat Autoparts · Yangon, Burma</div>
+          <div class="t-desc">Designed double-layer packaging reducing transit damage by 31%. Validated durability through 48–72h humidity stress testing. Improved QA workflows.</div>
+          <div class="t-badges"><span class="badge">Hardware</span><span class="badge">QA</span><span class="badge">Supply Chain</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-label" style="margin-bottom:20px">Engineering</div>
+      <div class="timeline">
+        <div class="t-item">
+          <div class="t-year">2025</div>
+          <div class="t-role">VTOL Project Engineer</div>
+          <div class="t-company">Carolina Skylabs · UNC Chapel Hill</div>
+          <div class="t-desc">Building autonomous drone platform nicknamed "The Northern Cardinal." Designing FSM-based flight control systems and embedded sensor pipelines.</div>
+          <div class="t-badges"><span class="badge">Embedded</span><span class="badge">Autonomy</span><span class="badge">C++</span></div>
+        </div>
+        <div class="t-item">
+          <div class="t-year">2024</div>
+          <div class="t-role">IT Student Apprentice</div>
+          <div class="t-company">Kenan-Flagler Business School · UNC</div>
+          <div class="t-desc">Resolved system bottlenecks and improved reliability across hardware, software, and networking for 7,900+ students and faculty.</div>
+          <div class="t-badges"><span class="badge">Systems</span><span class="badge">Support</span><span class="badge">Networking</span></div>
+        </div>
+        <div class="t-item">
+          <div class="t-year">Incoming</div>
+          <div class="t-role">AI Engineering Intern</div>
+          <div class="t-company">Utilyst</div>
+          <div class="t-desc">Developing geospatial AI systems for critical infrastructure analysis. Building end-to-end pipelines from data ingestion to model-powered insights.</div>
+          <div class="t-badges"><span class="badge">Geospatial AI</span><span class="badge">Python</span><span class="badge">Infrastructure</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ PRESS ══ -->
+<section id="press">
+  <div class="section-head">
+    <h2 class="section-title">FEATURED</h2>
+  </div>
+
+  <article class="press-card">
+    <div class="press-body">
+      <div class="press-outlet">Business Insider</div>
+      <h3 class="press-headline">Breaking Into Tech Through 600+ Applications</h3>
+      <p class="press-text">
+        Featured for the journey of applying to over 600 roles, navigating rejection, and ultimately landing meaningful opportunities in engineering and AI. An account of persistence, strategy, and what it actually takes to break in.
+      </p>
+      <div class="project-actions">
+        <a href="#" class="btn-link">Read Article</a>
+      </div>
+    </div>
+    <div class="press-visual">
+      <img src="/news.png" alt="Business Insider feature" onerror="this.style.display='none'">
+    </div>
+  </article>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ RECOMMENDATIONS ══ -->
+<section id="recommendations">
+  <div class="section-head">
+    <h2 class="section-title">RECOMMENDATIONS</h2>
+  </div>
+
+  <div class="recs-grid">
+
+    <article class="rec-card">
+      <p class="rec-text">Vivienne Hnin is one of the finest IT Student Apprentices to ever be employed at UNC Kenan-Flagler Business School. She develops great customer service skills and improves the institution's trust in reliable IT service. When others have called out, she steps in — it shows a level of motivation and drive that we often lack.</p>
+      <div class="rec-author-wrap">
+        <div class="rec-avatar">TC</div>
+        <div>
+          <div class="rec-author">Anthony "T.C." Lo Ré</div>
+          <div class="rec-role">Supervisor · Kenan-Flagler Business School</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="rec-card">
+      <p class="rec-text">Vivienne is one of the most talented, determined, and diligent students I have had. She always took initiative to research, write, and learn. A truly multi-disciplinary talented person. I recommend her for any future opportunities with full confidence.</p>
+      <div class="rec-author-wrap">
+        <div class="rec-avatar">TZ</div>
+        <div>
+          <div class="rec-author">Thaw Zin Aung Gyi</div>
+          <div class="rec-role">CEO · Success Admissions · Ivy League + Oxford</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="rec-card">
+      <p class="rec-text">Vivienne consistently demonstrated strong troubleshooting skills, reliability, and professionalism while supporting hardware, software, and network issues. She learns quickly, communicates technical concepts clearly, and approaches challenges with a solution-oriented mindset.</p>
+      <div class="rec-author-wrap">
+        <div class="rec-avatar">AF</div>
+        <div>
+          <div class="rec-author">Aquil Farid</div>
+          <div class="rec-role">Asset Manager · IT Technician · Kenan-Flagler</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="rec-card">
+      <p class="rec-text">Vivienne is a smart, communicative, and outspoken individual with an impressive array of skills. Her writing ability is remarkable — she has a natural talent for crafting compelling content. Her intellect, warm personality, and passion make her a standout professional.</p>
+      <div class="rec-author-wrap">
+        <div class="rec-avatar">TM</div>
+        <div>
+          <div class="rec-author">Thazin Min Htun</div>
+          <div class="rec-role">CoWorker · Success Admissions · Chulalongkorn University</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="rec-card">
+      <p class="rec-text">I have been working with her for 2 years and I am quite impressed with her dedication to her work, including studies, research, and social work. She is excellent at multitasking and always manages to finish all the work on time.</p>
+      <div class="rec-author-wrap">
+        <div class="rec-avatar">SD</div>
+        <div>
+          <div class="rec-author">Saw Daniel Aung Khant Moe</div>
+          <div class="rec-role">CS Student · University of Calgary · Project Partner</div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">VIVIENNE HNIN</div>
+  <div class="footer-copy">© 2026 · UNC CHAPEL HILL · ALL SYSTEMS NOMINAL</div>
+</footer>
+
 </main>
-
-<!-- ================= TECH ================= -->
-<!-- ================= TECH ================= -->
-<section class="projects" id="tech">
-
-<div class="projects-header">
-  <h2>TECH</h2>
 </div>
 
-<div class="project-grid">
-
-  <!-- MEGAMIND -->
-  <article class="project-card">
-    <div class="project-image">
-      <img src="/mega.png" alt="ASCII" />
-    </div>
-    <div class="project-body">
-      <h3>MEGAMIND!: Dementia Detection & Prevention</h3>
-      <p>
-        Dementia early detection and monitoring system using multimodal data, AWS and API Keys.
-      </p>
-      <div class="project-footer">
-        <a href="https://www.linkedin.com/posts/viviennehnin_we-made-a-brain-at-hackncstate-26-for-tracking-activity-7428830459620548608-aGV8?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEFznkkBS5p-TnO8_0cUQN-O0-NRwXJJ6XM" target="_blank">DEMO</a>
-        <a href="https://megamind-lac.vercel.app/" target="_blank">VIEW</a>
-        <a href="https://www.linkedin.com/posts/siddhi-patil_amazon-rtp-community-activity-7430429165079740416-C6Xx?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEFznkkBS5p-TnO8_0cUQN-O0-NRwXJJ6XM" target="_blank">MENTIONED BY AMAZON</a>
-        <a href="https://www.overleaf.com/read/fyfhfnnvcvhf#8abec6" target="_blank">FSM</a>
-        <span class="project-tech">TS · React · JS · PY · AWS</span>
-      </div>
-    </div>
-  </article>
-
-  <!-- GRATITUDE -->
-  <article class="project-card">
-    <div class="project-image">
-      <img src="/gratitude.png" alt="Gratitude" />
-    </div>
-    <div class="project-body">
-      <h3>Gratitude: Community Resource Discovery Platform</h3>
-      <p>
-        A local discovery platform that helps users find nearby events, volunteering opportunities,
-        food assistance, organizations, and community resources through map, list, and split-view
-        interfaces with AI-assisted classification.
-      </p>
-      <div class="project-footer">
-        <a href="https://github.com/sawwatihnin/Gratitude-AfroPIx-26" target="_blank">CODE</a>
-        <a href="https://devpost.com/software/gratitude" target="_blank">DEVPOST</a>
-        <span class="project-tech">Next.js · React · APIs · AI</span>
-      </div>
-    </div>
-  </article>
-
-  <!-- MARS ROVER -->
-  <article class="project-card">
-    <div class="project-image">
-      <img src="/demo.png" alt="Mars Rover" />
-    </div>
-    <div class="project-body">
-      <h3>Mars Rover Autonomous Navigation</h3>
-      <p>
-        Autonomous rover simulation implementing grid-based path planning,
-        obstacle avoidance, and state-driven control logic.
-      </p>
-      <div class="project-footer">
-        <a href="https://mars-simulator-final.vercel.app/" target="_blank">VIEW</a>
-        <a href="https://www.linkedin.com/posts/viviennehnin_roboticssoftware-autonomoussystems-pathplanning-activity-7417249168416477184-sXAV?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEFznkkBS5p-TnO8_0cUQN-O0-NRwXJJ6XM" target="_blank">DEMO</a>
-        <a href="https://docs.google.com/document/d/1X4wGjNmCV_R-xVw9MSOX_jBL1Wn1R1LN1KQ6xSbpUf8/edit?tab=t.0" target="_blank">FSM</a>
-        <span class="project-tech">C++ · JS · Algorithms</span>
-      </div>
-    </div>
-  </article>
-
-  <!-- EMPLOYMENT -->
-  <article class="project-card">
-    <div class="project-image">
-      <img src="/employment.jpeg" alt="ASCII" />
-    </div>
-    <div class="project-body">
-      <h3>EMPL*YMENT!: A Horror Game About Internship Application</h3>
-      <p>
-        A horror game that turns the internship interview process into an interactive,
-        stress-driven survival game powered by real-time 3D visuals, text-to-speech AI,
-        and an Arduino-based ultrasonic sensing system that we strap to your neck hehehe.
-      </p>
-      <div class="project-footer">
-        <a href="https://www.linkedin.com/posts/viviennehnin_pearlhacks-womenintech-threejs-activity-7431373945838137344-Bkxo?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEFznkkBS5p-TnO8_0cUQN-O0-NRwXJJ6XM" target="_blank">DEMO</a>
-        <a href="https://devpost.com/software/empl-yment#updates" target="_blank">DEVPOST</a>
-        <span class="project-tech">Arduino · Three.js · JS · GLTF · VFX</span>
-      </div>
-    </div>
-  </article>
-
-  <!-- ASCII -->
-  <article class="project-card">
-    <div class="project-image">
-      <img src="/ascii.jpeg" alt="ASCII" />
-    </div>
-    <div class="project-body">
-      <h3>Pymation: ASCII Lyric Engine</h3>
-      <p>
-        Experimental animation pipeline synchronizing lyrics with atmospheric
-        terminal visuals.
-      </p>
-      <div class="project-footer">
-        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7410182336740380672/" target="_blank">DEMO</a>
-        <span class="project-tech">Python · JSON</span>
-      </div>
-    </div>
-  </article>
-
-  <!-- PHOTOBOOTH -->
-  <article class="project-card">
-    <div class="project-image">
-      <img src="/photobooth.jpeg" alt="Photobooth" />
-    </div>
-    <div class="project-body">
-      <h3>PinchAPic: Gesture Controlled Photobooth</h3>
-      <p>
-        Real-time gesture-controlled photobooth with a custom strip-maker for special events.
-      </p>
-      <div class="project-footer">
-        <a href="https://www.linkedin.com/posts/viviennehnin_opencv-mediapipe-cv-activity-7426812741325131776-dqjU?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEFznkkBS5p-TnO8_0cUQN-O0-NRwXJJ6XM" target="_blank">DEMO</a>
-        <a href="https://admirable-croissant-dc549f.netlify.app/booth/name" target="_blank">VIEW</a>
-        <a href="https://www.overleaf.com/read/wjwcbymnqcqr#afbefc" target="_blank">FSM</a>
-        <span class="project-tech">CV · MediaPipe · React · Next.js · Tailwind</span>
-      </div>
-    </div>
-  </article>
-
-  <!-- STAR WARS (BOTTOM) -->
-  <article class="project-card">
-    <div class="project-image">
-      <img src="/two.jpg" alt="Star Wars" />
-    </div>
-    <div class="project-body">
-      <h3>Star Wars Interactive Web Experience</h3>
-      <p>
-        Cinematic web experience exploring UI composition, animation timing,
-        and narrative-driven interaction.
-      </p>
-      <div class="project-footer">
-        <a href="https://star-wars-website-ebon.vercel.app/" target="_blank">VIEW</a>
-        <span class="project-tech">React · UI/UX</span>
-      </div>
-    </div>
-  </article>
-
-</div>
-<!-- ================= PRODUCT (PLACEHOLDER) ================= -->
-<!-- ================= PRODUCT MANAGEMENT ================= -->
-<!-- ================= PRODUCT MANAGEMENT ================= -->
-<section id="product" class="pm-section">
-
-  <!-- PANEL (blue rectangle) -->
-  <div class="pm-panel">
-
-    <!-- HEADER -->
-    <div class="pm-header">
-      <h2>PRODUCT MANAGEMENT</h2>
-      <p class="pm-sub">Product, across scale and context.</p>
-    </div>
-
-    <!-- LAYOUT -->
-    <div class="pm-layout">
-
-      <!-- LEFT: CONTENT -->
-      <div class="pm-content">
-
-        <!-- BeReal -->
-        <article class="pm-role active" data-role="bereal">
-          <h3>BeReal — Social Media Platform</h3>
-          <span class="pm-meta">
-            Product Management Extern · Nov–Dec 2025 · Chapel Hill, NC
-          </span>
-
-          <ul>
-            <li>Analyzed 300+ user behavior data points across external datasets</li>
-            <li>Identified onboarding bottlenecks at the funnel level</li>
-            <li>Informed feature prioritization grounded in evidence, not instinct</li>
-          </ul>
-
-          <div class="pm-tags">
-            <span>Onboarding</span>
-            <span>Analytics</span>
-            <span>User Behavior</span>
-          </div>
-        </article>
-
-        <!-- Success Admissions -->
-        <article class="pm-role" data-role="success">
-          <h3>Success Admissions — Admissions Growth Agency</h3>
-          <span class="pm-meta">
-            Partnership Associate · Feb–Aug 2023 · Yangon, Burma
-          </span>
-
-          <ul>
-            <li>Built and managed an international partnership pipeline across regions</li>
-            <li>Secured 3+ school contracts through value-aligned positioning</li>
-            <li>Launched digital engagement campaigns generating 250K+ interactions</li>
-          </ul>
-
-          <div class="pm-tags">
-            <span>GTM</span>
-            <span>Partnerships</span>
-            <span>Growth</span>
-          </div>
-        </article>
-
-        <!-- Nawarat -->
-        <article class="pm-role" data-role="nawarat">
-          <h3>Nawarat Autoparts — Automotive Manufacturing</h3>
-          <span class="pm-meta">
-            Product Management Intern · Aug 2021–Aug 2024 · Yangon, Burma
-          </span>
-
-          <ul>
-            <li>Designed double-layer packaging reducing transit damage by 31%</li>
-            <li>Validated durability through 48–72h humidity stress testing</li>
-            <li>Improved QA workflows and reduced repackaging costs</li>
-          </ul>
-
-          <div class="pm-tags">
-            <span>Hardware</span>
-            <span>Ops & QA</span>
-            <span>Supply Chain</span>
-          </div>
-        </article>
-
-      </div>
-
-      <!-- RIGHT: TIMELINE -->
-      <aside class="pm-timeline">
-        <button class="active" data-target="bereal">
-          2025<br><span>BeReal</span>
-        </button>
-        <button data-target="success">
-          2023<br><span>Success Admissions</span>
-        </button>
-        <button data-target="nawarat">
-          2021–24<br><span>Nawarat Autoparts</span>
-        </button>
-      </aside>
-
-    </div>
-  </div>
-
-</section>
-<!-- ================= TESTIMONIALS ================= -->
-<section id="testimonials" class="testimonials-section">
-
-<header class="testimonials-header">
-  <h2>TESTIMONIALS</h2>
-  <p>Kind words from people I've worked with.</p>
-</header>
-
-<div class="testimonial-container">
-
-<button class="testimonial-arrow left">&#8592;</button>
-
-<div class="testimonial-slider">
-
-<!-- TESTIMONIAL 1 -->
-
-
-<!-- TESTIMONIAL 2 -->
-<div class="testimonial-card">
-  <img src="/tc.jpeg" class="testimonial-photo">
-
-  <p>
-  Vivienne Hnin is one of the finest IT Student Apprentices to ever be employed at UNC Kenan-Flagler Business School.  In her second semester, she continues to develop great customer service skills and improves the institutions trust in us for reliable IT service.  She’s overcoming the difficult task of managing her time as a full-time student and employee, not to mention has become one of our most valuable assets as a student employee.
-Vivienne’s determination continues to shine as she shows up day in and day out, serving the students, faculty, and staff of the Business School here at UNC-Chapel Hill.  Customers have reported their interactions with Vivienne to be pleasant and helpful. 
-Vivienne will eventually graduate from UNC, and when she does, will make an incredible addition to any team that she lands in.  As her manager, the most notable aspect of her performance has been to step in when others have called out, it shows a level of motivation and drive that we often lack.
-  </p>
-
-  <div class="testimonial-author">
-    <strong>Anothony "T.C" Lo Ré</strong>
-    <span>Vivienne's Supervisor @ Kenan-Flagler Business School</span>
-  </div>
+<!-- MODAL -->
+<div id="modal" class="modal" onclick="closeModal()">
+  <img id="modal-img" alt="Expanded preview">
 </div>
 
-
-<!-- TESTIMONIAL 3 -->
-<div class="testimonial-card">
-  <img src="/tza.jpeg" class="testimonial-photo">
-
-  <p>
-   Vivienne is one of the most talented, determined, and diligent students I have had. When I first met her, she had pages of research on the colleges she wanted to go to. And throughout our time together, Vivienne always took the initiative to research, write, and learn more about the college applications process. She also interned for the company helping out with content writing, business development, research, and marketing. A truly multi-disciplinary talented person. It was a pleasure to have known Saw, and to whomever reads this I just want to say: I recommend Saw for any future opportunities with full confidence, and so should you!
-  </p>
-
-  <div class="testimonial-author">
-    <strong>Thaw Zin Aung Gyi</strong>
-    <span>CEO @ Success Admissions · Ivy League + Oxford grad</span>
-  </div>
-</div>
-<div class="testimonial-card">
-  <img src="/aquil.jpeg" class="testimonial-photo">
-
-  <p>
-I am happy to recommend Vivienne Hnin based on her excellent performance as an IT Student Worker on our team. She consistently demonstrated strong troubleshooting skills, reliability, and professionalism while supporting hardware, software, and network issues.
-Vivienne learns quickly, communicates technical concepts clearly to non-technical users, and approaches challenges with a positive, solution-oriented mindset. She is dependable, organized, and works effectively both independently and as part of a team.
-I am confident that Vivienne will be a valuable asset in any IT role she pursues.
-  </p>
-
-  <div class="testimonial-author">
-    <strong>Aquil Farid</strong>
-    <span>Asset Manager · IT Technician @ Kenan-Flagler</span>
-  </div>
-</div>
-
-
-<!-- TESTIMONIAL 4 -->
-<div class="testimonial-card">
-  <img src="/thazin.jpeg" class="testimonial-photo">
-        <strong>Thaw Zin Aung Gyi</strong>
-
-  <p>
-  I wholeheartedly endorse Vivienne Hnin, a smart, communicative, and outspoken individual who possesses an impressive array of skills. During our time together at the Success Admission's Center, I was consistently amazed by her exceptional writing abilities and the fresh ideas she brought to the table. Vivienne's writing skills are truly remarkable; she has a natural talent for crafting compelling and engaging content that captivates readers. Her creative approach to content development breathes new life into projects and adds a unique perspective. Moreover, her intellect, warm personality, and passion for her work make her a standout professional. Vivienne's ability to express herself eloquently and fearlessly advocate for her ideas is commendable. I have no doubt that she will continue to excel in her future endeavors, and I highly recommend her for any opportunity she pursues.
-  </p>
-
-  <div class="testimonial-author">
-    <strong>Thazin Min Htun</strong>
-    <span>CoWorker at Success Admissions | Robotics And AI Engineering Student at Chulalongkorn University</span>
-  </div>
-</div>
-
-
-<!-- TESTIMONIAL 5 -->
-<div class="testimonial-card">
-  <img src="/daniel.jpeg" class="testimonial-photo">
-
-  <p>
-I have been working with her for 2 years so far, and I am quite impressed with her dedication to her work, including studies, research, and social work. Plus, she is excellent at multi-tasking and always manages to finish all the work on time.
-  </p>
-
-  <div class="testimonial-author">
-    <strong>Saw Daniel Aung Khant Moe</strong>
-    <span>CS Student at UCalgary | Continous Math project partner in HighSchool</span>
-  </div>
-</div>
-
-</div>
-
-<button class="testimonial-arrow right">&#8594;</button>
-
-</div>
-
-</section>
-
-
-<!-- ================= ART ================= -->
-<!-- ================= ART ================= -->
-<section id="art" class="art-room">
-
-  <!-- Header -->
-  <header class="art-header">
-    <h2>ART</h2>
-    <p>Art is where I practice <em>intention</em>.</p>
-  </header>
-
-  <!-- Gallery Wall -->
-  <div class="gallery-wall">
-    <div class="gallery-row">
-
-      <!-- LEFT FRAME -->
-      <figure class="art-frame">
-        <img src="/art1.png" alt="Artwork left">
-        <figcaption>Portrait · Digital</figcaption>
-      </figure>
-
-      <!-- CENTER: POETRY -->
-      <div class="art-placard art-overlay-wrap">
-        <img src="/crow.png" class="crow-overlay" />
-
-        <h3>POETRY</h3>
-        <p>
-          “karma is quite the jester,<br>
-          entertaining the courts of broken midnight prayers.<br>
-          for every string we have broken to fly,<br>
-          lashes us, the next El Niño.”
-        </p>
-        <a href="https://drive.google.com/file/d/1a_s5UPmuQqaoKxFRxBXYeTAcNto-6wqX/view">View Poems →</a>
-      </div>
-
-      <!-- RIGHT FRAME -->
-      <figure class="art-frame art-frame-right">
-        <img src="/art2.png" alt="Artwork right">
-        <figcaption>Darkroom Photography Final Critique · Printing</figcaption>
-      </figure>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ================= FAQ ================= -->
-<section id="faq" class="faq-section">
-  <header class="faq-header">
-    <h2>FAQ</h2>
-    <p>Questions I get asked more often than I expect.</p>
-  </header>
-
-  <div class="faq-list">
-
-    <details class="faq-item">
-      <summary>Am I Waisian?</summary>
-      <p>
-        Naur.
-      </p>
-    </details>
-
-    <details class="faq-item">
-      <summary>What are my interests?</summary>
-      <p>
-        <strong>Tech:</strong> Aeronautics, Robotics, AI, Computer Vision, neuro-related tech stuff.<br><br>
-        <strong>Outside of tech:</strong> Star Wars, anime, cooking, drawing,
-        writing poems, reading, travelling, and signing up for excruciating
-        physical challenges with very little training and a dream.
-      </p>
-    </details>
-
-    <details class="faq-item">
-      <summary>How do I pronounce my last name?</summary>
-      <p>
-        Nin. The “H” is silent — but if we’re being more accurate, pretend you’re
-        saying “nin” while you have a blocked nose and are fighting for your life.
-      </p>
-    </details>
-
-    <details class="faq-item">
-      <summary>Does pineapple belong on pizza?</summary>
-      <p>
-        Yes. Hawaiian all the way. Argue with a wall.
-      </p>
-    </details>
-
-    <details class="faq-item">
-      <summary>Favorite artists?</summary>
-      <p>
-        Florence + The Machine, Fleetwood Mac, The Oasis, Evanescence, Radiohead, Kodaline, Arctic Monkeys, ABBA, Kate Bush, Joji, 
-        Childish Gambino, Adele, Hozier, Kendrick</em>
-      </p>
-    </details>
-
-  </div>
-</section>
 <script>
-  const buttons = document.querySelectorAll('.pm-timeline button');
-  const roles = document.querySelectorAll('.pm-role');
-
-  buttons.forEach(button => {
-    button.addEventListener('click', () => {
-      const target = button.dataset.target;
-
-      // remove active from all buttons + roles
-      buttons.forEach(b => b.classList.remove('active'));
-      roles.forEach(r => r.classList.remove('active'));
-
-      // activate clicked button + matching role
-      button.classList.add('active');
-      document
-        .querySelector(`.pm-role[data-role="${target}"]`)
-        .classList.add('active');
-    });
+// ── Photo placeholders: show when image fails ──
+document.querySelectorAll('.project-visual img, .press-visual img').forEach(img => {
+  const placeholder = img.parentElement.querySelector('.photo-placeholder');
+  if (!placeholder) return;
+  const check = () => {
+    if (!img.complete || img.naturalWidth === 0) {
+      img.style.display = 'none';
+      placeholder.style.display = 'flex';
+    } else {
+      img.style.display = 'block';
+      placeholder.style.display = 'none';
+    }
+  };
+  img.addEventListener('load', check);
+  img.addEventListener('error', () => {
+    img.style.display = 'none';
+    placeholder.style.display = 'flex';
   });
-</script>
+  check();
+});
 
+// ── Modal ──
+function openModal(src){
+  document.getElementById('modal-img').src = src;
+  document.getElementById('modal').classList.add('active');
+}
+function closeModal(){
+  document.getElementById('modal').classList.remove('active');
+}
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+
+// ── Snowfall ──
+(function(){
+  const canvas = document.getElementById('snow');
+  const ctx    = canvas.getContext('2d');
+  let W, H, particles = [];
+
+  const palette = [
+    [255,255,255,0.75],
+    [220,200,255,0.55],
+    [200,180,255,0.45],
+    [255,225,255,0.5],
+  ];
+
+  function resize(){
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  function Particle(){
+    this.reset = function(initial){
+      this.x  = Math.random() * W;
+      this.y  = initial ? Math.random() * H : -8;
+      this.r  = Math.random() * 1.6 + 0.25;
+      this.vy = Math.random() * 0.35 + 0.07;
+      this.vx = (Math.random() - 0.5) * 0.14;
+      const c = palette[Math.floor(Math.random()*palette.length)];
+      this.col = `rgba(${c[0]},${c[1]},${c[2]},${c[3]})`;
+    };
+    this.reset(true);
+
+    this.update = function(){
+      this.y += this.vy;
+      this.x += this.vx;
+      if(this.y > H+10 || this.x < -20 || this.x > W+20) this.reset(false);
+    };
+
+    this.draw = function(){
+      // Draw a small 4-pointed star shape instead of a circle
+      const x=this.x, y=this.y, r=this.r;
+      ctx.save();
+      ctx.translate(x,y);
+      ctx.fillStyle = this.col;
+
+      if(r < 0.8){
+        // Tiny — just a soft dot
+        ctx.beginPath();
+        ctx.arc(0,0,r,0,Math.PI*2);
+        ctx.fill();
+      } else {
+        // Small cross/sparkle shape
+        const outer=r*2.2, inner=r*0.55;
+        ctx.beginPath();
+        for(let i=0;i<8;i++){
+          const angle = (i*Math.PI)/4;
+          const rad   = i%2===0 ? outer : inner;
+          const px    = Math.cos(angle)*rad;
+          const py    = Math.sin(angle)*rad;
+          i===0 ? ctx.moveTo(px,py) : ctx.lineTo(px,py);
+        }
+        ctx.closePath();
+        ctx.fill();
+
+        // Tiny centre glow dot
+        ctx.globalAlpha = 0.9;
+        ctx.beginPath();
+        ctx.arc(0,0,r*0.4,0,Math.PI*2);
+        ctx.fillStyle = 'rgba(255,255,255,0.9)';
+        ctx.fill();
+      }
+      ctx.restore();
+    };
+  }
+
+  function init(){
+    particles = [];
+    const count = Math.max(100, Math.floor((W*H)/16000));
+    for(let i=0;i<count;i++) particles.push(new Particle());
+  }
+
+  function loop(){
+    ctx.clearRect(0,0,W,H);
+    for(const p of particles){ p.update(); p.draw(); }
+    requestAnimationFrame(loop);
+  }
+
+  resize(); init(); loop();
+  window.addEventListener('resize',()=>{ resize(); init(); });
+})();
+
+// ── Scroll fade-in ──
+(function(){
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.style.opacity='1';
+        e.target.style.transform='translateY(0)';
+      }
+    });
+  },{threshold:0.08});
+
+  document.querySelectorAll('.project-card,.rec-card,.t-item,.press-card').forEach(el=>{
+    el.style.opacity='0';
+    el.style.transform='translateY(22px)';
+    el.style.transition='opacity 0.6s ease, transform 0.6s ease';
+    io.observe(el);
+  });
+})();
+</script>
 </body>
 </html>
