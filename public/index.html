@@ -517,66 +517,362 @@ nav{
   opacity:0.75;
 }
 
-/* ── PRESS ── */
-.press-card{
-  display:grid;
-  grid-template-columns:1fr 260px;
-  background:var(--surface);
-  border:1px solid var(--border);
+/* ── MEDIA ── */
+.media-shell{
+  position:relative;
+  display:block;
+}
+
+.media-shell::before{
+  content:'';
+  position:absolute;
+  inset:-34px -24px auto;
+  height:1px;
+  background:linear-gradient(90deg, transparent, rgba(192,132,252,0.45), transparent);
+  opacity:0.55;
+}
+
+.media-intro{
+  position:relative;
+  padding:34px 34px 30px;
+  min-height:100%;
+  background:
+    radial-gradient(circle at 18% 14%, rgba(192,132,252,0.14), transparent 24%),
+    radial-gradient(circle at 88% 84%, rgba(240,98,146,0.08), transparent 24%),
+    linear-gradient(145deg, rgba(192,132,252,0.09), rgba(192,132,252,0.02)),
+    var(--surface);
+  border:1px solid rgba(192,132,252,0.14);
+  border-radius:28px;
   overflow:hidden;
-  backdrop-filter:blur(8px);
-  transition:transform 0.28s ease,border-color 0.28s ease,box-shadow 0.28s ease;
+  backdrop-filter:blur(10px);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,0.02), 0 18px 42px rgba(0,0,0,0.22);
 }
 
-.press-card:hover{
-  transform:translateY(-4px);
-  border-color:var(--border-hi);
-  box-shadow:0 22px 40px rgba(0,0,0,0.5), 0 0 20px rgba(192,132,252,0.12);
+.media-intro::before{
+  content:'';
+  position:absolute;
+  inset:20px 20px auto auto;
+  width:220px;
+  height:220px;
+  border:1px solid rgba(192,132,252,0.1);
+  border-radius:50%;
+  box-shadow:0 0 0 18px rgba(192,132,252,0.03), 0 0 0 42px rgba(192,132,252,0.02);
+  pointer-events:none;
 }
 
-.press-body{padding:32px}
+.media-intro::after{
+  content:'';
+  position:absolute;
+  inset:auto -70px -95px auto;
+  width:260px;
+  height:260px;
+  background:linear-gradient(135deg, rgba(192,132,252,0.18), rgba(192,132,252,0));
+  clip-path:polygon(58% 0, 100% 42%, 42% 100%, 0 58%);
+  opacity:0.18;
+  pointer-events:none;
+}
 
-.press-outlet{
+.media-intro-noise,
+.media-card-noise{
+  position:absolute;
+  inset:0;
+  background-image:
+    radial-gradient(rgba(255,255,255,0.045) 0.6px, transparent 0.7px),
+    radial-gradient(rgba(192,132,252,0.03) 0.6px, transparent 0.7px);
+  background-position:0 0, 12px 12px;
+  background-size:18px 18px, 22px 22px;
+  opacity:0.13;
+  mix-blend-mode:screen;
+  pointer-events:none;
+}
+
+.media-kicker{
   font-family:var(--font-display);
-  font-size:0.55rem;
-  letter-spacing:0.3em;
+  font-size:0.58rem;
+  letter-spacing:0.34em;
   color:var(--accent);
-  opacity:0.7;
-  margin-bottom:10px;
+  opacity:0.78;
   text-transform:uppercase;
-}
-
-.press-headline{
-  font-family:var(--font-display);
-  font-size:1.2rem;
-  font-weight:700;
-  color:var(--white);
-  letter-spacing:0.03em;
-  margin-bottom:14px;
-  line-height:1.3;
-}
-
-.press-text{
-  font-size:0.95rem;
-  color:var(--dim);
-  line-height:1.8;
   margin-bottom:20px;
 }
 
-.press-visual{
-  border-left:1px solid var(--border);
+.media-title{
+  font-family:var(--font-display);
+  font-size:clamp(2.2rem,4.4vw,4.15rem);
+  line-height:0.9;
+  letter-spacing:0.03em;
+  color:var(--white);
+  margin-bottom:18px;
+  max-width:7ch;
+  text-shadow:0 0 18px rgba(192,132,252,0.08);
+}
+
+.media-title span{
+  color:#b57dff;
+  text-shadow:0 0 28px rgba(192,132,252,0.22);
+}
+
+.media-copy{
+  font-size:0.96rem;
+  color:#d2cae6;
+  line-height:1.82;
+  max-width:34ch;
+}
+
+.media-stats{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:24px;
+}
+
+.media-stat{
+  padding:10px 14px;
+  border:1px solid rgba(192,132,252,0.22);
+  background:rgba(192,132,252,0.04);
+  font-family:var(--font-display);
+  font-size:0.52rem;
+  letter-spacing:0.18em;
+  color:var(--accent);
+  text-transform:uppercase;
+  box-shadow:inset 0 0 12px rgba(192,132,252,0.04);
+}
+
+.media-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  gap:18px;
+}
+
+.media-card{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  min-height:214px;
+  padding:24px 24px 22px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0)),
+    rgba(16,7,28,0.82);
+  border:1px solid rgba(192,132,252,0.12);
+  border-radius:24px;
+  text-decoration:none;
+  backdrop-filter:blur(10px);
   overflow:hidden;
-  background:#08031a;
+  transition:transform 0.26s ease,border-color 0.26s ease,box-shadow 0.26s ease;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,0.02);
 }
 
-.press-visual img{
-  width:100%;height:100%;
-  object-fit:cover;display:block;
-  filter:grayscale(20%);
-  transition:transform 0.4s ease;
+.media-card::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 82% 16%, rgba(192,132,252,0.2), transparent 18%),
+    linear-gradient(140deg, rgba(192,132,252,0.1), transparent 48%);
+  opacity:0.34;
+  transition:opacity 0.26s ease;
+  pointer-events:none;
 }
 
-.press-card:hover .press-visual img{transform:scale(1.06)}
+.media-card::after{
+  content:'';
+  position:absolute;
+  left:18px;
+  right:18px;
+  bottom:14px;
+  height:1px;
+  background:linear-gradient(90deg, rgba(192,132,252,0), rgba(192,132,252,0.35), rgba(192,132,252,0));
+  opacity:0.45;
+  pointer-events:none;
+}
+
+.media-card:hover{
+  transform:translateY(-6px) scale(1.01);
+  border-color:rgba(192,132,252,0.24);
+  box-shadow:0 24px 44px rgba(0,0,0,0.32), 0 0 18px rgba(192,132,252,0.08);
+}
+
+.media-card:hover::before{opacity:0.62}
+
+.media-card.featured{
+  grid-column:auto;
+  min-height:312px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 340px;
+  gap:20px;
+  align-items:stretch;
+  background:
+    radial-gradient(circle at 78% 18%, rgba(192,132,252,0.18), transparent 18%),
+    linear-gradient(90deg, rgba(192,132,252,0.08), rgba(192,132,252,0.01) 56%),
+    rgba(16,7,28,0.86);
+}
+
+.media-card.featured .media-source{
+  font-size:clamp(1.6rem,2.7vw,2.45rem);
+}
+
+.media-card.featured .media-quote{
+  font-size:1.12rem;
+  max-width:34ch;
+  margin-bottom:14px;
+}
+
+.media-card.featured .media-card-top{
+  max-width:40ch;
+}
+
+.media-lead-copy{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  min-width:0;
+}
+
+.media-lead-visual{
+  position:relative;
+  min-height:100%;
+  border-radius:20px;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1px;
+  background:
+    linear-gradient(180deg, rgba(2,0,8,0.08), rgba(2,0,8,0.28)),
+    #0a0414;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,0.04);
+}
+
+.media-lead-visual::before{
+  content:'';
+  position:absolute;
+  inset:10px;
+  border:1px solid rgba(192,132,252,0.14);
+  border-radius:16px;
+  pointer-events:none;
+  z-index:2;
+}
+
+.media-lead-thumb{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  filter:saturate(0.9) contrast(1.02) brightness(0.9);
+  transition:transform 0.42s ease, filter 0.42s ease;
+}
+
+.media-lead-panel{
+  position:relative;
+  min-height:100%;
+  overflow:hidden;
+  background:rgba(8,4,18,0.72);
+}
+
+.media-card.featured:hover .media-lead-thumb{
+  transform:scale(1.04);
+  filter:saturate(1) contrast(1.04) brightness(0.95);
+}
+
+.media-visual-badge{
+  position:absolute;
+  top:16px;
+  left:16px;
+  z-index:3;
+  padding:5px 10px;
+  border:1px solid rgba(192,132,252,0.18);
+  border-radius:999px;
+  background:rgba(8,4,18,0.72);
+  backdrop-filter:blur(10px);
+  font-family:var(--font-display);
+  font-size:0.44rem;
+  letter-spacing:0.16em;
+  color:var(--white);
+  text-transform:uppercase;
+}
+
+.media-lead-caption{
+  position:absolute;
+  left:18px;
+  right:18px;
+  bottom:18px;
+  z-index:3;
+  padding:14px 14px 12px;
+  border-radius:16px;
+  background:linear-gradient(180deg, rgba(8,4,18,0.52), rgba(8,4,18,0.86));
+  backdrop-filter:blur(8px);
+}
+
+.media-lead-label{
+  font-family:var(--font-display);
+  font-size:0.48rem;
+  letter-spacing:0.18em;
+  color:var(--accent);
+  opacity:0.78;
+  text-transform:uppercase;
+  margin-bottom:6px;
+}
+
+.media-lead-caption p{
+  font-size:0.76rem;
+  line-height:1.55;
+  color:#ece5fb;
+}
+
+.media-card-top,
+.media-card-bottom{
+  position:relative;
+  z-index:1;
+}
+
+.media-source{
+  font-family:var(--font-display);
+  font-size:clamp(1.05rem,1.8vw,1.74rem);
+  line-height:0.96;
+  letter-spacing:0.04em;
+  color:var(--white);
+  margin-bottom:10px;
+  text-transform:none;
+}
+
+.media-source-accent{color:var(--accent)}
+
+.media-tag{
+  display:inline-flex;
+  padding:5px 10px;
+  border:1px solid rgba(192,132,252,0.18);
+  background:rgba(192,132,252,0.045);
+  font-family:var(--font-display);
+  font-size:0.48rem;
+  letter-spacing:0.16em;
+  color:var(--accent);
+  text-transform:uppercase;
+}
+
+.media-quote{
+  font-size:0.98rem;
+  color:#f2ecfb;
+  line-height:1.62;
+  margin:0 0 14px;
+  max-width:31ch;
+}
+
+.media-meta{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  font-size:0.72rem;
+  color:var(--dim2);
+}
+
+.media-link{
+  font-family:var(--font-display);
+  font-size:0.54rem;
+  letter-spacing:0.16em;
+  color:var(--accent);
+  text-transform:uppercase;
+}
 
 /* ── RECOMMENDATIONS ── */
 .recs-grid{
@@ -703,10 +999,18 @@ footer{
   .hero-grid,.exp-grid{grid-template-columns:1fr}
   .portrait-wrap{width:min(300px,80%)}
   .project-list{grid-template-columns:1fr}
-  .press-card{grid-template-columns:1fr}
-  .press-visual{min-height:200px;border-left:none;border-top:1px solid var(--border)}
+  .media-grid{grid-template-columns:1fr}
+  .media-card.featured{grid-column:auto}
+  .media-card.featured{grid-template-columns:1fr}
+  .media-lead-visual{grid-template-columns:1fr 1fr}
+  .media-lead-visual{min-height:220px}
+  .media-title{max-width:none}
   .recs-grid{grid-template-columns:1fr}
   nav .nav-links{display:none}
+}
+
+@media(max-width:640px){
+  .media-lead-visual{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -721,7 +1025,7 @@ footer{
   <ul class="nav-links">
     <li><a href="#projects">Projects</a></li>
     <li><a href="#experience">Experience</a></li>
-    <li><a href="#press">Press</a></li>
+    <li><a href="#media">Media</a></li>
     <li><a href="#recommendations">Recommendations</a></li>
     <li><a href="mailto:hwasa@unc.edu">Contact</a></li>
   </ul>
@@ -930,25 +1234,25 @@ footer{
       <div class="section-label" style="margin-bottom:20px">Product &amp; Operations</div>
       <div class="timeline">
         <div class="t-item">
-          <div class="t-year">2025</div>
+          <div class="t-year">2025–26</div>
           <div class="t-role">Product Management Extern</div>
-          <div class="t-company">BeReal · Chapel Hill, NC</div>
-          <div class="t-desc">Analyzed 300+ user behavioral data points across external datasets. Identified onboarding bottlenecks at funnel level. Informed feature prioritization grounded in evidence.</div>
-          <div class="t-badges"><span class="badge">Analytics</span><span class="badge">Onboarding</span><span class="badge">GTM</span></div>
+          <div class="t-company">BeReal · Remote</div>
+          <div class="t-desc">Analyzed 50,000+ user interactions and 20+ user interviews to identify retention bottlenecks, recommend feature improvements, and evaluate A/B testing results across activation and retention metrics.</div>
+          <div class="t-badges"><span class="badge">Retention</span><span class="badge">User Research</span><span class="badge">A/B Testing</span></div>
         </div>
         <div class="t-item">
           <div class="t-year">2023</div>
           <div class="t-role">Partnership Associate</div>
-          <div class="t-company">Success Admissions · Yangon, Burma</div>
+          <div class="t-company">Success Education Ventures · Yangon, Burma</div>
           <div class="t-desc">Built international partnership pipeline. Secured 3+ school contracts through value-aligned positioning. Launched digital campaigns generating 250K+ interactions.</div>
           <div class="t-badges"><span class="badge">Partnerships</span><span class="badge">Growth</span><span class="badge">GTM</span></div>
         </div>
         <div class="t-item">
-          <div class="t-year">2021–24</div>
-          <div class="t-role">Product Management Intern</div>
+          <div class="t-year">2024</div>
+          <div class="t-role">Data Analyst Intern</div>
           <div class="t-company">Nawarat Autoparts · Yangon, Burma</div>
-          <div class="t-desc">Designed double-layer packaging reducing transit damage by 31%. Validated durability through 48–72h humidity stress testing. Improved QA workflows.</div>
-          <div class="t-badges"><span class="badge">Hardware</span><span class="badge">QA</span><span class="badge">Supply Chain</span></div>
+          <div class="t-desc">Built ETL pipelines in Python and SQL to process 50,000+ records, reducing reporting time by 80% and errors by 30%, while designing demand forecasting models that cut stock shortages by 25%.</div>
+          <div class="t-badges"><span class="badge">ETL</span><span class="badge">Python</span><span class="badge">SQL</span></div>
         </div>
       </div>
     </div>
@@ -957,25 +1261,25 @@ footer{
       <div class="section-label" style="margin-bottom:20px">Engineering</div>
       <div class="timeline">
         <div class="t-item">
+          <div class="t-year">2026</div>
+          <div class="t-role">AI Engineering Intern</div>
+          <div class="t-company">Utilyst Inc. · Chapel Hill, NC</div>
+          <div class="t-desc">Developed geospatial infrastructure features on WorldGraph using PostgreSQL/PostGIS, FastAPI, React, and Python; containerized inference services with Docker; and optimized open-source LLMs for Jetson edge deployment.</div>
+          <div class="t-badges"><span class="badge">PostGIS</span><span class="badge">Docker</span><span class="badge">LLMOps</span></div>
+        </div>
+        <div class="t-item">
+          <div class="t-year">2025</div>
+          <div class="t-role">IT Technician</div>
+          <div class="t-company">UNC Chapel Hill &amp; Kenan-Flagler Business School · Chapel Hill, NC</div>
+          <div class="t-desc">Managed device lifecycle for 7,900+ users across Windows and macOS, resolving MFA, account lockout, and identity-access incidents while triaging security and network issues through SolarWinds Service Desk.</div>
+          <div class="t-badges"><span class="badge">Windows/macOS</span><span class="badge">MFA</span><span class="badge">SolarWinds</span></div>
+        </div>
+        <div class="t-item">
           <div class="t-year">2025</div>
           <div class="t-role">VTOL Project Engineer</div>
           <div class="t-company">Carolina Skylabs · UNC Chapel Hill</div>
-          <div class="t-desc">Building autonomous drone platform nicknamed "The Northern Cardinal." Designing FSM-based flight control systems and embedded sensor pipelines.</div>
+          <div class="t-desc">Built autonomous drone platform infrastructure for The Northern Cardinal, designing FSM-based flight control systems and embedded sensor pipelines for stable multi-mode flight.</div>
           <div class="t-badges"><span class="badge">Embedded</span><span class="badge">Autonomy</span><span class="badge">C++</span></div>
-        </div>
-        <div class="t-item">
-          <div class="t-year">2024</div>
-          <div class="t-role">IT Student Apprentice</div>
-          <div class="t-company">Kenan-Flagler Business School · UNC</div>
-          <div class="t-desc">Resolved system bottlenecks and improved reliability across hardware, software, and networking for 7,900+ students and faculty.</div>
-          <div class="t-badges"><span class="badge">Systems</span><span class="badge">Support</span><span class="badge">Networking</span></div>
-        </div>
-        <div class="t-item">
-          <div class="t-year">Incoming</div>
-          <div class="t-role">AI Engineering Intern</div>
-          <div class="t-company">Utilyst</div>
-          <div class="t-desc">Developing geospatial AI systems for critical infrastructure analysis. Building end-to-end pipelines from data ingestion to model-powered insights.</div>
-          <div class="t-badges"><span class="badge">Geospatial AI</span><span class="badge">Python</span><span class="badge">Infrastructure</span></div>
         </div>
       </div>
     </div>
@@ -984,27 +1288,122 @@ footer{
 
 <div class="divider"></div>
 
-<!-- ══ PRESS ══ -->
-<section id="press">
+<!-- ══ MEDIA ══ -->
+<section id="media">
   <div class="section-head">
-    <h2 class="section-title">FEATURED</h2>
+    <div class="section-label">Across press, campus, and industry</div>
+    <h2 class="section-title">AS SEEN ON THE NEWS</h2>
   </div>
 
-  <article class="press-card">
-    <div class="press-body">
-      <div class="press-outlet">Business Insider</div>
-      <h3 class="press-headline">Breaking Into Tech Through 600+ Applications</h3>
-      <p class="press-text">
-        Featured for the journey of applying to over 600 roles, navigating rejection, and ultimately landing meaningful opportunities in engineering and AI. An account of persistence, strategy, and what it actually takes to break in.
-      </p>
-      <div class="project-actions">
-        <a href="https://www.businessinsider.com/unc-student-landed-internship-after-changing-major-2026-4" class="btn-link">Read Article</a>
-      </div>
+  <div class="media-shell">
+    <div class="media-grid">
+      <a class="media-card featured" href="https://www.businessinsider.com/unc-student-landed-internship-after-changing-major-2026-4" target="_blank" rel="noreferrer">
+        <div class="media-card-noise"></div>
+        <div class="media-lead-copy">
+          <div class="media-card-top">
+            <div class="media-source"><span class="media-source-accent">Business</span> Insider</div>
+            <span class="media-tag">Lead Story</span>
+          </div>
+          <div class="media-card-bottom">
+            <p class="media-quote">Featured for my pivot into AI, the internship search that followed, and the persistence behind building a path in tech as an international student at UNC.</p>
+            <div class="media-meta">
+              <span>Career pivot · AI · UNC</span>
+              <span class="media-link">Open Story</span>
+            </div>
+          </div>
+        </div>
+        <div class="media-lead-visual">
+          <div class="media-lead-panel">
+            <span class="media-visual-badge">Feature Portrait</span>
+            <img class="media-lead-thumb" src="/media-first-slot.png" alt="Portrait for featured media coverage" onerror="this.parentElement.style.display='none'">
+          </div>
+          <div class="media-lead-panel">
+            <span class="media-visual-badge">Business Insider</span>
+            <img class="media-lead-thumb" src="/business-insider-shot.png" alt="Business Insider article screenshot" onerror="this.parentElement.style.display='none'">
+          </div>
+          <div class="media-lead-caption">
+            <div class="media-lead-label">Press Coverage</div>
+            <p>National coverage anchored by Business Insider, with the portrait and article view paired like a floating editorial spread.</p>
+          </div>
+        </div>
+      </a>
+
+      <a class="media-card" href="https://www.aol.com/news/im-unc-international-student-pivoted-093706957.html" target="_blank" rel="noreferrer">
+        <div class="media-card-noise"></div>
+        <div class="media-card-top">
+          <div class="media-source">America<br><span class="media-source-accent">Online</span></div>
+          <span class="media-tag">Syndicated Feature</span>
+        </div>
+        <div class="media-card-bottom">
+          <p class="media-quote">Republished through AOL, extending the Business Insider story to a broader national audience.</p>
+          <div class="media-meta">
+            <span>Mainstream distribution</span>
+            <span class="media-link">Read on AOL</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="media-card" href="https://innovate.unc.edu/starting-up-summer/" target="_blank" rel="noreferrer">
+        <div class="media-card-noise"></div>
+        <div class="media-card-top">
+          <div class="media-source">Innovate<br><span class="media-source-accent">Carolina</span></div>
+          <span class="media-tag">UNC Feature</span>
+        </div>
+        <div class="media-card-bottom">
+          <p class="media-quote">Included in UNC startup coverage highlighting summer innovation, student builders, and momentum behind emerging ideas.</p>
+          <div class="media-meta">
+            <span>University innovation</span>
+            <span class="media-link">View Feature</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="media-card" href="https://www.facebook.com/photo.php?fbid=1318447660148355&set=a.639602201366241&id=100059494002462" target="_blank" rel="noreferrer">
+        <div class="media-card-noise"></div>
+        <div class="media-card-top">
+          <div class="media-source">Insider<br><span class="media-source-accent">Inventions</span></div>
+          <span class="media-tag">Innovation Feature</span>
+        </div>
+        <div class="media-card-bottom">
+          <p class="media-quote">Highlighted by Invention Insider as part of a broader public-facing spotlight on what I’m building.</p>
+          <div class="media-meta">
+            <span>Public feature</span>
+            <span class="media-link">See Post</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="media-card" href="https://voices.aaja.org/stories/minneapolis-2026/panicking-in-a-foreign-country-some-international-students-turn-to-ai-for-help/" target="_blank" rel="noreferrer">
+        <div class="media-card-noise"></div>
+        <div class="media-card-top">
+          <div class="media-source">Voices<br><span class="media-source-accent">AAJA</span></div>
+          <span class="media-tag">Journalism Feature</span>
+        </div>
+        <div class="media-card-bottom">
+          <p class="media-quote">Featured in Voices by AAJA in a story on how international students turn to AI for support while navigating life abroad.</p>
+          <div class="media-meta">
+            <span>First-person reporting</span>
+            <span class="media-link">Read Story</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="media-card" href="https://www.linkedin.com/feed/update/urn:li:activity:7430429165079740416/" target="_blank" rel="noreferrer">
+        <div class="media-card-noise"></div>
+        <div class="media-card-top">
+          <div class="media-source">AWS<br><span class="media-source-accent">Mention</span></div>
+          <span class="media-tag">Industry Signal</span>
+        </div>
+        <div class="media-card-bottom">
+          <p class="media-quote">MEGAMIND earned recognition from a senior developer at AWS, adding an industry nod to the project’s early traction.</p>
+          <div class="media-meta">
+            <span>Senior developer spotlight</span>
+            <span class="media-link">Open Post</span>
+          </div>
+        </div>
+      </a>
     </div>
-    <div class="press-visual">
-      <img src="/news.png" alt="Business Insider feature" onerror="this.style.display='none'">
-    </div>
-  </article>
+  </div>
 </section>
 
 <div class="divider"></div>
@@ -1062,12 +1461,12 @@ footer{
     </article>
 
     <article class="rec-card">
-      <p class="rec-text">I have been working with her for 2 years and I am quite impressed with her dedication to her work, including studies, research, and social work. She is excellent at multitasking and always manages to finish all the work on time.</p>
+      <p class="rec-text">I have been working with her for 2 years so far, and I am quite impressed with her dedication to her work, including studies, research, and social work. She is excellent at multi-tasking and always manages to finish all the work on time.</p>
       <div class="rec-author-wrap">
         <div class="rec-avatar">SD</div>
         <div>
           <div class="rec-author">Saw Daniel Aung Khant Moe</div>
-          <div class="rec-role">CS Student · University of Calgary · Project Partner</div>
+          <div class="rec-role">3rd Year CS @UCalgary · AI/ML</div>
         </div>
       </div>
     </article>
@@ -1090,7 +1489,7 @@ footer{
 
 <script>
 // ── Photo placeholders: show when image fails ──
-document.querySelectorAll('.project-visual img, .press-visual img').forEach(img => {
+document.querySelectorAll('.project-visual img').forEach(img => {
   const placeholder = img.parentElement.querySelector('.photo-placeholder');
   if (!placeholder) return;
   const check = () => {
@@ -1220,7 +1619,7 @@ document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); }
     });
   },{threshold:0.08});
 
-  document.querySelectorAll('.project-card,.rec-card,.t-item,.press-card').forEach(el=>{
+  document.querySelectorAll('.project-card,.rec-card,.t-item,.media-card,.media-intro').forEach(el=>{
     el.style.opacity='0';
     el.style.transform='translateY(22px)';
     el.style.transition='opacity 0.6s ease, transform 0.6s ease';
