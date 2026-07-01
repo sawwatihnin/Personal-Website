@@ -6,6 +6,7 @@
 <title>Vivienne Hnin — AI Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
@@ -27,11 +28,13 @@
   --font-body:'Barlow',sans-serif;
   --font-cond:'Barlow Condensed',sans-serif;
   --app-cursor:auto;
+  --app-pointer-cursor:pointer;
 }
 
 html{scroll-behavior:smooth}
 
 html,body,body *,body *::before,body *::after{cursor:var(--app-cursor,auto) !important}
+a,button,[role="button"],input,select,textarea,summary,label{cursor:var(--app-pointer-cursor,var(--app-cursor,auto)) !important}
 
 body{
   background:var(--bg);
@@ -1202,7 +1205,8 @@ footer{
   <a href="#" class="nav-logo">VH</a>
   <ul class="nav-links">
     <li><a href="#projects">Projects</a></li>
-    <li><a href="#experience">Experience</a></li>
+    <li><a href="#experience">Work</a></li>
+    <li><a href="#games">Play Viv's Mini Games</a></li>
     <li><a href="#media">Media</a></li>
     <li><a href="#recommendations">Recommendations</a></li>
     <li><a href="mailto:hwasa@unc.edu">Contact</a></li>
@@ -1223,16 +1227,18 @@ footer{
         <a href="https://www.linkedin.com/in/viviennehnin" target="_blank" rel="noreferrer">LinkedIn</a>
         <a href="https://github.com/sawwatihnin" target="_blank" rel="noreferrer">GitHub</a>
         <a href="mailto:hwasa@unc.edu">Contact</a>
-        <a href="#projects">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Work</a>
+        <a href="#games">Play Viv's Mini Games</a>
       </div>
 
       <div class="tech-line">C++ · Java · JavaScript · TypeScript · Python · Swift · R · HTML · CSS</div>
 
       <p class="hero-bio">
-        Computer Science junior at UNC Chapel Hill with minors in Neuroscience and Data Science, focused on autonomy, systems engineering, and applied research.
+        Hello, there! (Kenobi reference) I'm a Computer Science junior at UNC Chapel Hill, and I focus on autonomy, systems engineering, and applied research while studying Neuroscience and Data Science alongside CS.
       </p>
       <p class="hero-bio">
-        Featured in <em>Business Insider</em> for breaking into tech. VTOL engineer at <strong>Carolina Skylabs</strong> building an autonomous drone platform. VP of Marketing at <strong>R.A.M Engineering</strong>. Incoming AI Engineering Intern at <strong>Utilyst</strong>.
+        I was featured in <em>Business Insider</em> for breaking into tech, I build an autonomous drone platform as a VTOL engineer at <strong>Carolina Skylabs</strong>, I serve as VP of Marketing at <strong>R.A.M Engineering</strong>, and I'm an incoming AI Engineering Intern at <strong>Utilyst</strong>.
       </p>
 
       <div class="hero-callout">
@@ -1396,6 +1402,65 @@ footer{
       </div>
     </article>
 
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ GAMES ══ -->
+<section id="games" class="games-section">
+  <div class="section-head">
+    <h2 class="section-title">Play My Mini Games</h2>
+    <p class="games-subtitle">Need a break? Every game here was built from scratch using React, TypeScript, and the Canvas API.</p>
+  </div>
+
+  <div class="games-grid">
+    <article class="games-card">
+      <div class="games-thumb">
+        <div class="games-thumb-grid"></div>
+        <img class="games-thumb-dino-art" src="./dino-bow.png" alt="Dino Run dinosaur">
+        <div class="games-thumb-obstacle"></div>
+        <div class="games-thumb-ground"></div>
+      </div>
+      <div class="games-card-head">
+        <h3 class="games-title">Dino Run</h3>
+        <span class="games-badge">Medium</span>
+      </div>
+      <p class="games-copy">An endless runner inspired by the Chrome offline game.</p>
+      <button class="btn-link games-play-button" type="button" data-game="dino-run" onclick="window.openVivGame && window.openVivGame('dino-run')">Play</button>
+    </article>
+
+    <article class="games-card">
+      <div class="games-thumb">
+        <div class="games-thumb-drone"></div>
+        <div class="games-thumb-drone-ring"></div>
+        <div class="games-thumb-gap"></div>
+      </div>
+      <div class="games-card-head">
+        <h3 class="games-title">Flappy AI</h3>
+        <span class="games-badge">Hard</span>
+      </div>
+      <p class="games-copy">Guide an autonomous drone through endless obstacles.</p>
+      <button class="btn-link games-play-button" type="button" data-game="flappy-ai" onclick="window.openVivGame && window.openVivGame('flappy-ai')">Play</button>
+    </article>
+
+    <article class="games-card">
+      <div class="games-thumb">
+        <div class="games-thumb-snake"></div>
+        <span class="games-thumb-segment tail" style="left:72px;top:88px"></span>
+        <span class="games-thumb-segment" style="left:94px;top:84px"></span>
+        <span class="games-thumb-segment" style="left:116px;top:78px"></span>
+        <span class="games-thumb-segment" style="left:138px;top:74px"></span>
+        <span class="games-thumb-segment head" style="left:160px;top:72px"></span>
+        <span class="games-thumb-food" style="left:216px;top:96px"></span>
+      </div>
+      <div class="games-card-head">
+        <h3 class="games-title">Snake</h3>
+        <span class="games-badge">Flexible</span>
+      </div>
+      <p class="games-copy">A modern version of the classic arcade game.</p>
+      <button class="btn-link games-play-button" type="button" data-game="snake" onclick="window.openVivGame && window.openVivGame('snake')">Play</button>
+    </article>
   </div>
 </section>
 
@@ -1670,8 +1735,30 @@ footer{
   </div>
 </div>
 
+<div id="games-modal" class="games-modal" aria-hidden="true">
+  <div id="games-modal-backdrop" class="games-modal-backdrop" onclick="window.VHGames && window.VHGames.modal && window.VHGames.modal.close()"></div>
+  <div class="games-modal-shell" role="dialog" aria-modal="true" aria-labelledby="games-modal-title">
+    <div class="games-modal-head">
+      <div>
+        <h3 id="games-modal-title" class="games-modal-title">Play My Mini Games</h3>
+        <p id="games-modal-description" class="games-modal-description"></p>
+      </div>
+      <button id="games-modal-close" class="games-modal-close" type="button" aria-label="Close game modal" onclick="window.VHGames && window.VHGames.modal && window.VHGames.modal.close()">Close</button>
+    </div>
+    <div class="games-modal-body">
+      <div id="games-modal-game"></div>
+    </div>
+  </div>
+</div>
+
+<script src="./js/games/games-modal.js"></script>
+<script src="./js/games/dino-run.js"></script>
+<script src="./js/games/flappy-ai.js"></script>
+<script src="./js/games/snake.js"></script>
+<script src="./js/games/games-init.js"></script>
 <script>
 const CURSOR_STORAGE_KEY = 'vh-selected-cursor';
+const CURSOR_CANVAS_SIZE = 36;
 const CURSOR_OPTIONS = [
   { id: 'default', label: 'Default Cursor', asset: null, hotspotX: 0, hotspotY: 0 },
   { id: 'blue-star', label: 'Blue Star', asset: './cursors/blue-star.png', hotspotX: 12, hotspotY: 12 },
@@ -1688,6 +1775,8 @@ const cursorGrid = document.getElementById('cursor-grid');
 const cursorSettingsButton = document.getElementById('cursor-settings-button');
 const cursorCloseButton = document.getElementById('cursor-close-button');
 const cursorResetButton = document.getElementById('cursor-reset-button');
+const cursorCssCache = new Map();
+let activeCursorToken = 0;
 
 function getCursorOption(id){
   return CURSOR_OPTIONS.find(option => option.id === id) || CURSOR_OPTIONS[0];
@@ -1695,6 +1784,54 @@ function getCursorOption(id){
 
 function getCursorCssValue(option){
   return option.asset ? `url('${option.asset}') ${option.hotspotX} ${option.hotspotY}, auto` : 'auto';
+}
+
+function loadCursorImage(src){
+  return new Promise((resolve, reject) => {
+    const image = new Image();
+    image.onload = () => resolve(image);
+    image.onerror = reject;
+    image.src = src;
+  });
+}
+
+async function getNormalizedCursorCss(option){
+  if(!option.asset){
+    return { base: 'auto', pointer: 'pointer' };
+  }
+
+  if(cursorCssCache.has(option.id)){
+    return cursorCssCache.get(option.id);
+  }
+
+  try{
+    const image = await loadCursorImage(option.asset);
+    const canvas = document.createElement('canvas');
+    canvas.width = CURSOR_CANVAS_SIZE;
+    canvas.height = CURSOR_CANVAS_SIZE;
+    const context = canvas.getContext('2d');
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+    const ratio = CURSOR_CANVAS_SIZE / image.width;
+    const hotspotX = Math.max(2, Math.min(CURSOR_CANVAS_SIZE - 2, Math.round(option.hotspotX * ratio)));
+    const hotspotY = Math.max(2, Math.min(CURSOR_CANVAS_SIZE - 2, Math.round(option.hotspotY * ratio)));
+    const dataUrl = canvas.toDataURL('image/png');
+    const pair = {
+      base: `url('${dataUrl}') ${hotspotX} ${hotspotY}, auto`,
+      pointer: `url('${dataUrl}') ${hotspotX} ${hotspotY}, pointer`
+    };
+    cursorCssCache.set(option.id, pair);
+    return pair;
+  }catch(error){
+    console.warn(`Unable to normalize cursor asset for ${option.id}.`, error);
+    const fallback = {
+      base: getCursorCssValue(option),
+      pointer: option.asset ? `url('${option.asset}') ${option.hotspotX} ${option.hotspotY}, pointer` : 'pointer'
+    };
+    cursorCssCache.set(option.id, fallback);
+    return fallback;
+  }
 }
 
 function persistCursor(id){
@@ -1723,11 +1860,15 @@ function updateCursorSelectionUI(selectedId){
   });
 }
 
-function applyCursor(cursorId){
+async function applyCursor(cursorId){
   const option = getCursorOption(cursorId);
-  document.documentElement.style.setProperty('--app-cursor', getCursorCssValue(option));
   updateCursorSelectionUI(option.id);
   persistCursor(option.id);
+  const token = ++activeCursorToken;
+  const cursorCss = await getNormalizedCursorCss(option);
+  if(token !== activeCursorToken) return;
+  document.documentElement.style.setProperty('--app-cursor', cursorCss.base);
+  document.documentElement.style.setProperty('--app-pointer-cursor', cursorCss.pointer);
 }
 
 function closeCursorPicker(){
@@ -1931,7 +2072,7 @@ document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); }
     });
   },{threshold:0.08});
 
-  document.querySelectorAll('.project-card,.rec-card,.t-item,.media-card').forEach(el=>{
+  document.querySelectorAll('.project-card,.games-card,.rec-card,.t-item,.media-card').forEach(el=>{
     el.style.opacity='0';
     el.style.transform='translateY(22px)';
     el.style.transition='opacity 0.6s ease, transform 0.6s ease';
