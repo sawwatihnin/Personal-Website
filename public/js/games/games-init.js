@@ -28,7 +28,7 @@
   }
 
   function initGames(){
-    const section = document.getElementById('games');
+    const section = document.getElementById('playground');
     if(!section || !window.VHGames || !window.VHGames.modal) return;
 
     section.addEventListener('click', (event) => {

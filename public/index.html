@@ -1150,11 +1150,6 @@ footer{
   padding:0 30px 30px;
 }
 
-.cursor-note{
-  font-size:0.78rem;
-  color:var(--dim2);
-}
-
 .cursor-actions{
   display:flex;
   gap:10px;
@@ -1195,22 +1190,21 @@ footer{
 }
 </style>
 </head>
-<body>
+<body id="top">
 <canvas id="snow"></canvas>
 
 <div class="page">
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">VH</a>
+  <a href="#top" class="nav-logo" aria-label="Back to top">VH</a>
   <ul class="nav-links">
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#experience">Work</a></li>
-    <li><a href="#media">Media</a></li>
-    <li><a href="#recommendations">Recommendations</a></li>
-    <li><a href="#more-projects">More Projects</a></li>
-    <li><a href="#playground">Playground</a></li>
-    <li><a href="mailto:hwasa@unc.edu">Contact</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#media">Press</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="./resume.pdf" target="_blank" rel="noreferrer" class="nav-resume-link">View Resume</a></li>
   </ul>
 </nav>
 
@@ -1220,16 +1214,16 @@ footer{
 <section class="hero">
   <div class="hero-grid">
     <div>
-      <div class="eyebrow">// UNC Chapel Hill — CS · Neuroscience · Data Science</div>
+      <div class="eyebrow">// UNC Chapel Hill — Computer Science · Neuroscience · Data Science</div>
       <h1 class="hero-name">VIVIENNE<br><span>HNIN</span></h1>
-      <div class="hero-role">AI Engineer building efficient intelligence from cloud to edge.</div>
+      <div class="hero-role">AI Engineer building intelligence where the cloud can't always follow.</div>
 
       <div class="hero-links">
-        <a href="mailto:hwasa@unc.edu?subject=Request%20Resume" class="hero-link-primary">Request Resume</a>
-        <a href="#projects" class="hero-link-secondary">Selected Work</a>
+        <a href="./resume.pdf" target="_blank" rel="noreferrer" class="hero-link-primary">View Resume</a>
+        <a href="#projects" class="hero-link-secondary">Explore My Work</a>
         <a href="https://github.com/sawwatihnin" target="_blank" rel="noreferrer">GitHub</a>
         <a href="https://www.linkedin.com/in/viviennehnin" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a href="mailto:hwasa@unc.edu">Contact</a>
+        <a href="#contact">Contact</a>
       </div>
 
       <div class="hero-signal-row" aria-label="AI engineering focus areas">
@@ -1243,14 +1237,11 @@ footer{
       <div class="tech-line">C++ · Java · JavaScript · TypeScript · Python · Swift · R · HTML · CSS</div>
 
       <p class="hero-bio">
-        I'm a Computer Science student at UNC Chapel Hill building and evaluating Small Language Models, edge AI systems, and full-stack AI infrastructure across constrained hardware and cloud environments.
-      </p>
-      <p class="hero-bio">
-        I work across localized inference, Dockerized services, geospatial backends, and embedded systems, with hands-on experience spanning Phi-family models, Jetson deployment, FastAPI, React, and cloud-integrated AI products.
+        Computer Science @ UNC Chapel Hill building Small Language Models, edge AI systems, and full-stack software that has to work under real constraints.
       </p>
 
       <div class="hero-callout">
-        <strong>Currently:</strong> building edge-aware AI systems at <strong>Utilyst</strong>, embedded flight software for <strong>Northern Cardinal</strong>, and recruiter-ready full-stack projects that emphasize latency, privacy, and reliable inference under real constraints.
+        <strong>Focus:</strong> I treat AI deployment as a systems problem shaped by latency, memory, compute, privacy, cost, and offline reliability, not just model APIs.
       </div>
     </div>
 
@@ -1287,8 +1278,8 @@ footer{
           <div class="project-feature-main">
             <div class="project-tag">Small Language Models · Edge AI · NVIDIA Jetson · Efficient Inference</div>
             <h3 class="project-name">Edge SLM Systems @ Utilyst</h3>
-            <p class="project-desc">Built and evaluated localized AI inference systems across constrained hardware and cloud environments, focusing on deployment tradeoffs around latency, memory, model quality, and routing behavior instead of defaulting every request to the largest remote model.</p>
-            <p class="project-note">I’m interested in AI systems where sending every request to the largest cloud model is not the optimal answer. The work that excites me most sits inside the tradeoffs: latency, privacy, offline reliability, hardware limits, and knowing when edge and cloud should collaborate instead of compete.</p>
+            <p class="project-desc">The future of AI isn't only bigger models. It's choosing the right model for the job and putting intelligence where it actually needs to run.</p>
+            <p class="project-note">At Utilyst, I worked on localized inference systems across constrained hardware and cloud environments, evaluating deployment tradeoffs around latency, memory, reliability, model quality, and when requests should stay local versus escalate.</p>
             <div class="project-metrics">
               <div class="metric-row">Built localized inference services with Docker, FastAPI, Python, and product-facing interfaces tied to real workflows</div>
               <div class="metric-row">Optimized open-source LLMs for Jetson edge deployment while supporting geospatial features on PostgreSQL/PostGIS</div>
@@ -1296,11 +1287,25 @@ footer{
             </div>
             <div class="project-actions">
               <a href="#experience" class="btn-link">See Experience</a>
-              <a href="mailto:hwasa@unc.edu?subject=Request%20Resume" class="btn-link">Request Resume</a>
+              <a href="./resume.pdf" target="_blank" rel="noreferrer" class="btn-link">View Resume</a>
             </div>
             <div class="stack-tags">Phi-family · Gemma · Llama 3.2 · Jetson Orin Nano · Ollama · Docker · FastAPI · Python · PostgreSQL/PostGIS</div>
+            <figure class="jetson-corner-proof" aria-label="Jetson Orin Nano hardware image">
+              <img src="/images/jetson-orin-nano.png" alt="NVIDIA Jetson Orin Nano development board used for edge inference testing">
+            </figure>
           </div>
           <aside class="project-feature-side">
+            <figure class="jetson-proof">
+              <img src="/images/jetson-orin-nano.png" alt="NVIDIA Jetson Orin Nano edge device used as the deployment target" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+              <figcaption class="jetson-proof-caption">
+                <strong>Hardware proof</strong>
+                <span>Jetson Orin Nano as the edge deployment target for constrained local inference and routing evaluation.</span>
+              </figcaption>
+              <div class="jetson-proof-fallback" style="display:none">
+                <div class="jetson-proof-label">NVIDIA Jetson Orin Nano</div>
+                <p>Edge deployment target used to reason about constrained inference, latency budgets, and when local systems should escalate to cloud models.</p>
+              </div>
+            </figure>
             <div class="slm-evidence">
               <div class="slm-evidence-card">
                 <span class="slm-evidence-label">Models Evaluated</span>
@@ -1319,17 +1324,45 @@ footer{
                 <strong>Docker, FastAPI, PostGIS, Python</strong>
               </div>
             </div>
-            <div class="slm-diagram" aria-label="Edge SLM architecture overview">
-              <div class="slm-node">User / App</div>
-              <div class="slm-arrow">↓</div>
-              <div class="slm-node">Request Router</div>
-              <div class="slm-arrow">↓</div>
-              <div class="slm-node">Local SLM Inference</div>
-              <div class="slm-arrow">↓</div>
-              <div class="slm-node">Jetson Edge Hardware</div>
-              <div class="slm-arrow">↓</div>
-              <div class="slm-node slm-node-muted">Cloud Fallback When Needed</div>
-              <div class="slm-diagram-caption">WorldGraph · local APIs · memory/context · Dockerized services</div>
+            <div class="slm-routing" aria-label="Interactive SLM routing diagram">
+              <div class="slm-routing-head">
+                <div>
+                  <div class="slm-routing-title">Routing Modes</div>
+                  <p class="slm-routing-copy">Toggle between how requests are handled when the system prioritizes local execution versus default cloud capability.</p>
+                </div>
+                <div class="slm-routing-switch" role="tablist" aria-label="Architecture modes">
+                  <button type="button" class="slm-toggle is-active" data-route-mode="edge" aria-selected="true">Edge-First</button>
+                  <button type="button" class="slm-toggle" data-route-mode="cloud" aria-selected="false">Cloud-First</button>
+                </div>
+              </div>
+              <div class="slm-diagram" aria-live="polite">
+                <div class="slm-node-group">
+                  <div class="slm-node">User / App</div>
+                  <div class="slm-arrow">↓</div>
+                  <div class="slm-node">Request Router</div>
+                  <div class="slm-arrow">↓</div>
+                  <div class="slm-node" data-route-node="primary">Local SLM Inference</div>
+                  <div class="slm-arrow">↓</div>
+                  <div class="slm-node" data-route-node="secondary">Jetson Edge Hardware</div>
+                  <div class="slm-arrow">↓</div>
+                  <div class="slm-node slm-node-muted" data-route-node="fallback">Cloud Fallback When Needed</div>
+                </div>
+                <div class="slm-diagram-caption" id="slm-routing-caption">Edge-first keeps requests close to the device when latency, privacy, or offline operation matters, then escalates only when a larger model is justified.</div>
+              </div>
+              <div class="slm-context-grid">
+                <article class="slm-context-card">
+                  <h4>Why local?</h4>
+                  <p>To lower latency, preserve privacy, and keep systems usable when connectivity or infrastructure assumptions break.</p>
+                </article>
+                <article class="slm-context-card">
+                  <h4>Why small models?</h4>
+                  <p>Because constrained hardware forces real choices around memory, throughput, and task-specific capability.</p>
+                </article>
+                <article class="slm-context-card">
+                  <h4>Why hybrid?</h4>
+                  <p>Because the best system is often the one that knows when edge is enough and when cloud adds real value.</p>
+                </article>
+              </div>
             </div>
           </aside>
         </div>
@@ -1596,7 +1629,7 @@ footer{
 <!-- ══ RECOMMENDATIONS ══ -->
 <section id="recommendations">
   <div class="section-head">
-    <div class="section-label">People who have worked with me directly</div>
+    <div class="section-label">Managers, teammates, and client feedback</div>
     <h2 class="section-title">RECOMMENDATIONS</h2>
   </div>
 
@@ -1620,6 +1653,17 @@ footer{
         <div>
           <div class="rec-author">Thaw Zin Aung Gyi</div>
           <div class="rec-role">CEO · Success Admissions · Ivy League + Oxford</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="rec-card">
+      <p class="rec-text">"My IT Help desk helper was extremely quick and knowledgeable about setting up my computer." "The support was efficient and clear, resulting in comprehensive answers to my questions and a complete resolution of the problem."</p>
+      <div class="rec-author-wrap">
+        <div class="rec-avatar">CF</div>
+        <div>
+          <div class="rec-author">Client Feedback</div>
+          <div class="rec-role">UNC walk-in survey responses · June–July 2026</div>
         </div>
       </div>
     </article>
@@ -1728,6 +1772,41 @@ footer{
 
 <div class="divider"></div>
 
+<!-- ══ ABOUT ══ -->
+<section id="about">
+  <div class="section-head">
+    <div class="section-label">// Technical depth first, personality still present</div>
+    <h2 class="section-title">ABOUT &amp; CONTACT</h2>
+  </div>
+
+  <div class="about-grid">
+    <article class="about-card">
+      <div class="project-tag">About</div>
+      <h3 class="about-title">I build systems that have to earn their intelligence.</h3>
+      <p class="about-copy">I’m a Computer Science student at UNC Chapel Hill drawn to the engineering side of AI: constrained inference, model routing, deployment reliability, and the interface between hardware limits and product decisions.</p>
+      <p class="about-copy">Outside of engineering, I still like keeping the site human. I care about storytelling, design quality, food, and building projects that feel technically sharp without becoming sterile.</p>
+    </article>
+
+    <article class="about-card" id="contact">
+      <div class="project-tag">Contact</div>
+      <h3 class="about-title">Open to AI/ML Engineer and SWE opportunities.</h3>
+      <div class="about-links">
+        <a href="./resume.pdf" target="_blank" rel="noreferrer" class="btn-link">View Resume</a>
+        <a href="mailto:hwasa@unc.edu" class="btn-link">Email</a>
+        <a href="https://github.com/sawwatihnin" target="_blank" rel="noreferrer" class="btn-link">GitHub</a>
+        <a href="https://www.linkedin.com/in/viviennehnin" target="_blank" rel="noreferrer" class="btn-link">LinkedIn</a>
+      </div>
+      <div class="about-meta">
+        <span>UNC Chapel Hill</span>
+        <span>SLMs · Edge AI · Systems</span>
+        <span>hwasa@unc.edu</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- ══ PLAYGROUND ══ -->
 <section id="playground" class="games-section">
   <div class="section-head">
@@ -1788,7 +1867,7 @@ footer{
 
 <footer>
   <div class="footer-logo">VIVIENNE HNIN</div>
-  <div class="footer-copy">© 2026 · UNC CHAPEL HILL · ALL SYSTEMS NOMINAL</div>
+  <div class="footer-copy">© 2026 · UNC CHAPEL HILL · AI/ML ENGINEER · SOFTWARE ENGINEER</div>
 </footer>
 
 </main>
@@ -1812,7 +1891,6 @@ footer{
     </div>
     <div id="cursor-grid" class="cursor-grid"></div>
     <div class="cursor-footer">
-      <div class="cursor-note">Choose a default pointer or one of the custom star cursors. You can reopen this any time from the settings button.</div>
       <div class="cursor-actions">
         <button id="cursor-reset-button" class="cursor-action" type="button">Reset To Default</button>
       </div>
@@ -1825,7 +1903,7 @@ footer{
   <div class="games-modal-shell" role="dialog" aria-modal="true" aria-labelledby="games-modal-title">
     <div class="games-modal-head">
       <div>
-        <h3 id="games-modal-title" class="games-modal-title">Play My Mini Games</h3>
+        <h3 id="games-modal-title" class="games-modal-title">Playground</h3>
         <p id="games-modal-description" class="games-modal-description"></p>
       </div>
       <button id="games-modal-close" class="games-modal-close" type="button" aria-label="Close game modal" onclick="window.VHGames && window.VHGames.modal && window.VHGames.modal.close()">Close</button>
@@ -2026,6 +2104,47 @@ cursorPicker?.addEventListener('click', event => {
   if(event.target === cursorPicker) closeCursorPicker();
 });
 
+const routeCopyByMode = {
+  edge: {
+    caption: 'Edge-first keeps requests close to the device when latency, privacy, or offline operation matters, then escalates only when a larger model is justified.',
+    primary: 'Local SLM Inference',
+    secondary: 'Jetson Edge Hardware',
+    fallback: 'Cloud Fallback When Needed'
+  },
+  cloud: {
+    caption: 'Cloud-first starts with remote capability, then keeps edge inference available for offline continuity, narrower tasks, or privacy-sensitive flows.',
+    primary: 'Cloud Model Gateway',
+    secondary: 'Local Fallback + Edge Continuity',
+    fallback: 'Jetson + Local APIs When Needed'
+  }
+};
+
+const routeCaption = document.getElementById('slm-routing-caption');
+const routeToggles = Array.from(document.querySelectorAll('.slm-toggle'));
+const routePrimary = document.querySelector('[data-route-node="primary"]');
+const routeSecondary = document.querySelector('[data-route-node="secondary"]');
+const routeFallback = document.querySelector('[data-route-node="fallback"]');
+
+function setRouteMode(mode){
+  const config = routeCopyByMode[mode];
+  if(!config || !routeCaption || !routePrimary || !routeSecondary || !routeFallback) return;
+
+  routeCaption.textContent = config.caption;
+  routePrimary.textContent = config.primary;
+  routeSecondary.textContent = config.secondary;
+  routeFallback.textContent = config.fallback;
+
+  routeToggles.forEach(button => {
+    const isActive = button.dataset.routeMode === mode;
+    button.classList.toggle('is-active', isActive);
+    button.setAttribute('aria-selected', isActive ? 'true' : 'false');
+  });
+}
+
+routeToggles.forEach(button => {
+  button.addEventListener('click', () => setRouteMode(button.dataset.routeMode));
+});
+
 const recommendationsToggle = document.getElementById('recommendations-toggle');
 const extraRecommendations = Array.from(document.querySelectorAll('.rec-card-extra'));
 recommendationsToggle?.addEventListener('click', () => {
@@ -2066,6 +2185,8 @@ recommendationsToggle?.addEventListener('click', () => {
   window.addEventListener('scroll', updateActiveLink, { passive: true });
   window.addEventListener('resize', updateActiveLink);
 })();
+
+setRouteMode('edge');
 
 // ── Photo placeholders: show when image fails ──
 document.querySelectorAll('.project-visual img').forEach(img => {
