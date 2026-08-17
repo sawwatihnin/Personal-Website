@@ -1274,100 +1274,90 @@ footer{
 
     <article class="project-card project-card-featured">
       <div class="project-body">
-        <div class="project-feature-layout">
-          <div class="project-feature-main">
-            <div class="project-tag">Small Language Models · Edge AI · NVIDIA Jetson · Efficient Inference</div>
+        <div class="project-feature-layout project-feature-layout-compact">
+          <div class="project-feature-main project-feature-main-compact">
+            <div class="project-tag">Small Language Models · Edge AI · NVIDIA Jetson</div>
             <h3 class="project-name">Edge SLM Systems @ Utilyst</h3>
-            <p class="project-desc">The future of AI isn't only bigger models. It's choosing the right model for the job and putting intelligence where it actually needs to run.</p>
-            <p class="project-note">At Utilyst, I worked on localized inference systems across constrained hardware and cloud environments, evaluating deployment tradeoffs around latency, memory, reliability, model quality, and when requests should stay local versus escalate.</p>
-            <div class="project-metrics">
-              <div class="metric-row">Built localized inference services with Docker, FastAPI, Python, and product-facing interfaces tied to real workflows</div>
-              <div class="metric-row">Optimized open-source LLMs for Jetson edge deployment while supporting geospatial features on PostgreSQL/PostGIS</div>
-              <div class="metric-row">Explored practical tradeoffs across Phi-family models, Gemma, Llama, local endpoints, and hybrid edge/cloud routing</div>
+            <p class="project-desc">The future of AI isn’t only bigger models. It’s choosing the right model for the job and putting intelligence where it actually needs to run.</p>
+            <p class="project-note">Built and evaluated localized SLM inference across constrained hardware and cloud environments, focusing on latency, memory, reliability, and edge-to-cloud routing.</p>
+            <div class="project-metrics project-metrics-compact">
+              <div class="metric-row">Built localized inference services using Docker, FastAPI, and Python for real application workflows.</div>
+              <div class="metric-row">Evaluated Phi, Gemma, and Llama-family models across local endpoints and hybrid edge/cloud routing.</div>
             </div>
-            <div class="project-actions">
-              <a href="#experience" class="btn-link">See Experience</a>
-              <a href="./resume.pdf" target="_blank" rel="noreferrer" class="btn-link">View Resume</a>
-            </div>
-            <div class="stack-tags">Phi-family · Gemma · Llama 3.2 · Jetson Orin Nano · Ollama · Docker · FastAPI · Python · PostgreSQL/PostGIS</div>
-            <figure class="jetson-corner-proof" aria-label="Jetson Orin Nano hardware image">
-              <img src="/images/jetson-orin-nano.png" alt="NVIDIA Jetson Orin Nano development board used for edge inference testing">
-            </figure>
           </div>
-          <aside class="project-feature-side">
-            <figure class="jetson-proof">
+          <aside class="project-feature-side project-feature-side-compact">
+            <figure class="jetson-proof jetson-proof-compact">
               <img src="/images/jetson-orin-nano.png" alt="NVIDIA Jetson Orin Nano edge device used as the deployment target" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-              <figcaption class="jetson-proof-caption">
-                <strong>Hardware proof</strong>
-                <span>Jetson Orin Nano as the edge deployment target for constrained local inference and routing evaluation.</span>
+              <figcaption class="jetson-proof-caption jetson-proof-caption-compact">
+                <strong>NVIDIA Jetson Orin Nano</strong>
+                <span>Edge deployment target for localized inference</span>
               </figcaption>
               <div class="jetson-proof-fallback" style="display:none">
                 <div class="jetson-proof-label">NVIDIA Jetson Orin Nano</div>
-                <p>Edge deployment target used to reason about constrained inference, latency budgets, and when local systems should escalate to cloud models.</p>
+                <p>Edge deployment target for localized inference.</p>
               </div>
             </figure>
-            <div class="slm-evidence">
-              <div class="slm-evidence-card">
-                <span class="slm-evidence-label">Models Evaluated</span>
-                <strong>Phi-family, Gemma, Llama</strong>
-              </div>
-              <div class="slm-evidence-card">
-                <span class="slm-evidence-label">Deployment Target</span>
-                <strong>Jetson Orin Nano</strong>
-              </div>
-              <div class="slm-evidence-card">
-                <span class="slm-evidence-label">Routing Modes</span>
-                <strong>Local inference + cloud fallback</strong>
-              </div>
-              <div class="slm-evidence-card">
-                <span class="slm-evidence-label">Core Stack</span>
-                <strong>Docker, FastAPI, PostGIS, Python</strong>
-              </div>
-            </div>
-            <div class="slm-routing" aria-label="Interactive SLM routing diagram">
-              <div class="slm-routing-head">
-                <div>
-                  <div class="slm-routing-title">Routing Modes</div>
-                  <p class="slm-routing-copy">Toggle between how requests are handled when the system prioritizes local execution versus default cloud capability.</p>
-                </div>
-                <div class="slm-routing-switch" role="tablist" aria-label="Architecture modes">
-                  <button type="button" class="slm-toggle is-active" data-route-mode="edge" aria-selected="true">Edge-First</button>
-                  <button type="button" class="slm-toggle" data-route-mode="cloud" aria-selected="false">Cloud-First</button>
-                </div>
-              </div>
-              <div class="slm-diagram" aria-live="polite">
-                <div class="slm-node-group">
-                  <div class="slm-node">User / App</div>
-                  <div class="slm-arrow">↓</div>
-                  <div class="slm-node">Request Router</div>
-                  <div class="slm-arrow">↓</div>
-                  <div class="slm-node" data-route-node="primary">Local SLM Inference</div>
-                  <div class="slm-arrow">↓</div>
-                  <div class="slm-node" data-route-node="secondary">Jetson Edge Hardware</div>
-                  <div class="slm-arrow">↓</div>
-                  <div class="slm-node slm-node-muted" data-route-node="fallback">Cloud Fallback When Needed</div>
-                </div>
-                <div class="slm-diagram-caption" id="slm-routing-caption">Edge-first keeps requests close to the device when latency, privacy, or offline operation matters, then escalates only when a larger model is justified.</div>
-              </div>
-              <div class="slm-context-grid">
-                <article class="slm-context-card">
-                  <h4>Why local?</h4>
-                  <p>To lower latency, preserve privacy, and keep systems usable when connectivity or infrastructure assumptions break.</p>
-                </article>
-                <article class="slm-context-card">
-                  <h4>Why small models?</h4>
-                  <p>Because constrained hardware forces real choices around memory, throughput, and task-specific capability.</p>
-                </article>
-                <article class="slm-context-card">
-                  <h4>Why hybrid?</h4>
-                  <p>Because the best system is often the one that knows when edge is enough and when cloud adds real value.</p>
-                </article>
-              </div>
-            </div>
           </aside>
         </div>
+        <div class="slm-evidence-strip" aria-label="SLM evidence summary">
+          <div class="slm-evidence-item"><span>Models</span><strong>Phi · Gemma · Llama</strong></div>
+          <div class="slm-evidence-divider" aria-hidden="true"></div>
+          <div class="slm-evidence-item"><span>Hardware</span><strong>Jetson Orin Nano</strong></div>
+          <div class="slm-evidence-divider" aria-hidden="true"></div>
+          <div class="slm-evidence-item"><span>Routing</span><strong>Local + Cloud</strong></div>
+          <div class="slm-evidence-divider" aria-hidden="true"></div>
+          <div class="slm-evidence-item"><span>Stack</span><strong>Docker · FastAPI · Python</strong></div>
+        </div>
+        <div class="slm-routing slm-routing-compact" aria-label="Interactive SLM routing diagram">
+          <div class="slm-routing-head slm-routing-head-compact">
+            <div class="slm-routing-title-wrap">
+              <div class="slm-routing-title">Routing mode</div>
+            </div>
+            <div class="slm-routing-switch" role="tablist" aria-label="Architecture modes">
+              <button type="button" class="slm-toggle is-active" data-route-mode="edge" aria-selected="true">Edge-First</button>
+              <button type="button" class="slm-toggle" data-route-mode="cloud" aria-selected="false">Cloud-First</button>
+            </div>
+          </div>
+          <div class="slm-diagram slm-diagram-branching" aria-live="polite">
+            <div class="slm-node">User / App</div>
+            <div class="slm-arrow">↓</div>
+            <div class="slm-node">Request Router</div>
+            <div class="slm-branch-row">
+              <div class="slm-branch slm-branch-local is-emphasis" data-route-branch="local">
+                <div class="slm-branch-arrow">↙</div>
+                <div class="slm-node" data-route-node="primary">Local SLM</div>
+                <div class="slm-arrow">↓</div>
+                <div class="slm-node" data-route-node="secondary">Jetson Orin Nano</div>
+              </div>
+              <div class="slm-branch slm-branch-cloud" data-route-branch="cloud">
+                <div class="slm-branch-arrow">↘</div>
+                <div class="slm-node slm-node-muted" data-route-node="fallback">Cloud Model</div>
+                <div class="slm-branch-destination-row" aria-label="Cloud model destinations">
+                  <div class="slm-branch-destination">
+                    <div class="slm-arrow">↓</div>
+                    <div class="slm-branch-destinations">Google Colab</div>
+                  </div>
+                  <div class="slm-branch-destination">
+                    <div class="slm-arrow">↓</div>
+                    <div class="slm-branch-destinations">Hugging Face</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="slm-diagram-caption" id="slm-routing-caption">Edge-first keeps requests close to the device when latency, privacy, or offline operation matters, then escalates only when a larger model is justified.</div>
+          </div>
+          <div class="slm-context-inline">
+            <span><strong>Why local?</strong> Lower latency, preserve privacy, and stay usable offline.</span>
+            <span><strong>Why small models?</strong> Constrained hardware forces real tradeoffs.</span>
+            <span><strong>Why hybrid?</strong> Route up only when cloud adds real value.</span>
+          </div>
+        </div>
       </div>
-    </article>
+      <div class="project-actions project-actions-compact">
+        <a href="#experience" class="btn-link">View Experience</a>
+      </div>
+    </div>
+  </article>
 
     <article class="project-card">
       <div class="project-body">
@@ -2107,15 +2097,15 @@ cursorPicker?.addEventListener('click', event => {
 const routeCopyByMode = {
   edge: {
     caption: 'Edge-first keeps requests close to the device when latency, privacy, or offline operation matters, then escalates only when a larger model is justified.',
-    primary: 'Local SLM Inference',
-    secondary: 'Jetson Edge Hardware',
-    fallback: 'Cloud Fallback When Needed'
+    primary: 'Local SLM',
+    secondary: 'Jetson Orin Nano',
+    fallback: 'Cloud Model'
   },
   cloud: {
     caption: 'Cloud-first starts with remote capability, then keeps edge inference available for offline continuity, narrower tasks, or privacy-sensitive flows.',
-    primary: 'Cloud Model Gateway',
-    secondary: 'Local Fallback + Edge Continuity',
-    fallback: 'Jetson + Local APIs When Needed'
+    primary: 'Local SLM',
+    secondary: 'Jetson Orin Nano',
+    fallback: 'Cloud Model'
   }
 };
 
@@ -2124,6 +2114,8 @@ const routeToggles = Array.from(document.querySelectorAll('.slm-toggle'));
 const routePrimary = document.querySelector('[data-route-node="primary"]');
 const routeSecondary = document.querySelector('[data-route-node="secondary"]');
 const routeFallback = document.querySelector('[data-route-node="fallback"]');
+const routeLocalBranch = document.querySelector('[data-route-branch="local"]');
+const routeCloudBranch = document.querySelector('[data-route-branch="cloud"]');
 
 function setRouteMode(mode){
   const config = routeCopyByMode[mode];
@@ -2139,6 +2131,11 @@ function setRouteMode(mode){
     button.classList.toggle('is-active', isActive);
     button.setAttribute('aria-selected', isActive ? 'true' : 'false');
   });
+
+  const edgeActive = mode === 'edge';
+  routeLocalBranch?.classList.toggle('is-emphasis', edgeActive);
+  routeCloudBranch?.classList.toggle('is-emphasis', !edgeActive);
+  routeFallback.classList.toggle('slm-node-muted', edgeActive);
 }
 
 routeToggles.forEach(button => {
