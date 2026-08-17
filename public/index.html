@@ -1221,28 +1221,37 @@ footer{
     <div>
       <div class="eyebrow">// UNC Chapel Hill — CS · Neuroscience · Data Science</div>
       <h1 class="hero-name">VIVIENNE<br><span>HNIN</span></h1>
-      <div class="hero-role">AI Engineer · Food Enthusiast · Explorer </div>
+      <div class="hero-role">AI Engineer building efficient intelligence from cloud to edge.</div>
 
       <div class="hero-links">
-        <a href="https://www.linkedin.com/in/viviennehnin" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="./resume.pdf" target="_blank" rel="noreferrer" class="hero-link-primary">View Resume</a>
         <a href="https://github.com/sawwatihnin" target="_blank" rel="noreferrer">GitHub</a>
-        <a href="mailto:hwasa@unc.edu">Contact</a>
-        <a href="#projects">Projects</a>
+        <a href="https://www.linkedin.com/in/viviennehnin" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="#projects">Selected Work</a>
         <a href="#experience">Work</a>
+        <a href="mailto:hwasa@unc.edu">Contact</a>
         <a href="#games">Play Viv's Mini Games</a>
+      </div>
+
+      <div class="hero-signal-row" aria-label="AI engineering focus areas">
+        <span class="hero-signal">Small Language Models</span>
+        <span class="hero-signal">Edge AI</span>
+        <span class="hero-signal">Efficient Inference</span>
+        <span class="hero-signal">AI Systems</span>
+        <span class="hero-signal">NVIDIA Jetson</span>
       </div>
 
       <div class="tech-line">C++ · Java · JavaScript · TypeScript · Python · Swift · R · HTML · CSS</div>
 
       <p class="hero-bio">
-        Hello, there! (Kenobi reference) I'm a Computer Science junior at UNC Chapel Hill, and I focus on autonomy, systems engineering, and applied research while studying Neuroscience and Data Science alongside CS.
+        I'm a Computer Science student at UNC Chapel Hill building and evaluating Small Language Models, edge AI systems, and full-stack AI infrastructure across constrained hardware and cloud environments.
       </p>
       <p class="hero-bio">
-        I was featured in <em>Business Insider</em> for breaking into tech, I build an autonomous drone platform as a VTOL engineer at <strong>Carolina Skylabs</strong>, I serve as VP of Marketing at <strong>R.A.M Engineering</strong>, and I'm an incoming AI Engineering Intern at <strong>Utilyst</strong>.
+        I work across localized inference, Dockerized services, geospatial backends, and embedded systems, with hands-on experience spanning Phi-family models, Jetson deployment, FastAPI, React, and cloud-integrated AI products.
       </p>
 
       <div class="hero-callout">
-        <strong>MEGAMIND!</strong> — dementia detection system scouted by Amazon · <strong>Northern Cardinal</strong> VTOL drone, X-1 Thorn inspired · <strong>600+ applications</strong> to break into tech
+        <strong>Currently:</strong> building edge-aware AI systems at <strong>Utilyst</strong>, embedded flight software for <strong>Northern Cardinal</strong>, and recruiter-ready full-stack projects that emphasize latency, privacy, and reliable inference under real constraints.
       </div>
     </div>
 
@@ -1267,10 +1276,46 @@ footer{
 <!-- ══ PROJECTS ══ -->
 <section id="projects">
   <div class="section-head">
-    <h2 class="section-title">PROJECTS</h2>
+    <div class="section-label">// AI Systems · Embedded · Full-Stack</div>
+    <h2 class="section-title">SELECTED WORK</h2>
   </div>
 
   <div class="project-list">
+
+    <!-- UTILYST -->
+    <article class="project-card project-card-featured">
+      <div class="project-body">
+        <div class="project-tag">Small Language Models · Edge AI · NVIDIA Jetson · Efficient Inference</div>
+        <h3 class="project-name">Edge SLM Systems @ Utilyst</h3>
+        <p class="project-desc">Built and evaluated localized AI inference systems across constrained hardware and cloud environments, focusing on deployment tradeoffs around latency, memory, model quality, and routing behavior instead of defaulting every request to the largest remote model.</p>
+        <p class="project-note">I'm especially interested in AI systems where privacy, cost, reliability, offline operation, and hardware limits matter just as much as model capability, so I like designing for edge and cloud together instead of treating them as separate worlds.</p>
+        <div class="project-metrics">
+          <div class="metric-row">Worked on localized inference services using Docker, FastAPI, Python, and React-backed product infrastructure</div>
+          <div class="metric-row">Optimized open-source LLMs for Jetson edge deployment while supporting geospatial features on PostgreSQL/PostGIS</div>
+          <div class="metric-row">Explored practical tradeoffs across Phi-family models, Gemma, Llama, local endpoints, and hybrid edge/cloud routing</div>
+        </div>
+        <div class="project-actions">
+          <a href="#experience" class="btn-link">See Experience</a>
+          <a href="./resume.pdf" target="_blank" rel="noreferrer" class="btn-link">View Resume</a>
+        </div>
+        <div class="stack-tags">Phi-family · Gemma · Llama 3.2 · Jetson Orin Nano · Ollama · Docker · FastAPI · Python · PostgreSQL/PostGIS</div>
+      </div>
+    </article>
+
+    <!-- NORTHERN CARDINAL -->
+    <article class="project-card">
+      <div class="project-body">
+        <div class="project-tag">Embedded Systems · Autonomy · Control Theory</div>
+        <h3 class="project-name">NC-1 The Northern Cardinal — Embedded Flight Control</h3>
+        <p class="project-desc">State-driven flight control software for a VTOL aircraft spanning hover, transition, and forward-flight modes. Built at Carolina Skylabs with an emphasis on reliability, safe mode switching, and observability for autonomous behavior.</p>
+        <div class="project-metrics">
+          <div class="metric-row">Prevented multi-mode coordination failures through FSM-based flight logic</div>
+          <div class="metric-row">Used closed-loop feedback from sensor data to improve stability and responsiveness</div>
+          <div class="metric-row">Integrated sensor-driven control loops for safer hover-to-forward-flight transitions</div>
+        </div>
+        <div class="stack-tags">C++ · Embedded · Control Systems · Python</div>
+      </div>
+    </article>
 
     <!-- MEGAMIND -->
     <article class="project-card">
@@ -1292,20 +1337,6 @@ footer{
       </div>
     </article>
 
-    <!-- NORTHERN CARDINAL -->
-    <article class="project-card">
-      <div class="project-body">
-        <div class="project-tag">Embedded Systems · Autonomy · Control Theory</div>
-        <h3 class="project-name">NC-1 The Northern Cardinal — Embedded Flight Control</h3>
-        <p class="project-desc">State-driven flight control software for a VTOL aircraft spanning hover, transition, and forward-flight modes. Built at Carolina Skylabs, inspired by the X-1 Thorn.</p>
-        <div class="project-metrics">
-          <div class="metric-row">Prevented multi-mode coordination failures via FSM-based flight logic</div>
-          <div class="metric-row">Closed-loop feedback using sensor data for stability and responsiveness</div>
-          <div class="metric-row">Integrated FSM logic with sensor-driven loops for safe mode transitions</div>
-        <div class="stack-tags">C++ · Embedded · Control Systems · Python</div>
-      </div>
-    </article>
-
     <!-- MARS ROVER -->
     <article class="project-card">
       <div class="project-body">
@@ -1318,7 +1349,7 @@ footer{
           <div class="metric-row">Real-time React layer for demo-ready system-level observability</div>
         </div>
         <div class="project-actions">
-          <a href="linkedin.com/feed/update/urn:li:activity:7417249168416477184/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_projects_details%3BrT6XPgZPQH2NLaY2vxnblw%3D%3D" class="btn-link">Demo</a>
+          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7417249168416477184/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_projects_details%3BrT6XPgZPQH2NLaY2vxnblw%3D%3D" class="btn-link">Demo</a>
           <a href="https://mars-simulator-final.vercel.app/" class="btn-link">View</a>
           <a href="https://www.linkedin.com/in/viviennehnin/overlay/Project/1637914127/treasury/?profileId=ACoAAEFznkkBS5p-TnO8_0cUQN-O0-NRwXJJ6XM" class="btn-link">State Machine</a>
         </div>
@@ -1338,7 +1369,7 @@ footer{
           <div class="metric-row">Real-time geospatial filtering across resource categories</div>
         </div>
         <div class="project-actions">
-          <a href="linkedin.com/feed/update/urn:li:activity:7433636443069071360/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_projects_details%3BrT6XPgZPQH2NLaY2vxnblw%3D%3D" class="btn-link">DEMO</a>
+          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7433636443069071360/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_projects_details%3BrT6XPgZPQH2NLaY2vxnblw%3D%3D" class="btn-link">DEMO</a>
           <a href="https://devpost.com/software/gratitude-afropix-26" class="btn-link">Devpost</a>
         </div>
         <div class="stack-tags">Next.js · React · Maps API · AI</div>
@@ -1376,7 +1407,7 @@ footer{
           <div class="metric-row">Full-stack React + Next.js with live webcam pipeline</div>
         </div>
         <div class="project-actions">
-          <a href="linkedin.com/feed/update/urn:li:activity:7426812741325131776/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_projects_details%3BrT6XPgZPQH2NLaY2vxnblw%3D%3D" class="btn-link">Demo</a>
+          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7426812741325131776/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_projects_details%3BrT6XPgZPQH2NLaY2vxnblw%3D%3D" class="btn-link">Demo</a>
           <a href="https://admirable-croissant-dc549f.netlify.app/booth/name" class="btn-link">View</a>
           <a href="https://www.linkedin.com/in/viviennehnin/overlay/Project/1375384900/treasury/?profileId=ACoAAEFznkkBS5p-TnO8_0cUQN-O0-NRwXJJ6XM" class="btn-link">FSM</a>
         </div>
@@ -1469,10 +1500,38 @@ footer{
 <!-- ══ EXPERIENCE ══ -->
 <section id="experience">
   <div class="section-head">
+    <div class="section-label">// Engineering first, then product execution</div>
     <h2 class="section-title">EXPERIENCE</h2>
   </div>
 
   <div class="exp-grid">
+    <div>
+      <div class="section-label" style="margin-bottom:20px">Engineering</div>
+      <div class="timeline">
+        <div class="t-item">
+          <div class="t-year">2026</div>
+          <div class="t-role">AI Engineering Intern</div>
+          <div class="t-company">Utilyst Inc. · Chapel Hill, NC</div>
+          <div class="t-desc">Built localized AI and geospatial product infrastructure using PostgreSQL/PostGIS, FastAPI, React, Python, and Docker. Worked on small-model inference workflows for Jetson edge deployment, with attention to constrained compute, model optimization, and when local systems should route to stronger cloud models.</div>
+          <div class="t-badges"><span class="badge">Small Language Models</span><span class="badge">Jetson</span><span class="badge">Docker</span><span class="badge">PostGIS</span></div>
+        </div>
+        <div class="t-item">
+          <div class="t-year">2025</div>
+          <div class="t-role">VTOL Project Engineer</div>
+          <div class="t-company">Carolina Skylabs · UNC Chapel Hill</div>
+          <div class="t-desc">Built autonomous drone platform infrastructure for The Northern Cardinal, designing FSM-based flight control systems and embedded sensor pipelines for stable multi-mode flight.</div>
+          <div class="t-badges"><span class="badge">Embedded</span><span class="badge">Autonomy</span><span class="badge">C++</span></div>
+        </div>
+        <div class="t-item">
+          <div class="t-year">2025</div>
+          <div class="t-role">IT Technician</div>
+          <div class="t-company">UNC Chapel Hill &amp; Kenan-Flagler Business School · Chapel Hill, NC</div>
+          <div class="t-desc">Managed device lifecycle for 7,900+ users across Windows and macOS, resolving MFA, account lockout, and identity-access incidents while triaging security and network issues through SolarWinds Service Desk.</div>
+          <div class="t-badges"><span class="badge">Windows/macOS</span><span class="badge">MFA</span><span class="badge">SolarWinds</span></div>
+        </div>
+      </div>
+    </div>
+
     <div>
       <div class="section-label" style="margin-bottom:20px">Product &amp; Operations</div>
       <div class="timeline">
@@ -1484,45 +1543,18 @@ footer{
           <div class="t-badges"><span class="badge">Retention</span><span class="badge">User Research</span><span class="badge">A/B Testing</span></div>
         </div>
         <div class="t-item">
-          <div class="t-year">2023</div>
-          <div class="t-role">Partnership Associate</div>
-          <div class="t-company">Success Education Ventures · Yangon, Burma</div>
-          <div class="t-desc">Built international partnership pipeline. Secured 3+ school contracts through value-aligned positioning. Launched digital campaigns generating 250K+ interactions.</div>
-          <div class="t-badges"><span class="badge">Partnerships</span><span class="badge">Growth</span><span class="badge">GTM</span></div>
-        </div>
-        <div class="t-item">
           <div class="t-year">2024</div>
           <div class="t-role">Data Analyst Intern</div>
           <div class="t-company">Nawarat Autoparts · Yangon, Burma</div>
           <div class="t-desc">Built ETL pipelines in Python and SQL to process 50,000+ records, reducing reporting time by 80% and errors by 30%, while designing demand forecasting models that cut stock shortages by 25%.</div>
           <div class="t-badges"><span class="badge">ETL</span><span class="badge">Python</span><span class="badge">SQL</span></div>
         </div>
-      </div>
-    </div>
-
-    <div>
-      <div class="section-label" style="margin-bottom:20px">Engineering</div>
-      <div class="timeline">
         <div class="t-item">
-          <div class="t-year">2026</div>
-          <div class="t-role">AI Engineering Intern</div>
-          <div class="t-company">Utilyst Inc. · Chapel Hill, NC</div>
-          <div class="t-desc">Developed geospatial infrastructure features on WorldGraph using PostgreSQL/PostGIS, FastAPI, React, and Python; containerized inference services with Docker; and optimized open-source LLMs for Jetson edge deployment.</div>
-          <div class="t-badges"><span class="badge">PostGIS</span><span class="badge">Docker</span><span class="badge">LLMOps</span></div>
-        </div>
-        <div class="t-item">
-          <div class="t-year">2025</div>
-          <div class="t-role">IT Technician</div>
-          <div class="t-company">UNC Chapel Hill &amp; Kenan-Flagler Business School · Chapel Hill, NC</div>
-          <div class="t-desc">Managed device lifecycle for 7,900+ users across Windows and macOS, resolving MFA, account lockout, and identity-access incidents while triaging security and network issues through SolarWinds Service Desk.</div>
-          <div class="t-badges"><span class="badge">Windows/macOS</span><span class="badge">MFA</span><span class="badge">SolarWinds</span></div>
-        </div>
-        <div class="t-item">
-          <div class="t-year">2025</div>
-          <div class="t-role">VTOL Project Engineer</div>
-          <div class="t-company">Carolina Skylabs · UNC Chapel Hill</div>
-          <div class="t-desc">Built autonomous drone platform infrastructure for The Northern Cardinal, designing FSM-based flight control systems and embedded sensor pipelines for stable multi-mode flight.</div>
-          <div class="t-badges"><span class="badge">Embedded</span><span class="badge">Autonomy</span><span class="badge">C++</span></div>
+          <div class="t-year">2023</div>
+          <div class="t-role">Partnership Associate</div>
+          <div class="t-company">Success Education Ventures · Yangon, Burma</div>
+          <div class="t-desc">Built international partnership pipelines, secured 3+ school contracts through value-aligned positioning, and launched digital campaigns that generated 250K+ interactions.</div>
+          <div class="t-badges"><span class="badge">Partnerships</span><span class="badge">Growth</span><span class="badge">GTM</span></div>
         </div>
       </div>
     </div>
