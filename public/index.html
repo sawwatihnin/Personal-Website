@@ -1206,9 +1206,10 @@ footer{
   <ul class="nav-links">
     <li><a href="#projects">Projects</a></li>
     <li><a href="#experience">Work</a></li>
-    <li><a href="#games">Play Viv's Mini Games</a></li>
     <li><a href="#media">Media</a></li>
     <li><a href="#recommendations">Recommendations</a></li>
+    <li><a href="#more-projects">More Projects</a></li>
+    <li><a href="#playground">Playground</a></li>
     <li><a href="mailto:hwasa@unc.edu">Contact</a></li>
   </ul>
 </nav>
@@ -1225,12 +1226,10 @@ footer{
 
       <div class="hero-links">
         <a href="mailto:hwasa@unc.edu?subject=Request%20Resume" class="hero-link-primary">Request Resume</a>
+        <a href="#projects" class="hero-link-secondary">Selected Work</a>
         <a href="https://github.com/sawwatihnin" target="_blank" rel="noreferrer">GitHub</a>
         <a href="https://www.linkedin.com/in/viviennehnin" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a href="#projects">Selected Work</a>
-        <a href="#experience">Work</a>
         <a href="mailto:hwasa@unc.edu">Contact</a>
-        <a href="#games">Play Viv's Mini Games</a>
       </div>
 
       <div class="hero-signal-row" aria-label="AI engineering focus areas">
@@ -1282,27 +1281,61 @@ footer{
 
   <div class="project-list">
 
-    <!-- UTILYST -->
     <article class="project-card project-card-featured">
       <div class="project-body">
-        <div class="project-tag">Small Language Models · Edge AI · NVIDIA Jetson · Efficient Inference</div>
-        <h3 class="project-name">Edge SLM Systems @ Utilyst</h3>
-        <p class="project-desc">Built and evaluated localized AI inference systems across constrained hardware and cloud environments, focusing on deployment tradeoffs around latency, memory, model quality, and routing behavior instead of defaulting every request to the largest remote model.</p>
-        <p class="project-note">I'm especially interested in AI systems where privacy, cost, reliability, offline operation, and hardware limits matter just as much as model capability, so I like designing for edge and cloud together instead of treating them as separate worlds.</p>
-        <div class="project-metrics">
-          <div class="metric-row">Worked on localized inference services using Docker, FastAPI, Python, and React-backed product infrastructure</div>
-          <div class="metric-row">Optimized open-source LLMs for Jetson edge deployment while supporting geospatial features on PostgreSQL/PostGIS</div>
-          <div class="metric-row">Explored practical tradeoffs across Phi-family models, Gemma, Llama, local endpoints, and hybrid edge/cloud routing</div>
+        <div class="project-feature-layout">
+          <div class="project-feature-main">
+            <div class="project-tag">Small Language Models · Edge AI · NVIDIA Jetson · Efficient Inference</div>
+            <h3 class="project-name">Edge SLM Systems @ Utilyst</h3>
+            <p class="project-desc">Built and evaluated localized AI inference systems across constrained hardware and cloud environments, focusing on deployment tradeoffs around latency, memory, model quality, and routing behavior instead of defaulting every request to the largest remote model.</p>
+            <p class="project-note">I’m interested in AI systems where sending every request to the largest cloud model is not the optimal answer. The work that excites me most sits inside the tradeoffs: latency, privacy, offline reliability, hardware limits, and knowing when edge and cloud should collaborate instead of compete.</p>
+            <div class="project-metrics">
+              <div class="metric-row">Built localized inference services with Docker, FastAPI, Python, and product-facing interfaces tied to real workflows</div>
+              <div class="metric-row">Optimized open-source LLMs for Jetson edge deployment while supporting geospatial features on PostgreSQL/PostGIS</div>
+              <div class="metric-row">Explored practical tradeoffs across Phi-family models, Gemma, Llama, local endpoints, and hybrid edge/cloud routing</div>
+            </div>
+            <div class="project-actions">
+              <a href="#experience" class="btn-link">See Experience</a>
+              <a href="mailto:hwasa@unc.edu?subject=Request%20Resume" class="btn-link">Request Resume</a>
+            </div>
+            <div class="stack-tags">Phi-family · Gemma · Llama 3.2 · Jetson Orin Nano · Ollama · Docker · FastAPI · Python · PostgreSQL/PostGIS</div>
+          </div>
+          <aside class="project-feature-side">
+            <div class="slm-evidence">
+              <div class="slm-evidence-card">
+                <span class="slm-evidence-label">Models Evaluated</span>
+                <strong>Phi-family, Gemma, Llama</strong>
+              </div>
+              <div class="slm-evidence-card">
+                <span class="slm-evidence-label">Deployment Target</span>
+                <strong>Jetson Orin Nano</strong>
+              </div>
+              <div class="slm-evidence-card">
+                <span class="slm-evidence-label">Routing Modes</span>
+                <strong>Local inference + cloud fallback</strong>
+              </div>
+              <div class="slm-evidence-card">
+                <span class="slm-evidence-label">Core Stack</span>
+                <strong>Docker, FastAPI, PostGIS, Python</strong>
+              </div>
+            </div>
+            <div class="slm-diagram" aria-label="Edge SLM architecture overview">
+              <div class="slm-node">User / App</div>
+              <div class="slm-arrow">↓</div>
+              <div class="slm-node">Request Router</div>
+              <div class="slm-arrow">↓</div>
+              <div class="slm-node">Local SLM Inference</div>
+              <div class="slm-arrow">↓</div>
+              <div class="slm-node">Jetson Edge Hardware</div>
+              <div class="slm-arrow">↓</div>
+              <div class="slm-node slm-node-muted">Cloud Fallback When Needed</div>
+              <div class="slm-diagram-caption">WorldGraph · local APIs · memory/context · Dockerized services</div>
+            </div>
+          </aside>
         </div>
-        <div class="project-actions">
-          <a href="#experience" class="btn-link">See Experience</a>
-          <a href="mailto:hwasa@unc.edu?subject=Request%20Resume" class="btn-link">Request Resume</a>
-        </div>
-        <div class="stack-tags">Phi-family · Gemma · Llama 3.2 · Jetson Orin Nano · Ollama · Docker · FastAPI · Python · PostgreSQL/PostGIS</div>
       </div>
     </article>
 
-    <!-- NORTHERN CARDINAL -->
     <article class="project-card">
       <div class="project-body">
         <div class="project-tag">Embedded Systems · Autonomy · Control Theory</div>
@@ -1311,13 +1344,11 @@ footer{
         <div class="project-metrics">
           <div class="metric-row">Prevented multi-mode coordination failures through FSM-based flight logic</div>
           <div class="metric-row">Used closed-loop feedback from sensor data to improve stability and responsiveness</div>
-          <div class="metric-row">Integrated sensor-driven control loops for safer hover-to-forward-flight transitions</div>
         </div>
         <div class="stack-tags">C++ · Embedded · Control Systems · Python</div>
       </div>
     </article>
 
-    <!-- MEGAMIND -->
     <article class="project-card">
       <div class="project-body">
         <div class="project-tag">Neural Systems · AWS · Computer Vision</div>
@@ -1326,7 +1357,6 @@ footer{
         <div class="project-metrics">
           <div class="metric-row">Scouted by Amazon to join AWS Academia</div>
           <div class="metric-row">CV + WebSocket pipeline for live metric streaming</div>
-          <div class="metric-row">Low-latency backend on EC2 + DynamoDB for persistent storage</div>
         </div>
         <div class="project-actions">
           <a href="https://www.linkedin.com/in/viviennehnin/details/projects/" class="btn-link">Demo</a>
@@ -1337,7 +1367,6 @@ footer{
       </div>
     </article>
 
-    <!-- MARS ROVER -->
     <article class="project-card">
       <div class="project-body">
         <div class="project-tag">Algorithms · Path Planning · Visualization</div>
@@ -1346,46 +1375,313 @@ footer{
         <div class="project-metrics">
           <div class="metric-row">A* + Dijkstra in C++ for efficient grid-based route selection</div>
           <div class="metric-row">Modular planning + visualization architecture to eliminate debug bottlenecks</div>
-          <div class="metric-row">Real-time React layer for demo-ready system-level observability</div>
         </div>
         <div class="project-actions">
           <a href="https://www.linkedin.com/feed/update/urn:li:activity:7417249168416477184/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_projects_details%3BrT6XPgZPQH2NLaY2vxnblw%3D%3D" class="btn-link">Demo</a>
           <a href="https://mars-simulator-final.vercel.app/" class="btn-link">View</a>
-          <a href="https://www.linkedin.com/in/viviennehnin/overlay/Project/1637914127/treasury/?profileId=ACoAAEFznkkBS5p-TnO8_0cUQN-O0-NRwXJJ6XM" class="btn-link">State Machine</a>
         </div>
         <div class="stack-tags">C++ · JavaScript · React · Algorithms</div>
       </div>
     </article>
 
-    <!-- GRATITUDE -->
     <article class="project-card">
       <div class="project-body">
         <div class="project-tag">Community · AI Classification · Maps</div>
-        <h3 class="project-name">Gratitude — Community Resource Discovery Platform (Afropix 1st place winners)</h3>
-        <p class="project-desc">Local discovery platform connecting users to nearby events, volunteering, food assistance, and community resources via map, list, and split-view interfaces with AI classification.</p>
+        <h3 class="project-name">Gratitude — Community Resource Discovery Platform</h3>
+        <p class="project-desc">Local discovery platform connecting users to nearby events, volunteering, food assistance, and community resources through map, list, and split-view interfaces supported by AI classification.</p>
         <div class="project-metrics">
           <div class="metric-row">AI-assisted resource classification pipeline</div>
-          <div class="metric-row">Three interactive view modes for different discovery contexts</div>
           <div class="metric-row">Real-time geospatial filtering across resource categories</div>
         </div>
         <div class="project-actions">
-          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7433636443069071360/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_projects_details%3BrT6XPgZPQH2NLaY2vxnblw%3D%3D" class="btn-link">DEMO</a>
+          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7433636443069071360/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_projects_details%3BrT6XPgZPQH2NLaY2vxnblw%3D%3D" class="btn-link">Demo</a>
           <a href="https://devpost.com/software/gratitude-afropix-26" class="btn-link">Devpost</a>
         </div>
         <div class="stack-tags">Next.js · React · Maps API · AI</div>
       </div>
     </article>
 
-    <!-- EMPL*YMENT -->
-    <article class="project-card">
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ EXPERIENCE ══ -->
+<section id="experience">
+  <div class="section-head">
+    <div class="section-label">// Engineering first, then product execution</div>
+    <h2 class="section-title">EXPERIENCE</h2>
+  </div>
+
+  <div class="exp-grid">
+    <div>
+      <div class="section-label" style="margin-bottom:20px">Engineering</div>
+      <div class="timeline">
+        <div class="t-item t-item-featured">
+          <div class="t-year">2026</div>
+          <div class="t-role">AI Engineering Intern</div>
+          <div class="t-company">Utilyst Inc. · Chapel Hill, NC</div>
+          <div class="t-desc">Built localized AI and geospatial product infrastructure using PostgreSQL/PostGIS, FastAPI, React, Python, and Docker. Worked on small-model inference workflows for Jetson edge deployment, with attention to constrained compute, model optimization, and when local systems should route to stronger cloud models.</div>
+          <div class="t-badges"><span class="badge">SLMs</span><span class="badge">Jetson</span><span class="badge">Docker</span><span class="badge">FastAPI</span><span class="badge">PostGIS</span><span class="badge">Python</span></div>
+        </div>
+        <div class="t-item">
+          <div class="t-year">2025</div>
+          <div class="t-role">VTOL Project Engineer</div>
+          <div class="t-company">Carolina Skylabs · UNC Chapel Hill</div>
+          <div class="t-desc">Built autonomous drone platform infrastructure for The Northern Cardinal, designing FSM-based flight control systems and embedded sensor pipelines for stable multi-mode flight.</div>
+          <div class="t-badges"><span class="badge">Embedded</span><span class="badge">Autonomy</span><span class="badge">C++</span></div>
+        </div>
+        <div class="t-item">
+          <div class="t-year">2025</div>
+          <div class="t-role">IT Technician</div>
+          <div class="t-company">UNC Chapel Hill &amp; Kenan-Flagler Business School · Chapel Hill, NC</div>
+          <div class="t-desc">Managed device lifecycle for 7,900+ users across Windows and macOS, resolving MFA, account lockout, and identity-access incidents while triaging security and network issues through SolarWinds Service Desk.</div>
+          <div class="t-badges"><span class="badge">Windows/macOS</span><span class="badge">MFA</span><span class="badge">SolarWinds</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-label" style="margin-bottom:20px">Product &amp; Operations</div>
+      <div class="timeline">
+        <div class="t-item">
+          <div class="t-year">2025–26</div>
+          <div class="t-role">Product Management Extern</div>
+          <div class="t-company">BeReal · Remote</div>
+          <div class="t-desc">Analyzed 50,000+ user interactions and 20+ user interviews to identify retention bottlenecks, recommend feature improvements, and evaluate A/B testing results across activation and retention metrics.</div>
+          <div class="t-badges"><span class="badge">Retention</span><span class="badge">User Research</span><span class="badge">A/B Testing</span></div>
+        </div>
+        <div class="t-item">
+          <div class="t-year">2024</div>
+          <div class="t-role">Data Analyst Intern</div>
+          <div class="t-company">Nawarat Autoparts · Yangon, Burma</div>
+          <div class="t-desc">Built ETL pipelines in Python and SQL to process 50,000+ records, reducing reporting time by 80% and errors by 30%, while designing demand forecasting models that cut stock shortages by 25%.</div>
+          <div class="t-badges"><span class="badge">ETL</span><span class="badge">Python</span><span class="badge">SQL</span></div>
+        </div>
+        <div class="t-item">
+          <div class="t-year">2023</div>
+          <div class="t-role">Product Management Intern</div>
+          <div class="t-company">Success Admissions Center · Yangon, Myanmar</div>
+          <div class="t-desc">Designed an interactive, board game-style admissions guidebook using user-centered design principles and created branded merchandise, apparel, and recruiting materials to improve student engagement throughout the college application process.</div>
+          <div class="t-badges"><span class="badge">Product</span><span class="badge">UX</span><span class="badge">Brand Systems</span></div>
+        </div>
+        <div class="t-item">
+          <div class="t-year">2023</div>
+          <div class="t-role">Partnership Associate</div>
+          <div class="t-company">Success Education Ventures · Yangon, Burma</div>
+          <div class="t-desc">Built international partnership pipelines, secured 3+ school contracts through value-aligned positioning, and launched digital campaigns that generated 250K+ interactions.</div>
+          <div class="t-badges"><span class="badge">Partnerships</span><span class="badge">Growth</span><span class="badge">GTM</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ MEDIA ══ -->
+<section id="media">
+  <div class="section-head">
+    <div class="section-label">Editorial coverage, campus recognition, and industry signals</div>
+    <h2 class="section-title">PRESS &amp; RECOGNITION</h2>
+  </div>
+
+  <div class="media-shell">
+    <div class="media-group-head">
+      <h3 class="media-group-title">Featured Press</h3>
+      <p class="media-group-copy">Stories that frame my work through AI, innovation, and student builder visibility.</p>
+    </div>
+    <div class="media-grid media-grid-editorial">
+      <a class="media-card" href="https://www.businessinsider.com/unc-student-landed-internship-after-changing-major-2026-4" target="_blank" rel="noreferrer">
+        <div class="media-card-noise"></div>
+        <div class="media-card-top">
+          <div class="media-source"><span class="media-source-accent">Business</span> Insider</div>
+          <span class="media-tag">Lead Story</span>
+        </div>
+        <div class="media-card-bottom">
+          <p class="media-quote">Featured for my pivot into AI, the internship search that followed, and the persistence behind building a path in tech as an international student at UNC.</p>
+          <div class="media-meta">
+            <span>Career pivot · AI · UNC</span>
+            <span class="media-link">Open Story</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="media-card" href="https://voices.aaja.org/stories/minneapolis-2026/panicking-in-a-foreign-country-some-international-students-turn-to-ai-for-help/" target="_blank" rel="noreferrer">
+        <div class="media-card-noise"></div>
+        <div class="media-card-top">
+          <div class="media-source">Voices<br><span class="media-source-accent">AAJA</span></div>
+          <span class="media-tag">Journalism Feature</span>
+        </div>
+        <div class="media-card-bottom">
+          <p class="media-quote">Featured in Voices by AAJA in a story on how international students turn to AI for support while navigating life abroad.</p>
+          <div class="media-meta">
+            <span>First-person reporting</span>
+            <span class="media-link">Read Story</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="media-card" href="https://innovate.unc.edu/starting-up-summer/" target="_blank" rel="noreferrer">
+        <div class="media-card-noise"></div>
+        <div class="media-card-top">
+          <div class="media-source">Innovate<br><span class="media-source-accent">Carolina</span></div>
+          <span class="media-tag">UNC Feature</span>
+        </div>
+        <div class="media-card-bottom">
+          <p class="media-quote">Included in UNC startup coverage highlighting summer innovation, student builders, and momentum behind emerging ideas.</p>
+          <div class="media-meta">
+            <span>University innovation</span>
+            <span class="media-link">View Feature</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="media-card" href="https://www.aol.com/news/im-unc-international-student-pivoted-093706957.html" target="_blank" rel="noreferrer">
+        <div class="media-card-noise"></div>
+        <div class="media-card-top">
+          <div class="media-source">America<br><span class="media-source-accent">Online</span></div>
+          <span class="media-tag">Syndicated Feature</span>
+        </div>
+        <div class="media-card-bottom">
+          <p class="media-quote">Republished through AOL, extending the Business Insider story to a broader national audience.</p>
+          <div class="media-meta">
+            <span>Mainstream distribution</span>
+            <span class="media-link">Read on AOL</span>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="media-group-head media-group-head-secondary">
+      <h3 class="media-group-title">Recognition &amp; Mentions</h3>
+      <p class="media-group-copy">Signals from builders, platforms, and communities that picked up the work.</p>
+    </div>
+    <div class="media-grid media-grid-recognition">
+      <a class="media-card" href="https://www.facebook.com/photo.php?fbid=1318447660148355&set=a.639602201366241&id=100059494002462" target="_blank" rel="noreferrer">
+        <div class="media-card-noise"></div>
+        <div class="media-card-top">
+          <div class="media-source">Insider<br><span class="media-source-accent">Inventions</span></div>
+          <span class="media-tag">Innovation Feature</span>
+        </div>
+        <div class="media-card-bottom">
+          <p class="media-quote">Highlighted by Invention Insider as part of a broader public-facing spotlight on what I’m building.</p>
+          <div class="media-meta">
+            <span>Public feature</span>
+            <span class="media-link">See Post</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="media-card" href="https://www.linkedin.com/feed/update/urn:li:activity:7430429165079740416/" target="_blank" rel="noreferrer">
+        <div class="media-card-noise"></div>
+        <div class="media-card-top">
+          <div class="media-source">AWS<br><span class="media-source-accent">Mention</span></div>
+          <span class="media-tag">Industry Signal</span>
+        </div>
+        <div class="media-card-bottom">
+          <p class="media-quote">MEGAMIND earned recognition from a senior developer at AWS, adding an industry nod to the project’s early traction.</p>
+          <div class="media-meta">
+            <span>Senior developer spotlight</span>
+            <span class="media-link">Open Post</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ RECOMMENDATIONS ══ -->
+<section id="recommendations">
+  <div class="section-head">
+    <div class="section-label">People who have worked with me directly</div>
+    <h2 class="section-title">RECOMMENDATIONS</h2>
+  </div>
+
+  <div class="recs-grid">
+
+    <article class="rec-card">
+      <p class="rec-text">Vivienne Hnin is one of the finest IT Student Apprentices to ever be employed at UNC Kenan-Flagler Business School. She develops great customer service skills and improves the institution's trust in reliable IT service. When others have called out, she steps in — it shows a level of motivation and drive that we often lack.</p>
+      <div class="rec-author-wrap">
+        <div class="rec-avatar">TC</div>
+        <div>
+          <div class="rec-author">Anthony "T.C." Lo Ré</div>
+          <div class="rec-role">Supervisor · Kenan-Flagler Business School</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="rec-card">
+      <p class="rec-text">Vivienne is one of the most talented, determined, and diligent students I have had. She always took initiative to research, write, and learn. A truly multi-disciplinary talented person. I recommend her for any future opportunities with full confidence.</p>
+      <div class="rec-author-wrap">
+        <div class="rec-avatar">TZ</div>
+        <div>
+          <div class="rec-author">Thaw Zin Aung Gyi</div>
+          <div class="rec-role">CEO · Success Admissions · Ivy League + Oxford</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="rec-card rec-card-extra" hidden>
+      <p class="rec-text">Vivienne consistently demonstrated strong troubleshooting skills, reliability, and professionalism while supporting hardware, software, and network issues. She learns quickly, communicates technical concepts clearly, and approaches challenges with a solution-oriented mindset.</p>
+      <div class="rec-author-wrap">
+        <div class="rec-avatar">AF</div>
+        <div>
+          <div class="rec-author">Aquil Farid</div>
+          <div class="rec-role">Asset Manager · IT Technician · Kenan-Flagler</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="rec-card rec-card-extra" hidden>
+      <p class="rec-text">Vivienne is a smart, communicative, and outspoken individual with an impressive array of skills. Her writing ability is remarkable — she has a natural talent for crafting compelling content. Her intellect, warm personality, and passion make her a standout professional.</p>
+      <div class="rec-author-wrap">
+        <div class="rec-avatar">TM</div>
+        <div>
+          <div class="rec-author">Thazin Min Htun</div>
+          <div class="rec-role">CoWorker · Success Admissions · Chulalongkorn University</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="rec-card rec-card-extra" hidden>
+      <p class="rec-text">I have been working with her for 2 years so far, and I am quite impressed with her dedication to her work, including studies, research, and social work. She is excellent at multi-tasking and always manages to finish all the work on time.</p>
+      <div class="rec-author-wrap">
+        <div class="rec-avatar">SD</div>
+        <div>
+          <div class="rec-author">Saw Daniel Aung Khant Moe</div>
+          <div class="rec-role">3rd Year CS @UCalgary · AI/ML</div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="recs-actions">
+    <button id="recommendations-toggle" class="btn-link" type="button" aria-expanded="false">View More Recommendations</button>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ MORE PROJECTS ══ -->
+<section id="more-projects">
+  <div class="section-head">
+    <div class="section-label">// Additional builds across full-stack, CV, and interactive systems</div>
+    <h2 class="section-title">MORE PROJECTS</h2>
+  </div>
+
+  <div class="project-list project-list-compact">
+    <article class="project-card project-card-compact">
       <div class="project-body">
         <div class="project-tag">Interactive · Hardware · 3D · AI Voice</div>
         <h3 class="project-name">EMPL*YMENT! — Horror Game About Internship Applications</h3>
-        <p class="project-desc">A horror game turning the internship interview process into a stress-driven survival experience, powered by 3D visuals, text-to-speech AI, and an Arduino ultrasonic sensor strapped to the player.</p>
+        <p class="project-desc">A stress-driven survival game about internship applications, blending 3D interaction, Arduino hardware, and AI voice systems into a weird but memorable product experience.</p>
         <div class="project-metrics">
-          <div class="metric-row">Arduino-based haptic feedback via ultrasonic neck sensor</div>
-          <div class="metric-row">Real-time 3D visuals with ElevenLabs AI voice synthesis</div>
-          <div class="metric-row">Built at PearlHacks — awarded top recognition</div>
+          <div class="metric-row">Arduino haptic feedback with ultrasonic sensing</div>
+          <div class="metric-row">Three.js visuals and ElevenLabs voice synthesis</div>
         </div>
         <div class="project-actions">
           <a href="https://www.linkedin.com/feed/update/urn:li:activity:7431373945838137344/" class="btn-link">Demo</a>
@@ -1395,36 +1691,31 @@ footer{
       </div>
     </article>
 
-    <!-- PINCHAPIC -->
-    <article class="project-card">
+    <article class="project-card project-card-compact">
       <div class="project-body">
         <div class="project-tag">Computer Vision · Gesture Control · Events</div>
         <h3 class="project-name">PinchAPic — Gesture-Controlled Photobooth</h3>
-        <p class="project-desc">Real-time gesture-controlled photobooth with a custom strip-maker for special events. Control the camera with only your hand using MediaPipe hand tracking — no buttons needed.</p>
+        <p class="project-desc">A hands-free photobooth that uses MediaPipe hand tracking and a custom strip generator to turn gesture input into event-ready output.</p>
         <div class="project-metrics">
           <div class="metric-row">Pinch-to-capture gesture recognition via MediaPipe</div>
           <div class="metric-row">Custom photo strip layout generator for event output</div>
-          <div class="metric-row">Full-stack React + Next.js with live webcam pipeline</div>
         </div>
         <div class="project-actions">
           <a href="https://www.linkedin.com/feed/update/urn:li:activity:7426812741325131776/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_projects_details%3BrT6XPgZPQH2NLaY2vxnblw%3D%3D" class="btn-link">Demo</a>
           <a href="https://admirable-croissant-dc549f.netlify.app/booth/name" class="btn-link">View</a>
-          <a href="https://www.linkedin.com/in/viviennehnin/overlay/Project/1375384900/treasury/?profileId=ACoAAEFznkkBS5p-TnO8_0cUQN-O0-NRwXJJ6XM" class="btn-link">FSM</a>
         </div>
-        <div class="stack-tags">Python · OpenCV · MediaPipe · React · Next.js · Tailwind</div>
+        <div class="stack-tags">Python · OpenCV · MediaPipe · React · Next.js</div>
       </div>
     </article>
 
-    <!-- SOLEADA -->
-    <article class="project-card">
+    <article class="project-card project-card-compact">
       <div class="project-body">
         <div class="project-tag">Full-Stack · Social · AI-Assisted</div>
         <h3 class="project-name">Soleada — Social Platform (SolHacks Vultr Track Winners)</h3>
-        <p class="project-desc">Full-stack social platform built with a focus on modular design, privacy, and interactive user experiences. Developed production APIs and AI-assisted components under early-stage startup constraints.</p>
+        <p class="project-desc">An MVP social platform with modular APIs, privacy-aware product decisions, and AI-assisted features built under hackathon startup constraints.</p>
         <div class="project-metrics">
-          <div class="metric-row">Contributed frontend and backend development of an MVP social platform</div>
-          <div class="metric-row">Collaborated on AI-assisted and VR-integrated components</div>
-          <div class="metric-row">Emphasis on modular design, privacy, and system reliability</div>
+          <div class="metric-row">Frontend and backend implementation across the MVP stack</div>
+          <div class="metric-row">AI-assisted and VR-adjacent experimentation within a collaborative build</div>
         </div>
         <div class="project-actions">
           <a href="https://www.linkedin.com/feed/update/urn:li:activity:7444074447369752577/" target="_blank" rel="noreferrer" class="btn-link">LinkedIn</a>
@@ -1432,17 +1723,17 @@ footer{
         <div class="stack-tags">React · Node.js · FastAPI · AI · VR</div>
       </div>
     </article>
-
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ══ GAMES ══ -->
-<section id="games" class="games-section">
+<!-- ══ PLAYGROUND ══ -->
+<section id="playground" class="games-section">
   <div class="section-head">
-    <h2 class="section-title">Play My Mini Games</h2>
-    <p class="games-subtitle">Need a break? Every game here was built from scratch using React, TypeScript, and the Canvas API.</p>
+    <div class="section-label">// Built for fun, still engineered with care</div>
+    <h2 class="section-title">PLAYGROUND</h2>
+    <p class="games-subtitle">Need a break? Every game here was built from scratch using vanilla JavaScript and the Canvas API.</p>
   </div>
 
   <div class="games-grid">
@@ -1495,244 +1786,6 @@ footer{
   </div>
 </section>
 
-<div class="divider"></div>
-
-<!-- ══ EXPERIENCE ══ -->
-<section id="experience">
-  <div class="section-head">
-    <div class="section-label">// Engineering first, then product execution</div>
-    <h2 class="section-title">EXPERIENCE</h2>
-  </div>
-
-  <div class="exp-grid">
-    <div>
-      <div class="section-label" style="margin-bottom:20px">Engineering</div>
-      <div class="timeline">
-        <div class="t-item">
-          <div class="t-year">2026</div>
-          <div class="t-role">AI Engineering Intern</div>
-          <div class="t-company">Utilyst Inc. · Chapel Hill, NC</div>
-          <div class="t-desc">Built localized AI and geospatial product infrastructure using PostgreSQL/PostGIS, FastAPI, React, Python, and Docker. Worked on small-model inference workflows for Jetson edge deployment, with attention to constrained compute, model optimization, and when local systems should route to stronger cloud models.</div>
-          <div class="t-badges"><span class="badge">Small Language Models</span><span class="badge">Jetson</span><span class="badge">Docker</span><span class="badge">PostGIS</span></div>
-        </div>
-        <div class="t-item">
-          <div class="t-year">2025</div>
-          <div class="t-role">VTOL Project Engineer</div>
-          <div class="t-company">Carolina Skylabs · UNC Chapel Hill</div>
-          <div class="t-desc">Built autonomous drone platform infrastructure for The Northern Cardinal, designing FSM-based flight control systems and embedded sensor pipelines for stable multi-mode flight.</div>
-          <div class="t-badges"><span class="badge">Embedded</span><span class="badge">Autonomy</span><span class="badge">C++</span></div>
-        </div>
-        <div class="t-item">
-          <div class="t-year">2025</div>
-          <div class="t-role">IT Technician</div>
-          <div class="t-company">UNC Chapel Hill &amp; Kenan-Flagler Business School · Chapel Hill, NC</div>
-          <div class="t-desc">Managed device lifecycle for 7,900+ users across Windows and macOS, resolving MFA, account lockout, and identity-access incidents while triaging security and network issues through SolarWinds Service Desk.</div>
-          <div class="t-badges"><span class="badge">Windows/macOS</span><span class="badge">MFA</span><span class="badge">SolarWinds</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <div class="section-label" style="margin-bottom:20px">Product &amp; Operations</div>
-      <div class="timeline">
-        <div class="t-item">
-          <div class="t-year">2025–26</div>
-          <div class="t-role">Product Management Extern</div>
-          <div class="t-company">BeReal · Remote</div>
-          <div class="t-desc">Analyzed 50,000+ user interactions and 20+ user interviews to identify retention bottlenecks, recommend feature improvements, and evaluate A/B testing results across activation and retention metrics.</div>
-          <div class="t-badges"><span class="badge">Retention</span><span class="badge">User Research</span><span class="badge">A/B Testing</span></div>
-        </div>
-        <div class="t-item">
-          <div class="t-year">2024</div>
-          <div class="t-role">Data Analyst Intern</div>
-          <div class="t-company">Nawarat Autoparts · Yangon, Burma</div>
-          <div class="t-desc">Built ETL pipelines in Python and SQL to process 50,000+ records, reducing reporting time by 80% and errors by 30%, while designing demand forecasting models that cut stock shortages by 25%.</div>
-          <div class="t-badges"><span class="badge">ETL</span><span class="badge">Python</span><span class="badge">SQL</span></div>
-        </div>
-        <div class="t-item">
-          <div class="t-year">2023</div>
-          <div class="t-role">Partnership Associate</div>
-          <div class="t-company">Success Education Ventures · Yangon, Burma</div>
-          <div class="t-desc">Built international partnership pipelines, secured 3+ school contracts through value-aligned positioning, and launched digital campaigns that generated 250K+ interactions.</div>
-          <div class="t-badges"><span class="badge">Partnerships</span><span class="badge">Growth</span><span class="badge">GTM</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══ MEDIA ══ -->
-<section id="media">
-  <div class="section-head">
-    <div class="section-label">Across press, campus, and industry</div>
-    <h2 class="section-title">AS SEEN ON THE NEWS</h2>
-  </div>
-
-  <div class="media-shell">
-    <div class="media-grid">
-      <a class="media-card" href="https://www.businessinsider.com/unc-student-landed-internship-after-changing-major-2026-4" target="_blank" rel="noreferrer">
-        <div class="media-card-noise"></div>
-        <div class="media-card-top">
-          <div class="media-source"><span class="media-source-accent">Business</span> Insider</div>
-          <span class="media-tag">Lead Story</span>
-        </div>
-        <div class="media-card-bottom">
-          <p class="media-quote">Featured for my pivot into AI, the internship search that followed, and the persistence behind building a path in tech as an international student at UNC.</p>
-          <div class="media-meta">
-            <span>Career pivot · AI · UNC</span>
-            <span class="media-link">Open Story</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="media-card" href="https://www.aol.com/news/im-unc-international-student-pivoted-093706957.html" target="_blank" rel="noreferrer">
-        <div class="media-card-noise"></div>
-        <div class="media-card-top">
-          <div class="media-source">America<br><span class="media-source-accent">Online</span></div>
-          <span class="media-tag">Syndicated Feature</span>
-        </div>
-        <div class="media-card-bottom">
-          <p class="media-quote">Republished through AOL, extending the Business Insider story to a broader national audience.</p>
-          <div class="media-meta">
-            <span>Mainstream distribution</span>
-            <span class="media-link">Read on AOL</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="media-card" href="https://innovate.unc.edu/starting-up-summer/" target="_blank" rel="noreferrer">
-        <div class="media-card-noise"></div>
-        <div class="media-card-top">
-          <div class="media-source">Innovate<br><span class="media-source-accent">Carolina</span></div>
-          <span class="media-tag">UNC Feature</span>
-        </div>
-        <div class="media-card-bottom">
-          <p class="media-quote">Included in UNC startup coverage highlighting summer innovation, student builders, and momentum behind emerging ideas.</p>
-          <div class="media-meta">
-            <span>University innovation</span>
-            <span class="media-link">View Feature</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="media-card" href="https://www.facebook.com/photo.php?fbid=1318447660148355&set=a.639602201366241&id=100059494002462" target="_blank" rel="noreferrer">
-        <div class="media-card-noise"></div>
-        <div class="media-card-top">
-          <div class="media-source">Insider<br><span class="media-source-accent">Inventions</span></div>
-          <span class="media-tag">Innovation Feature</span>
-        </div>
-        <div class="media-card-bottom">
-          <p class="media-quote">Highlighted by Invention Insider as part of a broader public-facing spotlight on what I’m building.</p>
-          <div class="media-meta">
-            <span>Public feature</span>
-            <span class="media-link">See Post</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="media-card" href="https://voices.aaja.org/stories/minneapolis-2026/panicking-in-a-foreign-country-some-international-students-turn-to-ai-for-help/" target="_blank" rel="noreferrer">
-        <div class="media-card-noise"></div>
-        <div class="media-card-top">
-          <div class="media-source">Voices<br><span class="media-source-accent">AAJA</span></div>
-          <span class="media-tag">Journalism Feature</span>
-        </div>
-        <div class="media-card-bottom">
-          <p class="media-quote">Featured in Voices by AAJA in a story on how international students turn to AI for support while navigating life abroad.</p>
-          <div class="media-meta">
-            <span>First-person reporting</span>
-            <span class="media-link">Read Story</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="media-card" href="https://www.linkedin.com/feed/update/urn:li:activity:7430429165079740416/" target="_blank" rel="noreferrer">
-        <div class="media-card-noise"></div>
-        <div class="media-card-top">
-          <div class="media-source">AWS<br><span class="media-source-accent">Mention</span></div>
-          <span class="media-tag">Industry Signal</span>
-        </div>
-        <div class="media-card-bottom">
-          <p class="media-quote">MEGAMIND earned recognition from a senior developer at AWS, adding an industry nod to the project’s early traction.</p>
-          <div class="media-meta">
-            <span>Senior developer spotlight</span>
-            <span class="media-link">Open Post</span>
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══ RECOMMENDATIONS ══ -->
-<section id="recommendations">
-  <div class="section-head">
-    <h2 class="section-title">RECOMMENDATIONS</h2>
-  </div>
-
-  <div class="recs-grid">
-
-    <article class="rec-card">
-      <p class="rec-text">Vivienne Hnin is one of the finest IT Student Apprentices to ever be employed at UNC Kenan-Flagler Business School. She develops great customer service skills and improves the institution's trust in reliable IT service. When others have called out, she steps in — it shows a level of motivation and drive that we often lack.</p>
-      <div class="rec-author-wrap">
-        <div class="rec-avatar">TC</div>
-        <div>
-          <div class="rec-author">Anthony "T.C." Lo Ré</div>
-          <div class="rec-role">Supervisor · Kenan-Flagler Business School</div>
-        </div>
-      </div>
-    </article>
-
-    <article class="rec-card">
-      <p class="rec-text">Vivienne is one of the most talented, determined, and diligent students I have had. She always took initiative to research, write, and learn. A truly multi-disciplinary talented person. I recommend her for any future opportunities with full confidence.</p>
-      <div class="rec-author-wrap">
-        <div class="rec-avatar">TZ</div>
-        <div>
-          <div class="rec-author">Thaw Zin Aung Gyi</div>
-          <div class="rec-role">CEO · Success Admissions · Ivy League + Oxford</div>
-        </div>
-      </div>
-    </article>
-
-    <article class="rec-card">
-      <p class="rec-text">Vivienne consistently demonstrated strong troubleshooting skills, reliability, and professionalism while supporting hardware, software, and network issues. She learns quickly, communicates technical concepts clearly, and approaches challenges with a solution-oriented mindset.</p>
-      <div class="rec-author-wrap">
-        <div class="rec-avatar">AF</div>
-        <div>
-          <div class="rec-author">Aquil Farid</div>
-          <div class="rec-role">Asset Manager · IT Technician · Kenan-Flagler</div>
-        </div>
-      </div>
-    </article>
-
-    <article class="rec-card">
-      <p class="rec-text">Vivienne is a smart, communicative, and outspoken individual with an impressive array of skills. Her writing ability is remarkable — she has a natural talent for crafting compelling content. Her intellect, warm personality, and passion make her a standout professional.</p>
-      <div class="rec-author-wrap">
-        <div class="rec-avatar">TM</div>
-        <div>
-          <div class="rec-author">Thazin Min Htun</div>
-          <div class="rec-role">CoWorker · Success Admissions · Chulalongkorn University</div>
-        </div>
-      </div>
-    </article>
-
-    <article class="rec-card">
-      <p class="rec-text">I have been working with her for 2 years so far, and I am quite impressed with her dedication to her work, including studies, research, and social work. She is excellent at multi-tasking and always manages to finish all the work on time.</p>
-      <div class="rec-author-wrap">
-        <div class="rec-avatar">SD</div>
-        <div>
-          <div class="rec-author">Saw Daniel Aung Khant Moe</div>
-          <div class="rec-role">3rd Year CS @UCalgary · AI/ML</div>
-        </div>
-      </div>
-    </article>
-
-  </div>
-</section>
-
 <footer>
   <div class="footer-logo">VIVIENNE HNIN</div>
   <div class="footer-copy">© 2026 · UNC CHAPEL HILL · ALL SYSTEMS NOMINAL</div>
@@ -1759,7 +1812,7 @@ footer{
     </div>
     <div id="cursor-grid" class="cursor-grid"></div>
     <div class="cursor-footer">
-      <div class="cursor-note">Drop a PNG into <code>public/cursors</code> and add one object in the cursor config to expand this list.</div>
+      <div class="cursor-note">Choose a default pointer or one of the custom star cursors. You can reopen this any time from the settings button.</div>
       <div class="cursor-actions">
         <button id="cursor-reset-button" class="cursor-action" type="button">Reset To Default</button>
       </div>
@@ -1973,6 +2026,47 @@ cursorPicker?.addEventListener('click', event => {
   if(event.target === cursorPicker) closeCursorPicker();
 });
 
+const recommendationsToggle = document.getElementById('recommendations-toggle');
+const extraRecommendations = Array.from(document.querySelectorAll('.rec-card-extra'));
+recommendationsToggle?.addEventListener('click', () => {
+  const expanded = recommendationsToggle.getAttribute('aria-expanded') === 'true';
+  const nextExpanded = !expanded;
+  recommendationsToggle.setAttribute('aria-expanded', nextExpanded ? 'true' : 'false');
+  recommendationsToggle.textContent = nextExpanded ? 'Show Fewer Recommendations' : 'View More Recommendations';
+  extraRecommendations.forEach(card => {
+    card.hidden = !nextExpanded;
+  });
+});
+
+(function(){
+  const sectionLinks = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+  const sections = sectionLinks
+    .map(link => document.querySelector(link.getAttribute('href')))
+    .filter(Boolean);
+
+  if(!sectionLinks.length || !sections.length) return;
+
+  const updateActiveLink = () => {
+    const offset = window.scrollY + 120;
+    let activeId = sections[0].id;
+
+    sections.forEach(section => {
+      if(section.offsetTop <= offset){
+        activeId = section.id;
+      }
+    });
+
+    sectionLinks.forEach(link => {
+      const isActive = link.getAttribute('href') === `#${activeId}`;
+      link.classList.toggle('is-active', isActive);
+    });
+  };
+
+  updateActiveLink();
+  window.addEventListener('scroll', updateActiveLink, { passive: true });
+  window.addEventListener('resize', updateActiveLink);
+})();
+
 // ── Photo placeholders: show when image fails ──
 document.querySelectorAll('.project-visual img').forEach(img => {
   const placeholder = img.parentElement.querySelector('.photo-placeholder');
@@ -2003,6 +2097,7 @@ function closeModal(){
   document.getElementById('modal').classList.remove('active');
 }
 document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+
 
 // ── Snowfall ──
 (function(){
