@@ -21,8 +21,8 @@
   --accent-dim:#9b4dca;
   --pink:#f06292;
   --text:#ede8f5;
-  --dim:#9585b3;
-  --dim2:#6b5f88;
+  --dim:#c5b9dd;
+  --dim2:#a89bc4;
   --white:#fff;
   --font-display:'Orbitron',sans-serif;
   --font-body:'Barlow',sans-serif;
@@ -40,7 +40,7 @@ body{
   background:var(--bg);
   color:var(--text);
   font-family:var(--font-body);
-  font-weight:300;
+  font-weight:400;
   line-height:1.7;
   overflow-x:hidden;
   min-height:100vh;
@@ -990,182 +990,6 @@ footer{
   display:block;
 }
 
-.cursor-fab{
-  position:fixed;
-  right:22px;
-  bottom:22px;
-  z-index:450;
-  width:52px;
-  height:52px;
-  border-radius:50%;
-  border:1px solid rgba(192,132,252,0.34);
-  background:linear-gradient(180deg, rgba(24,12,40,0.94), rgba(10,4,20,0.96));
-  color:var(--white);
-  font-size:1.25rem;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 18px 36px rgba(0,0,0,0.38), 0 0 16px rgba(192,132,252,0.12);
-  backdrop-filter:blur(10px);
-  transition:transform 0.2s ease,border-color 0.2s ease,box-shadow 0.2s ease;
-}
-
-.cursor-fab:hover{
-  transform:translateY(-2px);
-  border-color:var(--border-hi);
-  box-shadow:0 22px 44px rgba(0,0,0,0.44), 0 0 20px rgba(192,132,252,0.18);
-}
-
-.cursor-picker{
-  position:fixed;
-  inset:0;
-  z-index:600;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:24px;
-  background:rgba(2,0,8,0.8);
-  backdrop-filter:blur(12px);
-  opacity:0;
-  pointer-events:none;
-  transition:opacity 0.22s ease;
-}
-
-.cursor-picker.active{
-  opacity:1;
-  pointer-events:auto;
-}
-
-.cursor-dialog{
-  width:min(760px,100%);
-  border:1px solid rgba(192,132,252,0.22);
-  border-radius:28px;
-  overflow:hidden;
-  background:
-    radial-gradient(circle at top right, rgba(192,132,252,0.12), transparent 26%),
-    linear-gradient(180deg, rgba(19,9,32,0.98), rgba(10,4,20,0.98));
-  box-shadow:0 28px 64px rgba(0,0,0,0.46), inset 0 0 0 1px rgba(255,255,255,0.02);
-}
-
-.cursor-head{
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-between;
-  gap:18px;
-  padding:28px 30px 16px;
-}
-
-.cursor-title{
-  font-family:var(--font-display);
-  font-size:clamp(1.15rem,2vw,1.5rem);
-  letter-spacing:0.06em;
-  color:var(--white);
-}
-
-.cursor-subtitle{
-  margin-top:10px;
-  font-size:0.92rem;
-  color:#cfc6e4;
-  line-height:1.7;
-  max-width:46ch;
-}
-
-.cursor-close{
-  border:1px solid rgba(192,132,252,0.22);
-  background:rgba(192,132,252,0.04);
-  color:var(--accent);
-  width:40px;
-  height:40px;
-  border-radius:50%;
-  font-size:1rem;
-  flex-shrink:0;
-}
-
-.cursor-grid{
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:14px;
-  padding:0 30px 22px;
-}
-
-.cursor-option{
-  position:relative;
-  border:1px solid rgba(192,132,252,0.16);
-  border-radius:22px;
-  padding:16px 12px 14px;
-  background:rgba(255,255,255,0.02);
-  color:var(--text);
-  text-align:center;
-  transition:transform 0.18s ease,border-color 0.18s ease,box-shadow 0.18s ease,background 0.18s ease;
-}
-
-.cursor-option:hover,
-.cursor-option.is-selected{
-  transform:translateY(-2px);
-  border-color:rgba(192,132,252,0.42);
-  background:rgba(192,132,252,0.06);
-  box-shadow:0 14px 28px rgba(0,0,0,0.24), 0 0 16px rgba(192,132,252,0.08);
-}
-
-.cursor-preview{
-  width:64px;
-  height:64px;
-  margin:0 auto 12px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:18px;
-  background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,0.03);
-}
-
-.cursor-preview img{
-  width:64px;
-  height:64px;
-  object-fit:contain;
-  display:block;
-}
-
-.cursor-default-icon{
-  font-family:var(--font-display);
-  font-size:0.64rem;
-  letter-spacing:0.14em;
-  color:var(--accent);
-  text-transform:uppercase;
-}
-
-.cursor-name{
-  font-family:var(--font-display);
-  font-size:0.54rem;
-  letter-spacing:0.14em;
-  color:var(--white);
-  text-transform:uppercase;
-}
-
-.cursor-footer{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:14px;
-  padding:0 30px 30px;
-}
-
-.cursor-actions{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-}
-
-.cursor-action{
-  border:1px solid rgba(192,132,252,0.24);
-  background:rgba(192,132,252,0.04);
-  color:var(--accent);
-  padding:10px 14px;
-  font-family:var(--font-display);
-  font-size:0.5rem;
-  letter-spacing:0.16em;
-  text-transform:uppercase;
-}
 
 /* ── SCROLLBAR ── */
 ::-webkit-scrollbar{width:4px}
@@ -1179,14 +1003,7 @@ footer{
   .project-list{grid-template-columns:1fr}
   .media-grid{grid-template-columns:1fr}
   .recs-grid{grid-template-columns:1fr}
-  .cursor-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
   nav .nav-links{display:none}
-}
-
-@media(max-width:640px){
-  .cursor-head{padding:22px 22px 14px}
-  .cursor-grid{grid-template-columns:repeat(2,minmax(0,1fr));padding:0 22px 18px}
-  .cursor-footer{padding:0 22px 22px;flex-direction:column;align-items:flex-start}
 }
 </style>
 </head>
@@ -1863,29 +1680,9 @@ footer{
 </main>
 </div>
 
-<button id="cursor-settings-button" class="cursor-fab" type="button" aria-label="Change cursor">⚙️</button>
-
 <!-- MODAL -->
 <div id="modal" class="modal" onclick="closeModal()">
   <img id="modal-img" alt="Expanded preview">
-</div>
-
-<div id="cursor-picker" class="cursor-picker" aria-hidden="true">
-  <div class="cursor-dialog" role="dialog" aria-modal="true" aria-labelledby="cursor-picker-title">
-    <div class="cursor-head">
-      <div>
-        <h3 id="cursor-picker-title" class="cursor-title">⭐ Pick your cursor</h3>
-        <p class="cursor-subtitle">Choose a star cursor for the whole site. Your selection applies instantly and stays saved for future visits.</p>
-      </div>
-      <button id="cursor-close-button" class="cursor-close" type="button" aria-label="Close cursor picker">✕</button>
-    </div>
-    <div id="cursor-grid" class="cursor-grid"></div>
-    <div class="cursor-footer">
-      <div class="cursor-actions">
-        <button id="cursor-reset-button" class="cursor-action" type="button">Reset To Default</button>
-      </div>
-    </div>
-  </div>
 </div>
 
 <div id="games-modal" class="games-modal" aria-hidden="true">
@@ -1910,189 +1707,32 @@ footer{
 <script src="./js/games/snake.js"></script>
 <script src="./js/games/games-init.js"></script>
 <script>
-const CURSOR_STORAGE_KEY = 'vh-selected-cursor';
-const CURSOR_CANVAS_SIZE = 36;
-const CURSOR_OPTIONS = [
-  { id: 'default', label: 'Default Cursor', asset: null, hotspotX: 0, hotspotY: 0 },
-  { id: 'blue-star', label: 'Blue Star', asset: './cursors/blue-star.png', hotspotX: 12, hotspotY: 12 },
-  { id: 'pink-bow-star', label: 'Pink Bow Star', asset: './cursors/pink-bow-star.png', hotspotX: 12, hotspotY: 12 },
-  { id: 'professor-star', label: 'Professor Star', asset: './cursors/professor-star.png', hotspotX: 12, hotspotY: 12 },
-  { id: 'yellow-book-star', label: 'Yellow Book Star', asset: './cursors/yellow-book-star.png', hotspotX: 12, hotspotY: 12 },
-  { id: 'grandpa-star', label: 'Grandpa Star', asset: './cursors/grandpa-star.png', hotspotX: 12, hotspotY: 12 },
-  { id: 'purple-hair-star', label: 'Purple Hair Star', asset: './cursors/purple-hair-star.png', hotspotX: 12, hotspotY: 12 },
-  { id: 'sad-star', label: 'Sad Star', asset: './cursors/sad-star.png', hotspotX: 12, hotspotY: 12 },
-];
+const LAPTOP_CURSOR_QUERY = '(min-width: 1024px) and (hover: hover) and (pointer: fine)';
+const LAPTOP_CURSOR_ASSET = './cursors/yellow-book-star.png';
+const LAPTOP_CURSOR_HOTSPOT_X = 12;
+const LAPTOP_CURSOR_HOTSPOT_Y = 12;
+const laptopCursorMedia = window.matchMedia(LAPTOP_CURSOR_QUERY);
 
-const cursorPicker = document.getElementById('cursor-picker');
-const cursorGrid = document.getElementById('cursor-grid');
-const cursorSettingsButton = document.getElementById('cursor-settings-button');
-const cursorCloseButton = document.getElementById('cursor-close-button');
-const cursorResetButton = document.getElementById('cursor-reset-button');
-const cursorCssCache = new Map();
-let activeCursorToken = 0;
-
-function getCursorOption(id){
-  return CURSOR_OPTIONS.find(option => option.id === id) || CURSOR_OPTIONS[0];
-}
-
-function getCursorCssValue(option){
-  return option.asset ? `url('${option.asset}') ${option.hotspotX} ${option.hotspotY}, auto` : 'auto';
-}
-
-function loadCursorImage(src){
-  return new Promise((resolve, reject) => {
-    const image = new Image();
-    image.onload = () => resolve(image);
-    image.onerror = reject;
-    image.src = src;
-  });
-}
-
-async function getNormalizedCursorCss(option){
-  if(!option.asset){
-    return { base: 'auto', pointer: 'pointer' };
+function applyLaptopCursor(){
+  const isLaptopLike = laptopCursorMedia.matches;
+  if(!isLaptopLike){
+    document.documentElement.style.setProperty('--app-cursor', 'auto');
+    document.documentElement.style.setProperty('--app-pointer-cursor', 'pointer');
+    return;
   }
 
-  if(cursorCssCache.has(option.id)){
-    return cursorCssCache.get(option.id);
-  }
-
-  try{
-    const image = await loadCursorImage(option.asset);
-    const canvas = document.createElement('canvas');
-    canvas.width = CURSOR_CANVAS_SIZE;
-    canvas.height = CURSOR_CANVAS_SIZE;
-    const context = canvas.getContext('2d');
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    context.drawImage(image, 0, 0, canvas.width, canvas.height);
-
-    const ratio = CURSOR_CANVAS_SIZE / image.width;
-    const hotspotX = Math.max(2, Math.min(CURSOR_CANVAS_SIZE - 2, Math.round(option.hotspotX * ratio)));
-    const hotspotY = Math.max(2, Math.min(CURSOR_CANVAS_SIZE - 2, Math.round(option.hotspotY * ratio)));
-    const dataUrl = canvas.toDataURL('image/png');
-    const pair = {
-      base: `url('${dataUrl}') ${hotspotX} ${hotspotY}, auto`,
-      pointer: `url('${dataUrl}') ${hotspotX} ${hotspotY}, pointer`
-    };
-    cursorCssCache.set(option.id, pair);
-    return pair;
-  }catch(error){
-    console.warn(`Unable to normalize cursor asset for ${option.id}.`, error);
-    const fallback = {
-      base: getCursorCssValue(option),
-      pointer: option.asset ? `url('${option.asset}') ${option.hotspotX} ${option.hotspotY}, pointer` : 'pointer'
-    };
-    cursorCssCache.set(option.id, fallback);
-    return fallback;
-  }
+  const cursorValue = `url('${LAPTOP_CURSOR_ASSET}') ${LAPTOP_CURSOR_HOTSPOT_X} ${LAPTOP_CURSOR_HOTSPOT_Y}, auto`;
+  const pointerValue = `url('${LAPTOP_CURSOR_ASSET}') ${LAPTOP_CURSOR_HOTSPOT_X} ${LAPTOP_CURSOR_HOTSPOT_Y}, pointer`;
+  document.documentElement.style.setProperty('--app-cursor', cursorValue);
+  document.documentElement.style.setProperty('--app-pointer-cursor', pointerValue);
 }
 
-function persistCursor(id){
-  try{
-    localStorage.setItem(CURSOR_STORAGE_KEY, id);
-  }catch(error){
-    console.warn('Unable to persist cursor selection.', error);
-  }
+applyLaptopCursor();
+if(typeof laptopCursorMedia.addEventListener === 'function'){
+  laptopCursorMedia.addEventListener('change', applyLaptopCursor);
+}else if(typeof laptopCursorMedia.addListener === 'function'){
+  laptopCursorMedia.addListener(applyLaptopCursor);
 }
-
-function readSavedCursor(){
-  try{
-    return localStorage.getItem(CURSOR_STORAGE_KEY);
-  }catch(error){
-    console.warn('Unable to read saved cursor selection.', error);
-    return null;
-  }
-}
-
-function updateCursorSelectionUI(selectedId){
-  if(!cursorGrid) return;
-  cursorGrid.querySelectorAll('.cursor-option').forEach(button => {
-    const isSelected = button.dataset.cursorId === selectedId;
-    button.classList.toggle('is-selected', isSelected);
-    button.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
-  });
-}
-
-async function applyCursor(cursorId){
-  const option = getCursorOption(cursorId);
-  updateCursorSelectionUI(option.id);
-  persistCursor(option.id);
-  const token = ++activeCursorToken;
-  const cursorCss = await getNormalizedCursorCss(option);
-  if(token !== activeCursorToken) return;
-  document.documentElement.style.setProperty('--app-cursor', cursorCss.base);
-  document.documentElement.style.setProperty('--app-pointer-cursor', cursorCss.pointer);
-}
-
-function closeCursorPicker(){
-  cursorPicker?.classList.remove('active');
-  cursorPicker?.setAttribute('aria-hidden', 'true');
-}
-
-function openCursorPicker(){
-  cursorPicker?.classList.add('active');
-  cursorPicker?.setAttribute('aria-hidden', 'false');
-}
-
-function buildCursorPicker(){
-  if(!cursorGrid) return;
-  cursorGrid.innerHTML = '';
-
-  CURSOR_OPTIONS.forEach(option => {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'cursor-option';
-    button.dataset.cursorId = option.id;
-    button.setAttribute('aria-pressed', 'false');
-
-    const preview = document.createElement('div');
-    preview.className = 'cursor-preview';
-
-    if(option.asset){
-      const image = document.createElement('img');
-      image.src = option.asset;
-      image.alt = `${option.label} preview`;
-      preview.appendChild(image);
-    }else{
-      const defaultIcon = document.createElement('div');
-      defaultIcon.className = 'cursor-default-icon';
-      defaultIcon.textContent = 'AUTO';
-      preview.appendChild(defaultIcon);
-    }
-
-    const label = document.createElement('div');
-    label.className = 'cursor-name';
-    label.textContent = option.label;
-
-    button.appendChild(preview);
-    button.appendChild(label);
-    button.addEventListener('click', () => {
-      applyCursor(option.id);
-      closeCursorPicker();
-    });
-    cursorGrid.appendChild(button);
-  });
-}
-
-buildCursorPicker();
-
-const savedCursor = readSavedCursor();
-if(savedCursor){
-  applyCursor(savedCursor);
-}else{
-  applyCursor('default');
-  openCursorPicker();
-}
-
-cursorSettingsButton?.addEventListener('click', openCursorPicker);
-cursorCloseButton?.addEventListener('click', closeCursorPicker);
-cursorResetButton?.addEventListener('click', () => {
-  applyCursor('default');
-  closeCursorPicker();
-});
-cursorPicker?.addEventListener('click', event => {
-  if(event.target === cursorPicker) closeCursorPicker();
-});
 
 const routeCopyByMode = {
   edge: {

@@ -21,7 +21,7 @@ color:#c084fc;
 margin-top:10px;
 font-size:.8rem;
 letter-spacing:2px;
-color:#9f8fb7;
+color:#c9bddf;
 }
 
 .hero-buttons{
@@ -48,13 +48,13 @@ color:#000;
 .hero-tech{
 margin-top:15px;
 font-size:.7rem;
-color:#6f6485;
+color:#b6aacd;
 letter-spacing:1px;
 }
 
 .hero-bio{
 margin-top:20px;
-color:#b5a9c9;
+color:#ddd5ec;
 font-size:.9rem;
 line-height:1.7;
 max-width:520px;
@@ -63,7 +63,7 @@ max-width:520px;
 .hero-bullets{
 margin-top:18px;
 font-size:.8rem;
-color:#8f80a8;
+color:#c7badf;
 border-left:2px solid #c084fc;
 padding-left:10px;
 line-height:1.6;
@@ -445,7 +445,7 @@ right:6px;
 }
 
 .games-copy{
-  color:#bfb3d6;
+  color:#ddd4ec;
   font-size:0.95rem;
   line-height:1.8;
   flex:1;
@@ -574,7 +574,7 @@ right:6px;
 }
 
 .dino-picker-help{
-  color:#bfb3d6;
+  color:#d7cee8;
   font-size:0.84rem;
 }
 
@@ -595,7 +595,7 @@ right:6px;
   border:1px solid rgba(192,132,252,0.16);
   border-radius:18px;
   background:rgba(192,132,252,0.04);
-  color:#cfc6e4;
+  color:#ece5f7;
   transition:transform 0.2s ease,border-color 0.2s ease,box-shadow 0.2s ease,background 0.2s ease;
 }
 
@@ -835,7 +835,7 @@ right:6px;
 
 .jetson-proof-caption span,
 .jetson-proof-fallback p{
-  color:#bcaed7;
+  color:#d8cdec;
   font-size:0.78rem;
   line-height:1.55;
 }
@@ -862,7 +862,7 @@ right:6px;
   font-family:'Orbitron',sans-serif;
   font-size:0.46rem;
   letter-spacing:0.16em;
-  color:#ab95d0;
+  color:#cfbee6;
   text-transform:uppercase;
   white-space:nowrap;
 }
@@ -912,7 +912,7 @@ right:6px;
 .slm-toggle{
   border:0;
   background:transparent;
-  color:#a58fcb;
+  color:#d8caee;
   padding:7px 11px;
   border-radius:999px;
   font-family:'Orbitron',sans-serif;
@@ -948,7 +948,7 @@ right:6px;
 }
 
 .slm-node-muted{
-  color:#ae9acb;
+  color:#d4c6ea;
   background:rgba(255,255,255,0.02);
 }
 
@@ -972,7 +972,7 @@ right:6px;
   flex-direction:column;
   align-items:center;
   gap:6px;
-  opacity:0.6;
+  opacity:0.78;
   transition:opacity 0.2s ease;
 }
 
@@ -992,7 +992,7 @@ right:6px;
 }
 
 .slm-branch-destinations{
-  color:#9d91b8;
+  color:#d5cae8;
   font-size:0.68rem;
   line-height:1.45;
   text-align:center;
@@ -1014,7 +1014,7 @@ right:6px;
 
 .slm-diagram-caption{
   margin-top:12px;
-  color:#9d91b8;
+  color:#d4c9e7;
   font-size:0.78rem;
   line-height:1.6;
 }
@@ -1023,7 +1023,7 @@ right:6px;
   display:flex;
   flex-wrap:wrap;
   gap:14px;
-  color:#afa1ca;
+  color:#d8cee9;
   font-size:0.77rem;
   line-height:1.55;
 }
@@ -1166,10 +1166,6 @@ right:6px;
   border-radius:999px;
   color:#b8abd2;
   font-size:0.76rem;
-}
-
-.cursor-footer{
-  justify-content:flex-end;
 }
 
 .rec-card-extra[hidden]{
