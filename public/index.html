@@ -507,6 +507,11 @@ nav{
   line-height:1.7;
 }
 
+.t-desc strong{
+  color:#f2ecfb;
+  font-weight:600;
+}
+
 .t-badges{
   display:flex;flex-wrap:wrap;gap:6px;
   margin-top:8px;
@@ -1019,8 +1024,6 @@ footer{
     <li><a href="#projects">Work</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#media">Press</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
     <li><a href="./resume.pdf" target="_blank" rel="noreferrer" class="nav-resume-link">View Resume</a></li>
   </ul>
 </nav>
@@ -1040,7 +1043,6 @@ footer{
         <a href="#projects" class="hero-link-secondary">Explore My Work</a>
         <a href="https://github.com/sawwatihnin" target="_blank" rel="noreferrer">GitHub</a>
         <a href="https://www.linkedin.com/in/viviennehnin" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a href="#contact">Contact</a>
       </div>
 
       <div class="hero-signal-row" aria-label="AI engineering focus areas">
@@ -1083,7 +1085,6 @@ footer{
 <!-- ══ PROJECTS ══ -->
 <section id="projects">
   <div class="section-head">
-    <div class="section-label">// AI Systems · Embedded · Full-Stack</div>
     <h2 class="section-title">SELECTED WORK</h2>
   </div>
 
@@ -1249,67 +1250,66 @@ footer{
 <!-- ══ EXPERIENCE ══ -->
 <section id="experience">
   <div class="section-head">
-    <div class="section-label">// Engineering first, then product execution</div>
     <h2 class="section-title">EXPERIENCE</h2>
   </div>
 
   <div class="exp-grid">
     <div>
-      <div class="section-label" style="margin-bottom:20px">Engineering</div>
+      <div class="project-tag" style="margin-bottom:20px">Engineering</div>
       <div class="timeline">
         <div class="t-item t-item-featured">
           <div class="t-year">2026</div>
           <div class="t-role">AI Engineering Intern</div>
           <div class="t-company">Utilyst Inc. · Chapel Hill, NC</div>
-          <div class="t-desc">Built localized AI and geospatial product infrastructure using PostgreSQL/PostGIS, FastAPI, React, Python, and Docker. Worked on small-model inference workflows for Jetson edge deployment, with attention to constrained compute, model optimization, and when local systems should route to stronger cloud models.</div>
+          <div class="t-desc">Built <strong>localized AI and geospatial product infrastructure</strong> using <strong>PostgreSQL/PostGIS, FastAPI, React, Python, and Docker</strong>. Worked on <strong>small-model inference workflows for Jetson edge deployment</strong>, with attention to <strong>constrained compute, model optimization,</strong> and when local systems should route to stronger cloud models.</div>
           <div class="t-badges"><span class="badge">SLMs</span><span class="badge">Jetson</span><span class="badge">Docker</span><span class="badge">FastAPI</span><span class="badge">PostGIS</span><span class="badge">Python</span></div>
         </div>
         <div class="t-item">
           <div class="t-year">2025</div>
           <div class="t-role">VTOL Project Engineer</div>
           <div class="t-company">Carolina Skylabs · UNC Chapel Hill</div>
-          <div class="t-desc">Built autonomous drone platform infrastructure for The Northern Cardinal, designing FSM-based flight control systems and embedded sensor pipelines for stable multi-mode flight.</div>
+          <div class="t-desc">Built <strong>autonomous drone platform infrastructure</strong> for The Northern Cardinal, designing <strong>FSM-based flight control systems</strong> and <strong>embedded sensor pipelines</strong> for stable multi-mode flight.</div>
           <div class="t-badges"><span class="badge">Embedded</span><span class="badge">Autonomy</span><span class="badge">C++</span></div>
         </div>
         <div class="t-item">
           <div class="t-year">2025</div>
           <div class="t-role">IT Technician</div>
           <div class="t-company">UNC Chapel Hill &amp; Kenan-Flagler Business School · Chapel Hill, NC</div>
-          <div class="t-desc">Managed device lifecycle for 7,900+ users across Windows and macOS, resolving MFA, account lockout, and identity-access incidents while triaging security and network issues through SolarWinds Service Desk.</div>
+          <div class="t-desc">Managed <strong>device lifecycle for 7,900+ users</strong> across Windows and macOS, resolving <strong>MFA, account lockout, and identity-access incidents</strong> while triaging security and network issues through <strong>SolarWinds Service Desk</strong>.</div>
           <div class="t-badges"><span class="badge">Windows/macOS</span><span class="badge">MFA</span><span class="badge">SolarWinds</span></div>
         </div>
       </div>
     </div>
 
     <div>
-      <div class="section-label" style="margin-bottom:20px">Product &amp; Operations</div>
+      <div class="project-tag" style="margin-bottom:20px">Product &amp; Operations</div>
       <div class="timeline">
         <div class="t-item">
           <div class="t-year">2025–26</div>
           <div class="t-role">Product Management Extern</div>
           <div class="t-company">BeReal · Remote</div>
-          <div class="t-desc">Analyzed 50,000+ user interactions and 20+ user interviews to identify retention bottlenecks, recommend feature improvements, and evaluate A/B testing results across activation and retention metrics.</div>
+          <div class="t-desc">Analyzed <strong>50,000+ user interactions</strong> and <strong>20+ user interviews</strong> to identify <strong>retention bottlenecks</strong>, recommend feature improvements, and evaluate <strong>A/B testing results</strong> across activation and retention metrics.</div>
           <div class="t-badges"><span class="badge">Retention</span><span class="badge">User Research</span><span class="badge">A/B Testing</span></div>
         </div>
         <div class="t-item">
           <div class="t-year">2024</div>
           <div class="t-role">Data Analyst Intern</div>
           <div class="t-company">Nawarat Autoparts · Yangon, Burma</div>
-          <div class="t-desc">Built ETL pipelines in Python and SQL to process 50,000+ records, reducing reporting time by 80% and errors by 30%, while designing demand forecasting models that cut stock shortages by 25%.</div>
+          <div class="t-desc">Built <strong>ETL pipelines in Python and SQL</strong> to process <strong>50,000+ records</strong>, reducing <strong>reporting time by 80%</strong> and <strong>errors by 30%</strong>, while designing <strong>demand forecasting models</strong> that cut stock shortages by <strong>25%</strong>.</div>
           <div class="t-badges"><span class="badge">ETL</span><span class="badge">Python</span><span class="badge">SQL</span></div>
         </div>
         <div class="t-item">
           <div class="t-year">2023</div>
           <div class="t-role">Product Management Intern</div>
           <div class="t-company">Success Admissions Center · Yangon, Myanmar</div>
-          <div class="t-desc">Designed an interactive, board game-style admissions guidebook using user-centered design principles and created branded merchandise, apparel, and recruiting materials to improve student engagement throughout the college application process.</div>
+          <div class="t-desc">Designed an <strong>interactive, board game-style admissions guidebook</strong> using <strong>user-centered design principles</strong> and created <strong>branded merchandise, apparel, and recruiting materials</strong> to improve student engagement throughout the college application process.</div>
           <div class="t-badges"><span class="badge">Product</span><span class="badge">UX</span><span class="badge">Brand Systems</span></div>
         </div>
         <div class="t-item">
           <div class="t-year">2023</div>
           <div class="t-role">Partnership Associate</div>
           <div class="t-company">Success Education Ventures · Yangon, Burma</div>
-          <div class="t-desc">Built international partnership pipelines, secured 3+ school contracts through value-aligned positioning, and launched digital campaigns that generated 250K+ interactions.</div>
+          <div class="t-desc">Built <strong>international partnership pipelines</strong>, secured <strong>3+ school contracts</strong> through value-aligned positioning, and launched <strong>digital campaigns that generated 250K+ interactions</strong>.</div>
           <div class="t-badges"><span class="badge">Partnerships</span><span class="badge">Growth</span><span class="badge">GTM</span></div>
         </div>
       </div>
@@ -1322,7 +1322,6 @@ footer{
 <!-- ══ MEDIA ══ -->
 <section id="media">
   <div class="section-head">
-    <div class="section-label">Editorial coverage, campus recognition, and industry signals</div>
     <h2 class="section-title">PRESS &amp; RECOGNITION</h2>
   </div>
 
@@ -1436,7 +1435,6 @@ footer{
 <!-- ══ RECOMMENDATIONS ══ -->
 <section id="recommendations">
   <div class="section-head">
-    <div class="section-label">Managers, teammates, and client feedback</div>
     <h2 class="section-title">RECOMMENDATIONS</h2>
   </div>
 
@@ -1520,7 +1518,6 @@ footer{
 <!-- ══ MORE PROJECTS ══ -->
 <section id="more-projects">
   <div class="section-head">
-    <div class="section-label">// Additional builds across full-stack, CV, and interactive systems</div>
     <h2 class="section-title">MORE PROJECTS</h2>
   </div>
 
@@ -1579,45 +1576,9 @@ footer{
 
 <div class="divider"></div>
 
-<!-- ══ ABOUT ══ -->
-<section id="about">
-  <div class="section-head">
-    <div class="section-label">// Technical depth first, personality still present</div>
-    <h2 class="section-title">ABOUT &amp; CONTACT</h2>
-  </div>
-
-  <div class="about-grid">
-    <article class="about-card">
-      <div class="project-tag">About</div>
-      <h3 class="about-title">I build systems that have to earn their intelligence.</h3>
-      <p class="about-copy">I’m a Computer Science student at UNC Chapel Hill drawn to the engineering side of AI: constrained inference, model routing, deployment reliability, and the interface between hardware limits and product decisions.</p>
-      <p class="about-copy">Outside of engineering, I still like keeping the site human. I care about storytelling, design quality, food, and building projects that feel technically sharp without becoming sterile.</p>
-    </article>
-
-    <article class="about-card" id="contact">
-      <div class="project-tag">Contact</div>
-      <h3 class="about-title">Open to AI/ML Engineer and SWE opportunities.</h3>
-      <div class="about-links">
-        <a href="./resume.pdf" target="_blank" rel="noreferrer" class="btn-link">View Resume</a>
-        <a href="mailto:hwasa@unc.edu" class="btn-link">Email</a>
-        <a href="https://github.com/sawwatihnin" target="_blank" rel="noreferrer" class="btn-link">GitHub</a>
-        <a href="https://www.linkedin.com/in/viviennehnin" target="_blank" rel="noreferrer" class="btn-link">LinkedIn</a>
-      </div>
-      <div class="about-meta">
-        <span>UNC Chapel Hill</span>
-        <span>SLMs · Edge AI · Systems</span>
-        <span>hwasa@unc.edu</span>
-      </div>
-    </article>
-  </div>
-</section>
-
-<div class="divider"></div>
-
 <!-- ══ PLAYGROUND ══ -->
 <section id="playground" class="games-section">
   <div class="section-head">
-    <div class="section-label">// Built for fun, still engineered with care</div>
     <h2 class="section-title">PLAYGROUND</h2>
     <p class="games-subtitle">Need a break? Every game here was built from scratch using vanilla JavaScript and the Canvas API.</p>
   </div>
