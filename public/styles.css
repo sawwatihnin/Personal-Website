@@ -60,6 +60,71 @@ line-height:1.7;
 max-width:520px;
 }
 
+.hero-bio strong{
+color:#f7f2ff;
+font-weight:600;
+}
+
+.hero-opportunity-grid{
+display:grid;
+grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+gap:12px;
+margin-top:20px;
+max-width:720px;
+}
+
+.hero-opportunity-grid .hero-callout{
+margin-top:0;
+max-width:none;
+min-height:118px;
+padding:15px 17px;
+border:1px solid rgba(192,132,252,.18);
+border-left:2px solid var(--accent);
+background:linear-gradient(135deg,rgba(192,132,252,.08),rgba(16,7,28,.58));
+}
+
+.hero-callout-link{
+display:block;
+color:var(--dim);
+text-decoration:none;
+transition:border-color .2s ease,background .2s ease,transform .2s ease;
+}
+
+.hero-callout-link:hover{
+transform:translateY(-2px);
+border-color:rgba(192,132,252,.42);
+background:linear-gradient(135deg,rgba(192,132,252,.12),rgba(16,7,28,.68));
+}
+
+.hero-panel-label{
+display:block;
+margin-bottom:8px;
+font-family:'Orbitron',sans-serif;
+font-size:.5rem;
+letter-spacing:.18em;
+color:#d9a8ff;
+text-transform:uppercase;
+}
+
+.hero-opportunity-panel strong,
+.hero-locations{
+display:block;
+}
+
+.hero-opportunity-panel strong{
+color:#f4edff;
+font-size:.82rem;
+font-weight:500;
+line-height:1.55;
+}
+
+.hero-locations{
+margin-top:7px;
+color:#cfc4e4;
+font-size:.75rem;
+line-height:1.5;
+}
+
 .hero-bullets{
 margin-top:18px;
 font-size:.8rem;
@@ -127,6 +192,42 @@ max-width:60ch;
 color:#ded4f1;
 font-size:0.92rem;
 line-height:1.8;
+}
+
+.project-card-flagship{
+border-color:rgba(192,132,252,.18);
+background:
+  radial-gradient(circle at 90% 8%,rgba(192,132,252,.09),transparent 28%),
+  var(--surface);
+}
+
+.project-story{
+display:grid;
+grid-template-columns:repeat(3,minmax(0,1fr));
+gap:10px;
+margin:2px 0 18px;
+}
+
+.project-story>div{
+padding:13px 14px;
+border-top:1px solid rgba(192,132,252,.22);
+background:rgba(192,132,252,.025);
+}
+
+.project-story span{
+display:block;
+margin-bottom:7px;
+font-family:'Orbitron',sans-serif;
+font-size:.46rem;
+letter-spacing:.17em;
+color:#d8a5ff;
+text-transform:uppercase;
+}
+
+.project-story p{
+color:#d8cfe9;
+font-size:.8rem;
+line-height:1.6;
 }
 
 .hero-right img{
@@ -1060,6 +1161,29 @@ right:6px;
   box-shadow:0 20px 38px rgba(0,0,0,0.24);
 }
 
+.timeline-subhead{
+margin:6px 0 18px;
+font-family:'Orbitron',sans-serif;
+font-size:.52rem;
+letter-spacing:.2em;
+color:#c98cff;
+text-transform:uppercase;
+}
+
+.t-item-earlier{
+margin-bottom:18px;
+padding-left:2px;
+}
+
+.t-item-earlier .t-desc{
+font-size:.84rem;
+line-height:1.65;
+}
+
+.t-item-earlier .t-badges{
+margin-top:10px;
+}
+
 .media-group-head{
   display:flex;
   align-items:end;
@@ -1185,6 +1309,15 @@ right:6px;
 }
 
 @media(max-width:900px){
+  .hero-opportunity-grid,
+  .project-story{
+    grid-template-columns:1fr;
+  }
+
+  .hero-opportunity-grid .hero-callout{
+    min-height:0;
+  }
+
   .media-group-head{
     align-items:flex-start;
     flex-direction:column;
@@ -1284,5 +1417,170 @@ right:6px;
     transition:none !important;
     animation:none !important;
     transform:none !important;
+  }
+}
+
+/* ── RECRUITER FAQ ── */
+.faq-chat{
+  position:fixed;
+  right:24px;
+  bottom:24px;
+  z-index:90;
+  font-family:'Barlow',sans-serif;
+}
+
+.faq-chat-toggle{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  min-height:48px;
+  padding:0 18px;
+  border:1px solid rgba(192,132,252,.42);
+  border-radius:999px;
+  background:rgba(15,7,27,.94);
+  color:#f8f2ff;
+  box-shadow:0 16px 40px rgba(0,0,0,.48),0 0 24px rgba(192,132,252,.12);
+  backdrop-filter:blur(14px);
+  font-family:'Orbitron',sans-serif;
+  font-size:.58rem;
+  letter-spacing:.16em;
+  transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;
+}
+
+.faq-chat-toggle:hover{
+  transform:translateY(-2px);
+  border-color:rgba(192,132,252,.78);
+  box-shadow:0 18px 44px rgba(0,0,0,.5),0 0 30px rgba(192,132,252,.2);
+}
+
+.faq-chat-status{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#c084fc;
+  box-shadow:0 0 10px rgba(192,132,252,.9);
+}
+
+.faq-chat-panel{
+  position:absolute;
+  right:0;
+  bottom:62px;
+  width:min(380px,calc(100vw - 32px));
+  padding:20px;
+  border:1px solid rgba(192,132,252,.28);
+  border-radius:24px;
+  background:
+    radial-gradient(circle at 92% 4%,rgba(192,132,252,.14),transparent 32%),
+    rgba(13,5,24,.97);
+  box-shadow:0 28px 70px rgba(0,0,0,.68),inset 0 0 0 1px rgba(255,255,255,.025);
+  backdrop-filter:blur(18px);
+  animation:faq-chat-in .22s ease both;
+}
+
+.faq-chat-panel[hidden]{display:none}
+
+@keyframes faq-chat-in{
+  from{opacity:0;transform:translateY(10px) scale(.98)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+.faq-chat-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:16px;
+}
+
+.faq-chat-kicker{
+  display:block;
+  margin-bottom:5px;
+  color:#c792f7;
+  font-family:'Orbitron',sans-serif;
+  font-size:.45rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+}
+
+.faq-chat-head h2{
+  color:#fff;
+  font-family:'Orbitron',sans-serif;
+  font-size:.92rem;
+  letter-spacing:.05em;
+}
+
+.faq-chat-close{
+  border:0;
+  background:transparent;
+  color:#d9cdea;
+  font-size:.74rem;
+}
+
+.faq-chat-answer{
+  min-height:104px;
+  padding:15px 16px;
+  border-left:2px solid #c084fc;
+  background:rgba(192,132,252,.06);
+}
+
+.faq-chat-answer span{
+  display:block;
+  margin-bottom:7px;
+  color:#cf9dff;
+  font-family:'Orbitron',sans-serif;
+  font-size:.47rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+.faq-chat-answer p{
+  color:#eee7f7;
+  font-size:.88rem;
+  line-height:1.62;
+}
+
+.faq-chat-options{
+  display:grid;
+  gap:8px;
+  margin-top:14px;
+}
+
+.faq-chat-options button{
+  width:100%;
+  padding:10px 12px;
+  border:1px solid rgba(192,132,252,.14);
+  border-radius:12px;
+  background:rgba(255,255,255,.025);
+  color:#dcd2ec;
+  text-align:left;
+  font-size:.78rem;
+  line-height:1.35;
+  transition:border-color .18s ease,background .18s ease,color .18s ease;
+}
+
+.faq-chat-options button:hover,
+.faq-chat-options button.is-active{
+  border-color:rgba(192,132,252,.48);
+  background:rgba(192,132,252,.09);
+  color:#fff;
+}
+
+@media(max-width:620px){
+  .faq-chat{
+    right:16px;
+    bottom:16px;
+  }
+
+  .faq-chat-panel{
+    max-height:min(620px,calc(100vh - 96px));
+    overflow-y:auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .faq-chat-panel,
+  .faq-chat-toggle{
+    animation:none !important;
+    transition:none !important;
   }
 }
