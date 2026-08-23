@@ -1694,7 +1694,7 @@ footer{
         <span class="faq-chat-kicker">Quick Answers</span>
         <h2>Ask Viv’s FAQ</h2>
       </div>
-      <button id="faq-chat-close" class="faq-chat-close" type="button" aria-label="Close FAQ">Close</button>
+      <button id="faq-chat-close" class="faq-chat-close" type="button" aria-label="Close FAQ" onclick="window.closeVivFaq && window.closeVivFaq()">Close</button>
     </div>
     <div id="faq-chat-answer" class="faq-chat-answer" aria-live="polite">
       <span>Vivienne</span>
@@ -1753,8 +1753,14 @@ function applyLaptopCursor(){
     else toggle.focus();
   };
 
+  window.closeVivFaq = () => setOpen(false);
+
   toggle.addEventListener('click', () => setOpen(panel.hidden));
-  close.addEventListener('click', () => setOpen(false));
+  close.addEventListener('click', event => {
+    event.preventDefault();
+    event.stopPropagation();
+    setOpen(false);
+  });
 
   questionButtons.forEach(button => {
     button.addEventListener('click', () => {

@@ -1510,10 +1510,27 @@ margin-top:10px;
 }
 
 .faq-chat-close{
-  border:0;
-  background:transparent;
-  color:#d9cdea;
-  font-size:.74rem;
+  position:relative;
+  z-index:2;
+  min-width:64px;
+  min-height:38px;
+  padding:8px 12px;
+  border:1px solid rgba(192,132,252,.28);
+  border-radius:10px;
+  background:rgba(192,132,252,.08);
+  color:#f2eafd;
+  font-family:'Orbitron',sans-serif;
+  font-size:.5rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  transition:border-color .18s ease,background .18s ease;
+}
+
+.faq-chat-close:hover,
+.faq-chat-close:focus-visible{
+  border-color:rgba(192,132,252,.68);
+  background:rgba(192,132,252,.16);
+  outline:none;
 }
 
 .faq-chat-answer{
