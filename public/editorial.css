@@ -1759,3 +1759,24 @@ nav {
 }
 .archive-projects .project-card > .project-actions { margin: 0; padding: 0 23px 23px; }
 .archive-projects .project-feature-main .project-name { max-width: none; }
+
+/* Speaking appearances, in reverse chronological order. */
+.speaking-list { display: grid; gap: 22px; }
+.speaking-content { min-width: 0; }
+.speaking-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+.speaking-card-panel { grid-template-columns: minmax(240px,340px) minmax(0,1fr); }
+.speaking-photo { margin: 0; width: 100%; }
+.speaking-photo img { display: block; width: 100%; height: auto; border-radius: 10px; }
+.speaking-description { color: #593b60; font: 400 14px/1.85 var(--font-body); max-width: 780px; margin: 12px 0 0; }
+.speaking-description strong { color: #35133f; font-weight: 600; }
+.speaking-topic { font: 600 12px/1.7 var(--font-body); color: #68346f; margin-top: 8px; }
+.founders-art { min-height: 180px; justify-content: center; gap: 12px; text-align: center; }
+.founders-art .founders-wordmark { font: 400 31px/1.15 var(--font-display); letter-spacing: -.03em; color: #35133f; }
+.founders-art .founders-university { font: 500 10px/1.7 var(--font-body); letter-spacing: .04em; text-transform: uppercase; color: #68346f; }
+@media(max-width:900px) { .speaking-card-panel { grid-template-columns: minmax(200px,280px) minmax(0,1fr); } }
+@media(max-width:650px) {
+  .speaking-card-panel { grid-template-columns: minmax(0,1fr); }
+  .speaking-description { font-size: 16px; }
+  .founders-art { min-height: 140px; flex-direction: column; gap: 10px; }
+  .speaking-links .btn-link { min-height: 44px; }
+}
