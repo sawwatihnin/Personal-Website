@@ -644,7 +644,7 @@ nav {
   margin-top:20px
 }
 .jetson-proof {
-  background:#FFF1F4;
+  background:#FFFAFB;
   border-color:var(--border);
   max-width:100%;
   box-shadow:none
@@ -1702,8 +1702,8 @@ nav {
 /* Final editorial refinement: upright Fraunces + DM Sans, cream and plum. */
 :root {
   --bg: #fff9f4;
-  --surface: #FFF1F4;
-  --surface-solid: #FFF1F4;
+  --surface: #FFFAFB;
+  --surface-solid: #FFFAFB;
   --text: #392342;
   --dim: #463b49;
   --dim2: #785c86;
@@ -1753,7 +1753,7 @@ section { padding-top: 56px; padding-bottom: 56px; }
 .t-desc { font: 400 16px/1.75 var(--font-body); color: #463b49; }
 .t-desc strong { color: #392342; }
 .badge { font: 500 12px/1.6 var(--font-body); border-color: #d8c8d7; color: #463b49; }
-.project-card,.rec-card,.speaking-card,.press-card { background: #FFF1F4; border-color: #d8c8d7; border-radius: 12px; }
+.project-card,.rec-card,.speaking-card,.press-card { background: #FFFAFB; border-color: #d8c8d7; border-radius: 12px; }
 .project-name,.archive-projects .project-name { font: 500 clamp(21px,1.8vw,24px)/1.3 var(--font-display); color: #392342; }
 .project-body { display: flex; flex-direction: column; padding: 24px; }
 .featured-project .project-desc { flex: 1; }
@@ -1781,7 +1781,7 @@ section { padding-top: 56px; padding-bottom: 56px; }
 
 
 .slm-routing,.slm-evidence-strip { background: #f6f0f5; }
-.slm-diagram,.slm-node,.slm-branch-destinations { background: #FFF1F4; }
+.slm-diagram,.slm-node,.slm-branch-destinations { background: #FFFAFB; }
 .slm-context-inline,.slm-diagram-caption { font-size: 16px; color: #463b49; }
 .slm-node,.slm-branch-destinations,.slm-toggle { font-size: 13px; }
 .slm-toggle.is-active { background: #392342; color: #fff9f4; }
@@ -1934,7 +1934,7 @@ main section { scroll-margin-top: 20px; }
 .about-description .tech-line { margin: 0 0 16px; font: 500 15px/1.75 var(--font-body); color: #563c60; letter-spacing: 0; }
 .about-description .hero-bio { max-width: none; margin: 0; font-size: 18px; line-height: 1.75; }
 .about-details-content .hero-opportunity-grid { display: grid; grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr); gap: 16px; margin: 0; width: 100%; max-width: none; }
-.about-details-content .hero-callout { display: flex; flex-direction: column; gap: 12px; padding: 20px; margin: 0; min-width: 0; font: 400 16px/1.7 var(--font-body); color: #392342; background: #FFF1F4; }
+.about-details-content .hero-callout { display: flex; flex-direction: column; gap: 12px; padding: 20px; margin: 0; min-width: 0; font: 400 16px/1.7 var(--font-body); color: #392342; background: #FFFAFB; }
 .about-details-content .hero-panel-label { margin: 0; font: 600 13px/1.5 var(--font-body); letter-spacing: .04em; color: #563c60; }
 .about-details-content .hero-callout strong { font-size: 16px; line-height: 1.7; font-weight: 600; }
 .about-details-content .hero-locations { font-size: 15px; line-height: 1.7; color: #563c60; }
