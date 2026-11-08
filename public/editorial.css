@@ -1921,3 +1921,19 @@ section { padding-top: 56px; padding-bottom: 56px; }
   .footer-inner { padding-bottom: 34px; }
 }
 @media(prefers-reduced-motion:reduce) { .project-card:hover { transform: none; } }
+
+/* Extend the sampled sky above the illustration; never fade temple pixels. */
+.site-footer { background: #fff9f4; }
+.footer-inner { padding-bottom: 24px; }
+.skyline { background: transparent; }
+.skyline::before {
+  content: ''; display: block; height: clamp(44px,5vw,76px);
+  background-image: linear-gradient(to bottom,#fff9f4 0%,rgba(255,249,244,.8) 30%,rgba(255,249,244,0) 100%), linear-gradient(to right,#fbf2f3 0%,#fdf2f3 5%,#fcf3f3 10%,#fcf2f2 15%,#fdf2f2 20%,#fcf2f2 25%,#fdf2f2 30%,#fcf1f3 35%,#fbf2f2 40%,#fdf3f4 45%,#fcf2f2 50%,#fdf1f1 55%,#fdf2f2 60%,#fcf2f2 65%,#fcf2f2 70%,#fcf2f2 75%,#fcf2f2 80%,#fdf3f3 85%,#fdf2f2 90%,#fdf2f3 95%,#fcf1f2 100%);
+  background-size: 100% 100%,100% 100%; background-position: center; background-repeat: no-repeat;
+}
+.skyline-art { overflow: hidden; line-height: 0; }
+.skyline-art img { display: block; mask-image: none; -webkit-mask-image: none; }
+@media(max-width:650px) {
+  .footer-inner { padding-bottom: 18px; }
+  .skyline::before { background-size: 100% 100%,160% 100%; }
+}
