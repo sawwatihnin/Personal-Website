@@ -7,7 +7,7 @@ margin-top:2rem;
 }
 
 .hero-name{
-font-family:'Orbitron';
+font-family:"Orbitron";
 font-size:3.6rem;
 font-weight:900;
 letter-spacing:2px;
@@ -99,7 +99,7 @@ background:linear-gradient(135deg,rgba(192,132,252,.12),rgba(16,7,28,.68));
 .hero-panel-label{
 display:block;
 margin-bottom:8px;
-font-family:'Orbitron',sans-serif;
+font-family:"Orbitron",sans-serif;
 font-size:.5rem;
 letter-spacing:.18em;
 color:#d9a8ff;
@@ -150,7 +150,7 @@ border:1px solid rgba(192,132,252,0.2);
 border-radius:999px;
 background:rgba(192,132,252,0.06);
 color:#d9cff0;
-font-family:'Orbitron',sans-serif;
+font-family:"Orbitron",sans-serif;
 font-size:.48rem;
 letter-spacing:.15em;
 text-transform:uppercase;
@@ -217,7 +217,7 @@ background:rgba(192,132,252,.025);
 .project-story span{
 display:block;
 margin-bottom:7px;
-font-family:'Orbitron',sans-serif;
+font-family:"Orbitron",sans-serif;
 font-size:.46rem;
 letter-spacing:.17em;
 color:#d8a5ff;
@@ -237,564 +237,140 @@ filter:grayscale(100%);
 }
 
 /* ── GAMES ── */
-.games-section{
-  padding:80px 0;
-}
 
-.games-subtitle{
-  max-width:720px;
-  color:#cfc6e4;
-  font-size:1rem;
-  line-height:1.85;
-}
 
-.games-grid{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:20px;
-}
 
-.games-card{
-  position:relative;
-  display:flex;
-  flex-direction:column;
-  gap:18px;
-  min-height:360px;
-  padding:24px;
-  border:1px solid rgba(192,132,252,0.14);
-  border-radius:26px;
-  background:
-    radial-gradient(circle at top right, rgba(192,132,252,0.1), transparent 28%),
-    linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0)),
-    rgba(16,7,28,0.82);
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,0.02);
-  transition:transform 0.28s ease,border-color 0.28s ease,box-shadow 0.28s ease;
-  backdrop-filter:blur(10px);
-  overflow:hidden;
-}
 
-.games-card::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(circle at 18% 18%, rgba(240,98,146,0.08), transparent 18%),
-    linear-gradient(140deg, rgba(192,132,252,0.12), transparent 44%);
-  opacity:0.42;
-  pointer-events:none;
-}
 
-.games-card:hover{
-  transform:translateY(-6px);
-  border-color:rgba(192,132,252,0.24);
-  box-shadow:0 24px 44px rgba(0,0,0,0.32), 0 0 18px rgba(192,132,252,0.08);
-}
 
-.games-card > *{
-  position:relative;
-  z-index:1;
-}
 
-.games-thumb{
-  position:relative;
-  height:168px;
-  border-radius:20px;
-  border:1px solid rgba(192,132,252,0.16);
-  overflow:hidden;
-  background:
-    linear-gradient(180deg, rgba(7,2,15,0.8), rgba(18,7,31,0.95)),
-    #07020f;
-}
 
-.games-thumb::before{
-  content:'';
-  position:absolute;
-  inset:auto auto 16px 16px;
-  width:72px;
-  height:72px;
-  border-radius:24px;
-  background:radial-gradient(circle at 30% 30%, rgba(192,132,252,0.2), transparent 68%);
-  filter:blur(2px);
-}
 
-.games-thumb-grid,
-.games-thumb-drone,
-.games-thumb-snake{
-  position:absolute;
-  inset:0;
-}
 
-.games-thumb-grid{
-  background:
-    linear-gradient(rgba(192,132,252,0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(192,132,252,0.08) 1px, transparent 1px);
-  background-size:28px 28px;
-  transform:skewY(-8deg) scale(1.05);
-  transform-origin:center;
-}
 
-.games-thumb-dino{
-position:absolute;
-left:32px;
-bottom:34px;
-width:72px;
-height:58px;
-background:#ede8f5;
-clip-path:polygon(6% 74%, 14% 50%, 26% 44%, 40% 22%, 58% 18%, 72% 24%, 82% 14%, 90% 20%, 88% 34%, 98% 40%, 94% 52%, 80% 56%, 74% 72%, 60% 76%, 52% 94%, 42% 94%, 40% 78%, 26% 78%, 22% 96%, 10% 96%, 10% 78%);
-filter:drop-shadow(0 0 12px rgba(192,132,252,0.12));
-}
 
-.games-thumb-dino::before{
-content:'';
-position:absolute;
-left:44px;
-top:18px;
-width:7px;
-height:7px;
-border-radius:50%;
-background:#12061f;
-box-shadow:12px 2px 0 #12061f;
-}
 
-.games-thumb-dino::after{
-content:'';
-position:absolute;
-left:52px;
-top:4px;
-width:10px;
-height:10px;
-border-right:3px solid #ede8f5;
-border-top:3px solid #ede8f5;
-transform:rotate(18deg);
-}
 
-.games-thumb-dino-bow{
-position:absolute;
-left:72px;
-bottom:78px;
-width:26px;
-height:18px;
-background:#f06292;
-border-radius:18px 18px 12px 12px;
-transform:rotate(-10deg);
-box-shadow:
-  -12px 2px 0 0 #f06292,
-  12px 2px 0 0 #f06292;
-}
 
-.games-thumb-dino-art{
-position:absolute;
-left:24px;
-bottom:26px;
-width:92px;
-image-rendering:pixelated;
-filter:drop-shadow(0 0 12px rgba(192,132,252,0.08));
-}
 
-.games-thumb-obstacle{
-position:absolute;
-right:48px;
-bottom:28px;
-width:24px;
-height:64px;
-background:#7c41ca;
-clip-path:polygon(50% 0, 100% 40%, 74% 100%, 26% 100%, 0 40%);
-}
 
-.games-thumb-ground{
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:0;
-  height:36px;
-  background:linear-gradient(180deg, rgba(124,65,202,0.22), rgba(124,65,202,0.08));
-}
 
-.games-thumb-drone::before{
-content:'';
-position:absolute;
-left:110px;
-top:70px;
-width:56px;
-height:24px;
-border-radius:20px;
-background:linear-gradient(90deg, #ece5fb, #c9b2f8);
-box-shadow:0 0 14px rgba(192,132,252,0.16);
-}
 
-.games-thumb-drone::after{
-content:'';
-position:absolute;
-left:124px;
-top:50px;
-width:28px;
-height:64px;
-border-radius:18px;
-background:
-  linear-gradient(180deg, rgba(124,65,202,0.95), rgba(86,38,152,0.95));
-box-shadow:
-  -74px 12px 0 -10px rgba(124,65,202,0.96),
-  74px 12px 0 -10px rgba(124,65,202,0.96),
-  0 0 0 8px rgba(192,132,252,0.08);
-}
 
-.games-thumb-drone-ring{
-position:absolute;
-left:78px;
-top:46px;
-width:120px;
-height:72px;
-border:5px solid rgba(236,229,251,0.92);
-border-radius:999px;
-box-shadow:
-  inset 0 0 0 6px rgba(88,166,255,0.18),
-  0 0 16px rgba(192,132,252,0.12);
-}
 
-.games-thumb-gap{
-position:absolute;
-right:26px;
-top:62px;
-width:86px;
-height:42px;
-background:#11051d;
-z-index:2;
-}
 
-.games-thumb-snake{
-  background:
-    linear-gradient(rgba(192,132,252,0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(192,132,252,0.08) 1px, transparent 1px);
-  background-size:24px 24px;
-}
 
-.games-thumb-segment,
-.games-thumb-food{
-  position:absolute;
-  width:20px;
-  height:20px;
-  border-radius:7px;
-}
 
-.games-thumb-segment{
-background:#a76df2;
-box-shadow:0 0 12px rgba(192,132,252,0.12);
-}
 
-.games-thumb-segment.head{
-background:#ede8f5;
-border-radius:12px 14px 14px 12px;
-}
 
-.games-thumb-segment.tail{
-transform:scale(0.8);
-opacity:0.82;
-}
 
-.games-thumb-segment.head::before,
-.games-thumb-segment.head::after{
-content:'';
-position:absolute;
-top:6px;
-width:4px;
-height:4px;
-border-radius:50%;
-background:#12061f;
-}
 
-.games-thumb-segment.head::before{
-left:6px;
-}
 
-.games-thumb-segment.head::after{
-right:6px;
-}
 
-.games-thumb-food{
-  background:#f06292;
-  border-radius:50%;
-}
 
-.games-card-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:16px;
-}
 
-.games-title{
-  font-family:'Orbitron',sans-serif;
-  font-size:1rem;
-  letter-spacing:0.06em;
-  color:#fff;
-}
 
-.games-badge{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:6px 10px;
-  border:1px solid rgba(192,132,252,0.22);
-  border-radius:999px;
-  background:rgba(192,132,252,0.06);
-  color:#c084fc;
-  font-family:'Orbitron',sans-serif;
-  font-size:0.5rem;
-  letter-spacing:0.16em;
-  text-transform:uppercase;
-  white-space:nowrap;
-}
 
-.games-copy{
-  color:#ddd4ec;
-  font-size:0.95rem;
-  line-height:1.8;
-  flex:1;
-}
 
-.games-play-button{
-  align-self:flex-start;
-}
 
-.games-modal{
-  position:fixed;
-  inset:0;
-  z-index:900;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:26px;
-  opacity:0;
-  pointer-events:none;
-  transition:opacity 0.22s ease;
-}
 
-.games-modal.active{
-  opacity:1;
-  pointer-events:auto;
-}
 
-.games-modal-backdrop{
-  position:absolute;
-  inset:0;
-  background:rgba(3,0,10,0.78);
-  backdrop-filter:blur(14px);
-}
 
-.games-modal-shell{
-  position:relative;
-  z-index:1;
-  pointer-events:auto;
-  width:min(1080px,100%);
-  max-height:min(92vh,900px);
-  display:flex;
-  flex-direction:column;
-  border-radius:30px;
-  overflow:hidden;
-  border:1px solid rgba(192,132,252,0.18);
-  background:
-    radial-gradient(circle at top right, rgba(192,132,252,0.1), transparent 28%),
-    linear-gradient(180deg, rgba(19,9,32,0.98), rgba(10,4,20,0.98));
-  box-shadow:0 32px 72px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.02);
-}
 
-.games-modal-head{
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-between;
-  gap:18px;
-  padding:26px 28px 18px;
-  border-bottom:1px solid rgba(192,132,252,0.12);
-}
 
-.games-modal-title{
-  font-family:'Orbitron',sans-serif;
-  font-size:1.2rem;
-  letter-spacing:0.06em;
-  color:#fff;
-}
 
-.games-modal-description{
-  margin-top:8px;
-  color:#cfc6e4;
-  font-size:0.94rem;
-  line-height:1.7;
-  max-width:54ch;
-}
 
-.games-modal-close{
-  position:relative;
-  z-index:2;
-  width:44px;
-  height:44px;
-  border-radius:50%;
-  border:1px solid rgba(192,132,252,0.22);
-  background:rgba(192,132,252,0.04);
-  color:#c084fc;
-  cursor:pointer;
-  font-family:'Orbitron',sans-serif;
-  font-size:0.72rem;
-  letter-spacing:0.08em;
-}
 
-.games-modal-body{
-  padding:22px 28px 28px;
-  overflow:auto;
-}
 
-.dino-shell{
-  display:flex;
-  flex-direction:column;
-  gap:16px;
-}
 
-.dino-controls{
-  display:flex;
-  flex-wrap:wrap;
-  align-items:flex-start;
-  justify-content:space-between;
-  gap:14px;
-  padding:16px 18px;
-  border:1px solid rgba(192,132,252,0.14);
-  border-radius:22px;
-  background:rgba(12,5,22,0.78);
-}
 
-.dino-picker-copy{
-  display:flex;
-  flex-direction:column;
-  gap:4px;
-}
 
-.dino-picker-label{
-  font-family:'Orbitron',sans-serif;
-  font-size:0.7rem;
-  letter-spacing:0.14em;
-  color:#f2ecfb;
-  text-transform:uppercase;
-}
 
-.dino-picker-help{
-  color:#d7cee8;
-  font-size:0.84rem;
-}
 
-.dino-picker{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:flex-end;
-  gap:10px;
-}
 
-.dino-option{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:8px;
-  min-width:82px;
-  padding:10px 10px 8px;
-  border:1px solid rgba(192,132,252,0.16);
-  border-radius:18px;
-  background:rgba(192,132,252,0.04);
-  color:#ece5f7;
-  transition:transform 0.2s ease,border-color 0.2s ease,box-shadow 0.2s ease,background 0.2s ease;
-}
 
-.dino-option:hover{
-  transform:translateY(-2px);
-  border-color:rgba(192,132,252,0.28);
-  box-shadow:0 12px 24px rgba(0,0,0,0.24);
-}
 
-.dino-option.active{
-  border-color:rgba(192,132,252,0.42);
-  background:rgba(192,132,252,0.1);
-  box-shadow:0 0 0 1px rgba(192,132,252,0.22) inset, 0 14px 28px rgba(0,0,0,0.28);
-}
 
-.dino-option-art{
-  width:54px;
-  height:54px;
-  object-fit:contain;
-  image-rendering:pixelated;
-}
 
-.dino-option-name{
-  font-family:'Orbitron',sans-serif;
-  font-size:0.5rem;
-  letter-spacing:0.12em;
-  text-transform:uppercase;
-}
 
-.game-canvas{
-  width:100%;
-  display:block;
-  border-radius:22px;
-  border:1px solid rgba(192,132,252,0.18);
-  background:#05000d;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,0.02);
-}
 
-.game-error{
-  padding:26px;
-  border:1px solid rgba(192,132,252,0.16);
-  border-radius:18px;
-  background:rgba(12,5,22,0.78);
-  color:#d2cae6;
-}
 
-.snake-shell{
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-}
 
-.snake-controls{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:16px;
-  flex-wrap:wrap;
-  padding:2px 4px 0;
-}
 
-.snake-control{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  color:#cfc6e4;
-  font-size:0.84rem;
-}
 
-.snake-control span{
-  font-family:'Orbitron',sans-serif;
-  font-size:0.52rem;
-  letter-spacing:0.14em;
-  color:#c084fc;
-  text-transform:uppercase;
-}
 
-.snake-select{
-  border:1px solid rgba(192,132,252,0.22);
-  background:rgba(192,132,252,0.04);
-  color:#ede8f5;
-  border-radius:999px;
-  padding:8px 12px;
-}
 
-.snake-help{
-  color:#8f80a8;
-  font-size:0.8rem;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media(max-width:1100px){
   .project-card.project-card-featured{
     grid-column:auto;
   }
 
-  .games-grid{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
+
 }
 
 @media(max-width:900px){
@@ -802,9 +378,7 @@ right:6px;
     gap:8px;
   }
 
-  .games-modal-shell{
-    max-height:94vh;
-  }
+
 }
 
 @media(max-width:720px){
@@ -817,33 +391,19 @@ right:6px;
     max-width:none;
   }
 
-  .games-grid{
-    grid-template-columns:1fr;
-  }
 
-  .games-card{
-    min-height:auto;
-  }
 
-  .games-modal{
-    padding:16px;
-  }
 
-  .games-modal-head{
-    padding:22px 20px 16px;
-  }
 
-  .games-modal-body{
-    padding:18px 20px 22px;
-  }
 
-  .dino-controls{
-    padding:14px;
-  }
 
-  .dino-picker{
-    justify-content:flex-start;
-  }
+
+
+
+
+
+
+
 }
 
 .nav-links a.is-active{
@@ -894,7 +454,7 @@ right:6px;
   margin-bottom:14px;
 }
 
-.project-metrics-compact .metric-row:nth-child(n+3){
+.project-metrics-compact .metric-row:nth-child(n/**/+3){
   display:none;
 }
 
@@ -927,7 +487,7 @@ right:6px;
 .jetson-proof-label{
   display:block;
   margin-bottom:4px;
-  font-family:'Orbitron',sans-serif;
+  font-family:"Orbitron",sans-serif;
   font-size:0.5rem;
   letter-spacing:0.16em;
   color:#efe7ff;
@@ -960,7 +520,7 @@ right:6px;
 }
 
 .slm-evidence-item span{
-  font-family:'Orbitron',sans-serif;
+  font-family:"Orbitron",sans-serif;
   font-size:0.46rem;
   letter-spacing:0.16em;
   color:#cfbee6;
@@ -995,7 +555,7 @@ right:6px;
 }
 
 .slm-routing-title{
-  font-family:'Orbitron',sans-serif;
+  font-family:"Orbitron",sans-serif;
   font-size:0.54rem;
   letter-spacing:0.18em;
   color:#f3ecff;
@@ -1016,7 +576,7 @@ right:6px;
   color:#d8caee;
   padding:7px 11px;
   border-radius:999px;
-  font-family:'Orbitron',sans-serif;
+  font-family:"Orbitron",sans-serif;
   font-size:0.46rem;
   letter-spacing:0.16em;
   text-transform:uppercase;
@@ -1041,7 +601,7 @@ right:6px;
   border-radius:16px;
   background:rgba(192,132,252,0.04);
   color:#efe8fb;
-  font-family:'Orbitron',sans-serif;
+  font-family:"Orbitron",sans-serif;
   font-size:0.54rem;
   letter-spacing:0.12em;
   text-transform:uppercase;
@@ -1163,7 +723,7 @@ right:6px;
 
 .timeline-subhead{
 margin:6px 0 18px;
-font-family:'Orbitron',sans-serif;
+font-family:"Orbitron",sans-serif;
 font-size:.52rem;
 letter-spacing:.2em;
 color:#c98cff;
@@ -1197,7 +757,7 @@ margin-top:10px;
 }
 
 .media-group-title{
-  font-family:'Orbitron',sans-serif;
+  font-family:"Orbitron",sans-serif;
   font-size:0.88rem;
   letter-spacing:0.12em;
   color:#f7f2ff;
@@ -1256,7 +816,7 @@ margin-top:10px;
 }
 
 .about-title{
-  font-family:'Orbitron',sans-serif;
+  font-family:"Orbitron",sans-serif;
   font-size:clamp(1rem,1.8vw,1.45rem);
   line-height:1.2;
   letter-spacing:0.04em;
@@ -1407,7 +967,7 @@ margin-top:10px;
 }
 
 @media (prefers-reduced-motion: reduce){
-  .games-card,
+
   .project-card,
   .media-card,
   .rec-card,
@@ -1426,7 +986,7 @@ margin-top:10px;
   right:24px;
   bottom:24px;
   z-index:90;
-  font-family:'Barlow',sans-serif;
+  font-family:"Barlow",sans-serif;
 }
 
 .faq-chat-toggle{
@@ -1441,7 +1001,7 @@ margin-top:10px;
   color:#f8f2ff;
   box-shadow:0 16px 40px rgba(0,0,0,.48),0 0 24px rgba(192,132,252,.12);
   backdrop-filter:blur(14px);
-  font-family:'Orbitron',sans-serif;
+  font-family:"Orbitron",sans-serif;
   font-size:.58rem;
   letter-spacing:.16em;
   transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;
@@ -1496,7 +1056,7 @@ margin-top:10px;
   display:block;
   margin-bottom:5px;
   color:#c792f7;
-  font-family:'Orbitron',sans-serif;
+  font-family:"Orbitron",sans-serif;
   font-size:.45rem;
   letter-spacing:.2em;
   text-transform:uppercase;
@@ -1504,7 +1064,7 @@ margin-top:10px;
 
 .faq-chat-head h2{
   color:#fff;
-  font-family:'Orbitron',sans-serif;
+  font-family:"Orbitron",sans-serif;
   font-size:.92rem;
   letter-spacing:.05em;
 }
@@ -1519,7 +1079,7 @@ margin-top:10px;
   border-radius:10px;
   background:rgba(192,132,252,.08);
   color:#f2eafd;
-  font-family:'Orbitron',sans-serif;
+  font-family:"Orbitron",sans-serif;
   font-size:.5rem;
   letter-spacing:.12em;
   text-transform:uppercase;
@@ -1544,7 +1104,7 @@ margin-top:10px;
   display:block;
   margin-bottom:7px;
   color:#cf9dff;
-  font-family:'Orbitron',sans-serif;
+  font-family:"Orbitron",sans-serif;
   font-size:.47rem;
   letter-spacing:.16em;
   text-transform:uppercase;

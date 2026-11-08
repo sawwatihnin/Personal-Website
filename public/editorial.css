@@ -1,4 +1,4 @@
-/* Warm editorial theme. Existing component and game styles remain in place. */
+/* Warm editorial theme. Existing component styles remain in place. */
 :root {
   --bg:#fff9f4;
   --bg2:#f8eff7;
@@ -13,9 +13,9 @@
   --dim:#463b49;
   --dim2:#785c86;
   --white:#392342;
-  --font-display:'Fraunces',Georgia,serif;
-  --font-body:'DM Sans',sans-serif;
-  --font-cond:'DM Sans',sans-serif;
+  --font-display:"Fraunces",Georgia,serif;
+  --font-body:"DM Sans",sans-serif;
+  --font-cond:"DM Sans",sans-serif;
 }
 html {
   scroll-padding-top:100px
@@ -416,7 +416,7 @@ nav {
   white-space:nowrap
 }
 .section-head::after {
-  content:'';
+  content:"";
   height:1px;
   background:var(--border);
   flex:1;
@@ -874,54 +874,17 @@ nav {
   border-radius:7px;
   font:500 12px var(--font-body)
 }
-.games-section {
-  border-top:1px solid #d8c8d7;
-  margin-top:30px
-}
-.games-subtitle {
-  font:400 13px/1.8 var(--font-body);
-  color:#785c86;
-  max-width:560px
-}
-.games-card {
-  background:transparent;
-  border-color:#d8c8d7;
-  border-radius:12px;
-  box-shadow:none
-}
-.games-title {
-  font:400 24px var(--font-display);
-  color:#392342
-}
-.games-copy {
-  font-size:13px;
-  color:#463b49
-}
-.games-badge {
-  color:#785c86;
-  background:#f4edf3;
-  border-color:#d8c8d7
-}
-.games-thumb {
-  background:#f4edf3;
-  border-bottom-color:#d8c8d7
-}
-.games-card:hover {
-  transform:none;
-  box-shadow:none
-}
-.games-modal-shell {
-  background:#fff9f4;
-  border-color:#d8c8d7
-}
-.games-modal-title,.games-modal-description {
-  color:#392342
-}
-.games-modal-close {
-  min-height:44px;
-  background:#785c86;
-  color:#fff9f4
-}
+
+
+
+
+
+
+
+
+
+
+
 .faq-chat-toggle {
   background:#785c86;
   color:#fff9f4;
@@ -1485,18 +1448,10 @@ nav {
   .rec-role {
     font-size:12px
   }
-  .games-grid {
-    grid-template-columns:1fr
-  }
-  .games-copy,.games-subtitle {
-    font-size:16px
-  }
-  .games-card {
-    padding:22px
-  }
-  .games-title {
-    font-size:27px
-  }
+
+
+
+
   .footer-inner {
     grid-template-columns:1fr;
     gap:20px
@@ -1535,13 +1490,8 @@ nav {
   .faq-chat-options button,.faq-chat-answer p {
     font-size:14px
   }
-  .games-modal-shell {
-    width:calc(100vw - 24px);
-    padding:15px
-  }
-  .games-modal-title {
-    font-size:22px
-  }
+
+
 }
 @media(prefers-reduced-motion:reduce) {
   html {
@@ -1554,29 +1504,14 @@ nav {
   }
 }
 /* Inactive dialogs must not intercept pointer events or keyboard focus. */
-.games-modal:not(.active) {
-  display:none
-}
+
 .modal:not(.active) {
   visibility:hidden
 }
-.games-modal-shell {
-  box-shadow:0 12px 36px #39234225
-}
-.games-modal-backdrop {
-  background:#39234280;
-  backdrop-filter:none
-}
-.games-modal-title {
-  font-family:var(--font-display);
-  letter-spacing:0
-}
-.games-modal-close {
-  border-radius:6px;
-  width:auto;
-  padding:0 12px;
-  font-family:var(--font-body)
-}
+
+
+
+
 .t-item::before {
   border-radius:50%;
   transform:none;
@@ -1592,41 +1527,13 @@ nav {
   height:36px;
   object-fit:contain
 }
-.dino-controls {
-  background:#f8eff7;
-  border-color:#d8c8d7;
-  border-radius:12px
-}
-.dino-picker-label,.dino-picker-help {
-  color:#392342;
-  font-family:var(--font-body)
-}
-.dino-option {
-  background:#fff9f4;
-  color:#392342;
-  border-color:#d8c8d7;
-  border-radius:8px;
-  box-shadow:none;
-  min-height:80px
-}
-.dino-option.active,.dino-option:hover {
-  background:#f4edf3;
-  border-color:#785c86;
-  box-shadow:none;
-  transform:none
-}
-.dino-option-name {
-  font:600 11px var(--font-body);
-  letter-spacing:0
-}
-.dino-picker-help {
-  font-size:14px
-}
-.game-error {
-  color:#392342;
-  background:#fff9f4;
-  border-color:#d8c8d7
-}
+
+
+
+
+
+
+
 .footer-logo,.footer-copy {
   opacity:1
 }
@@ -1652,7 +1559,7 @@ nav {
 .hero-panel-label,.hero-callout strong,.hero-locations {
   font-family:var(--font-body)
 }
-@media(max-width:650px){.faq-chat-answer p,.faq-chat-options button,.games-modal-description,.media-group-copy{font-size:16px}}
+@media(max-width:650px){.faq-chat-answer p,.faq-chat-options button,.media-group-copy{font-size:16px}}
 
 /* Section headings stay simple; press follows the supplied card reference. */
 .section-head::after { display: none; }
@@ -1718,7 +1625,7 @@ nav {
 /* Phone portrait: transparent exterior, original slight left tilt. */
 .phone-portrait-wrap { width: min(100%,310px); justify-self: center; padding: 8px 15px; }
 .phone-portrait { display: block; width: 100%; height: auto; max-height: 530px; object-fit: contain; transform: rotate(-3deg); }
-.laptop-only { display: inline-block; font: 500 14px/1.5 var(--font-body); letter-spacing: 0; font-style: normal; vertical-align: middle; margin-left: 10px; color: #785c86; }
+
 /* Explicit light surfaces avoid inherited translucent dark-mode colors. */
 .slm-routing { padding: 18px; border: 1px solid #d8c8d7; border-radius: 12px; background: #f6f0f5; }
 .slm-routing-head { display: flex; flex-direction: column; align-items: stretch; gap: 12px; }
@@ -1749,8 +1656,8 @@ nav {
 @media(max-width:650px) {
   .phone-portrait-wrap { width: 255px; margin: 8px auto; }
   .phone-portrait { max-height: 470px; }
-  #playground .section-title { white-space: normal; }
-  .laptop-only { font-size: 12px; margin-left: 5px; }
+
+
   .slm-routing { padding: 14px; }
   .slm-diagram { padding: 13px; }
   .slm-toggle { font-size: 12px; }
@@ -1802,9 +1709,9 @@ nav {
   --dim2: #785c86;
   --accent: #392342;
   --border: #d8c8d7;
-  --font-display: 'Fraunces', Georgia, serif;
-  --font-body: 'DM Sans', sans-serif;
-  --font-cond: 'DM Sans', sans-serif;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "DM Sans", sans-serif;
+  --font-cond: "DM Sans", sans-serif;
 }
 body { background: #fff9f4; color: #463b49; font: 400 16px/1.7 var(--font-body); }
 h1,h2,h3,h4,.hero-role,.section-title,.project-name,.t-role,.footer-logo { font-style: normal; }
@@ -1869,10 +1776,10 @@ section { padding-top: 56px; padding-bottom: 56px; }
 .rec-author { font-size: 14px; color: #392342; }
 .rec-role { font-size: 13px; color: #785c86; }
 .rec-avatar { background: #f4edf3; color: #392342; font-size: 14px; }
-.games-copy { font: 400 16px/1.7 var(--font-body); color: #463b49; }
-.games-title { font: 500 24px var(--font-display); }
-.games-card { background: #ffffff; border-color: #d8c8d7; }
-.games-badge { font: 500 12px var(--font-body); letter-spacing: 0; color: #392342; }
+
+
+
+
 .slm-routing,.slm-evidence-strip { background: #f6f0f5; }
 .slm-diagram,.slm-node,.slm-branch-destinations { background: #ffffff; }
 .slm-context-inline,.slm-diagram-caption { font-size: 16px; color: #463b49; }
@@ -1916,7 +1823,7 @@ section { padding-top: 56px; padding-bottom: 56px; }
   .t-company,.t-year,.stack-tags { font-size: 13px; }
   .project-list,.project-list-compact { grid-template-columns: minmax(0,1fr); }
   .press-businessinsider .press-description { font-size: 16px; }
-  .laptop-only { font-size: 13px; }
+
   .site-footer { padding-top: 44px; margin-top: 42px; }
   .footer-inner { padding-bottom: 34px; }
 }
@@ -1927,7 +1834,7 @@ section { padding-top: 56px; padding-bottom: 56px; }
 .footer-inner { padding-bottom: 24px; }
 .skyline { background: transparent; }
 .skyline::before {
-  content: ''; display: block; height: clamp(44px,5vw,76px);
+  content: ""; display: block; height: clamp(44px,5vw,76px);
   background-image: linear-gradient(to bottom,#fff9f4 0%,rgba(255,249,244,.8) 30%,rgba(255,249,244,0) 100%), linear-gradient(to right,#fbf2f3 0%,#fdf2f3 5%,#fcf3f3 10%,#fcf2f2 15%,#fdf2f2 20%,#fcf2f2 25%,#fdf2f2 30%,#fcf1f3 35%,#fbf2f2 40%,#fdf3f4 45%,#fcf2f2 50%,#fdf1f1 55%,#fdf2f2 60%,#fcf2f2 65%,#fcf2f2 70%,#fcf2f2 75%,#fcf2f2 80%,#fdf3f3 85%,#fdf2f2 90%,#fdf2f3 95%,#fcf1f2 100%);
   background-size: 100% 100%,100% 100%; background-position: center; background-repeat: no-repeat;
 }
@@ -1964,3 +1871,56 @@ section { padding-top: 56px; padding-bottom: 56px; }
 @media (max-width: 650px) {
   .project-link-note { font-size: 16px; }
 }
+
+/* May 2027 recruiting: scoped contact, project and evidence components. */
+.site-header { position: sticky; top: 0; z-index: 100; background: #fff9f4; }
+.site-header > nav { position: relative; top: auto; }
+.contact-strip { display: flex; justify-content: center; align-items: center; gap: 26px; min-height: 48px; padding: 2px 20px; background: #fff9f4; border-bottom: 1px solid #d8c8d7; }
+.contact-strip a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; color: #392342; font: 500 14px var(--font-body); text-underline-offset: 4px; }
+.contact-strip .contact-resume { font-weight: 700; }
+.site-footer .contact-strip { padding: 0; border: 0; gap: 24px; background: transparent; }
+html { scroll-padding-top: 156px; }
+main section { scroll-margin-top: 156px; }
+.recruiting-projects .project-list { align-items: stretch; }
+.recruiting-projects .recruiting-card { display: flex; flex-direction: column; min-width: 0; }
+.recruiting-projects .project-body { display: flex; flex-direction: column; flex: 1; padding: 24px; min-width: 0; }
+.recruiting-projects .featured-projects .project-card { grid-column: auto; }
+.recruiting-projects .project-name { font-size: clamp(24px,2vw,30px); line-height: 1.2; overflow-wrap: anywhere; }
+.recruiting-projects .project-name a { color: inherit; text-decoration: none; }
+.recruiting-projects .project-name a:hover { text-decoration: underline; }
+.recruiting-projects .project-desc { font-size: 16px; line-height: 1.75; }
+.recruiting-projects .project-story { display: grid; grid-template-columns: 1fr; gap: 14px; }
+.recruiting-projects .project-actions { flex-wrap: wrap; margin-top: 20px; gap: 10px; }
+.recruiting-projects .recruiting-card > .project-actions { padding: 0 24px 24px; }
+.recruiting-projects .stack-tags { margin-top: auto; padding-top: 20px; }
+.recruiting-projects .supporting-projects { margin-top: 24px; }
+.recruiting-projects .project-status-badge { display: inline-block; align-self: flex-start; max-width: 100%; padding: 5px 9px; margin-bottom: 14px; border: 1px solid #d8c8d7; border-radius: 6px; background: #f4edf3; color: #563c60; font: 500 12px/1.5 var(--font-body); }
+.recruiting-projects .metric-placeholder { color: #65516d; background: #fff9f4; border: 1px dashed #b29cb4; padding: 10px; margin: 18px 0 0; font: 400 13px/1.6 var(--font-body); overflow-wrap: anywhere; }
+.recruiting-projects .project-case-study { margin-top: 20px; border-top: 1px solid #d8c8d7; padding-top: 14px; }
+.recruiting-projects .project-case-study summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; font: 600 15px var(--font-body); color: #392342; text-decoration: underline; text-underline-offset: 4px; }
+.recruiting-projects .project-case-study[open] { grid-column: 1/-1; }
+.recruiting-projects .case-study-heading { font: 500 22px var(--font-display); margin: 16px 0; }
+.recruiting-projects .more-projects-heading { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin: 32px 0 0; }
+.recruiting-projects .more-projects-heading h3 { margin: 0; font: 500 30px var(--font-display); }
+.recruiting-projects .more-projects { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.recruiting-projects .more-projects .project-thumbnail { display: none; }
+.recruiting-projects .more-projects .engineering-highlights { display: none; }
+.recruiting-projects .more-projects .project-name { font-size: 24px; }
+#experience .experience-stats { display: flex; flex-wrap: wrap; gap: 12px 20px; margin: 18px 0; }
+#experience .experience-stats div { display: flex; flex-direction: column-reverse; gap: 3px; }
+#experience .experience-stats dd { margin: 0; font: 700 25px/1.2 var(--font-body); color: #392342; }
+#experience .experience-stats dt { font: 400 13px/1.4 var(--font-body); color: #65516d; }
+@media(max-width:650px) {
+  .contact-strip { gap: 0; padding: 0 8px; justify-content: space-around; }
+  .contact-strip a { min-width: 60px; font-size: 12px; }
+  .site-footer .contact-strip { flex-wrap: wrap; justify-content: flex-start; gap: 8px 20px; }
+  .site-footer .contact-strip a { font-size: 16px; }
+  html { scroll-padding-top: 136px; }
+  main section { scroll-margin-top: 136px; }
+  .recruiting-projects .project-list,.recruiting-projects .more-projects { grid-template-columns: minmax(0,1fr); }
+  .recruiting-projects .project-body { padding: 22px; }
+  .recruiting-projects .metric-placeholder { font-size: 16px; }
+  .recruiting-projects .project-case-study summary { font-size: 16px; }
+}
+/* Header clearance is accounted for once by scroll-padding. */
+main section { scroll-margin-top: 20px; }

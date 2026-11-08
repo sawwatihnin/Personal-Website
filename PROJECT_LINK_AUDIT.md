@@ -24,7 +24,7 @@ All existing project destinations are retained. HTTP success verifies reachabili
 
 ## Local validation
 
-Static site: no package/build pipeline is present. Validate JavaScript syntax, local assets, internal anchors, preserved original URLs/content, desktop/mobile layouts and expand/collapse interactions before deployment. Resume request is a mailto link with a prefilled subject; sending/delivery depends on the visitor’s configured mail client.
+Static site: no package/build pipeline is present. Validate JavaScript syntax, local assets, internal anchors, preserved original URLs/content, desktop/mobile layouts and expand/collapse interactions before deployment. Resume links now open the supplied PDF at /assets/vivienne-hnin-resume.pdf; email links remain mailto links.
 
 ## Manual follow-up
 
