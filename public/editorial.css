@@ -1780,3 +1780,14 @@ nav {
   .founders-art { min-height: 140px; flex-direction: column; gap: 10px; }
   .speaking-links .btn-link { min-height: 44px; }
 }
+
+/* Authentic supplied photographs retain their complete framing and proportions. */
+.press-businessinsider { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.3fr); align-items: center; }
+.press-feature-image { min-width: 0; width: 100%; margin: 0; }
+.press-feature-image img { display: block; width: 100%; height: auto; border: 1px solid #ceb6cd; border-radius: 9px; }
+.speaking-photo img { height: auto; object-fit: contain; }
+.speaking-card-tedx .speaking-photo { max-width: 300px; justify-self: center; }
+@media(max-width:650px) {
+  .press-businessinsider { grid-template-columns: minmax(0,1fr); }
+  .speaking-card-tedx .speaking-photo { max-width: 100%; }
+}
