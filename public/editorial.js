@@ -25,7 +25,8 @@
     const open = toggle.getAttribute('aria-expanded') !== 'true';
     archive.hidden = !open;
     toggle.setAttribute('aria-expanded', String(open));
-    toggle.textContent = open ? 'Show Fewer Projects' : 'View All Projects';
-    if (!open) document.getElementById('projects').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start' });
+    toggle.textContent = open ? 'View Fewer Projects' : 'View All Projects';
+    const count = document.querySelectorAll('.featured-projects .project-card').length + (open ? archive.querySelectorAll('.project-card').length : 0);
+    document.getElementById('projects-status').textContent = `Showing ${count} projects${open ? '' : ' (featured only)'}.`;
   });
 })();
