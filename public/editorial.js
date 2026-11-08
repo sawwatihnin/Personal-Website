@@ -25,7 +25,7 @@
     const open = toggle.getAttribute('aria-expanded') !== 'true';
     archive.hidden = !open;
     toggle.setAttribute('aria-expanded', String(open));
-    toggle.innerHTML = open ? 'Show Fewer Projects <span aria-hidden="true">↑</span>' : 'View All Projects <span aria-hidden="true">↗</span>';
+    toggle.textContent = open ? 'Show Fewer Projects' : 'View All Projects';
     if (!open) document.getElementById('projects').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start' });
   });
 })();
