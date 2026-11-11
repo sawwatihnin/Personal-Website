@@ -1961,3 +1961,11 @@ main section { scroll-margin-top: 20px; }
 .site-footer .footer-media { grid-column: 1/-1; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; font-style: normal; }
 .site-footer .footer-media span { color: #65516d; font: 400 14px/1.7 var(--font-body); }
 @media(max-width:650px) { #media .media-inquiries { gap: 0 12px; margin-bottom: 24px; } #media .media-inquiries-label,#media .media-inquiries a,.site-footer .footer-media a { font-size: 16px; } }
+
+/* Direct, clearly labeled inquiry links below the hero actions. */
+.hero-inquiries { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; margin: 20px 0 0; font-style: normal; }
+.hero-inquiries a { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; min-height: 44px; padding: 8px 0; color: #392342; font: 400 15px/1.7 var(--font-body); text-decoration: none; max-width: 100%; }
+.hero-inquiries a span { color: #65516d; }
+.hero-inquiries a strong { font-weight: 500; text-decoration: underline; text-decoration-color: #b29cb4; text-underline-offset: 4px; overflow-wrap: anywhere; }
+.hero-inquiries a:hover strong { text-decoration-color: currentColor; }
+@media(max-width:650px) { .hero-inquiries a { font-size: 16px; } }
