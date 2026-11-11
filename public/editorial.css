@@ -2005,3 +2005,9 @@ nav { background: #49243d; border-bottom-color: #ad6d80; }
   .featured-scroll::-webkit-scrollbar-thumb { background: #a4486d; }
   .featured-scroll::-webkit-scrollbar-track { background: #faedf2; }
 }
+
+/* A small warm-orange note alongside the rose and berry accents. */
+.achievement svg { color: #b65b2d; }
+.about-details-content .hero-signal:nth-child(2n) { background: #fff0e5; border-color: #e2b28f; color: #85431f; }
+#experience .badge:nth-child(3n) { background: #fff0e5; border-color: #e2b28f; color: #85431f; }
+.t-item::before { box-shadow: 0 0 0 3px #f8e4d7; }
