@@ -1969,3 +1969,16 @@ main section { scroll-margin-top: 20px; }
 .hero-inquiries a strong { font-weight: 500; text-decoration: underline; text-decoration-color: #b29cb4; text-underline-offset: 4px; overflow-wrap: anywhere; }
 .hero-inquiries a:hover strong { text-decoration-color: currentColor; }
 @media(max-width:650px) { .hero-inquiries a { font-size: 16px; } }
+
+/* A visible mobile cue makes the horizontal logo collection discoverable. */
+.featured-scroll-cue { display: none; }
+@media(max-width:650px) {
+  .featured-bar .featured-scroll-cue { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 4px; color: #563c60; font: 500 14px/1.5 var(--font-body); }
+  .featured-next { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; width: 44px; height: 44px; border: 1px solid #b29cb4; border-radius: 50%; color: #392342; background: #fffafb; cursor: pointer; }
+  .featured-next:hover { background: #f4edf3; }
+  .featured-next:disabled { opacity: .4; cursor: default; }
+  .featured-scroll { padding-bottom: 10px; scrollbar-color: #785c86 #f4edf3; }
+  .featured-scroll::-webkit-scrollbar { height: 4px; }
+  .featured-scroll::-webkit-scrollbar-thumb { background: #785c86; border-radius: 4px; }
+  .featured-scroll::-webkit-scrollbar-track { background: #f4edf3; border-radius: 4px; }
+}

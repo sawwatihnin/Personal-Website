@@ -25,6 +25,21 @@
       if (target?.tagName === 'DETAILS') target.open = true;
     });
   });
+  const logos = document.getElementById('featured-logos');
+  const nextLogos = document.querySelector('.featured-next');
+  const cue = document.querySelector('.featured-scroll-cue span');
+  const updateLogoCue = () => {
+    const atEnd = logos.scrollLeft + logos.clientWidth >= logos.scrollWidth - 2;
+    nextLogos.disabled = atEnd;
+    cue.textContent = atEnd ? 'Swipe back to explore' : 'Swipe to explore more';
+  };
+  nextLogos.addEventListener('click', () => {
+    logos.scrollBy({left: logos.clientWidth * 0.75, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
+  });
+  logos.addEventListener('scroll', updateLogoCue, {passive: true});
+  window.addEventListener('resize', updateLogoCue);
+  window.addEventListener('load', updateLogoCue, {once: true});
+  updateLogoCue();
   const toggle = document.getElementById('projects-toggle');
   const archive = document.getElementById('all-projects');
   toggle.addEventListener('click', () => {
