@@ -1982,3 +1982,26 @@ main section { scroll-margin-top: 20px; }
   .featured-scroll::-webkit-scrollbar-thumb { background: #785c86; border-radius: 4px; }
   .featured-scroll::-webkit-scrollbar-track { background: #f4edf3; border-radius: 4px; }
 }
+
+/* A restrained sunset, rose and berry accent palette. */
+:root { --accent-dim: #8d3c61; --border-hi: #ad6d80; --pink: #8d3c61; --border: #e2c7cf; }
+nav { background: #49243d; border-bottom-color: #ad6d80; }
+.hero-links .hero-link-primary,.editorial-button:not(.outline),.press-businessinsider .press-action,.faq-chat-toggle { background: #8d3c61; border-color: #8d3c61; color: #fffafb; }
+.hero-links a:hover,.editorial-button:hover { background: #71304e; border-color: #71304e; color: #fffafb; }
+.featured-bar,.project-card,.rec-card,.speaking-card,.press-card,.about-details-content .hero-callout { border-color: #e2c7cf; }
+.project-card:hover,.press-card:hover { border-color: #ad6d80; }
+.about-details-content .hero-signal,#experience .badge,.press-pill,.rec-avatar { background: #faedf2; border-color: #dfbdca; color: #63334d; }
+.about-details-content .hero-signal:nth-child(2n) { background: #fff0e8; border-color: #e5c8b9; color: #754530; }
+.timeline { border-color: #c28a96; }
+.t-item::before { background: #a4486d; }
+.t-year,.t-company,.rec-role { color: #855067; }
+.hero-inquiries a strong,#media .media-inquiries a,.site-footer .footer-media a { text-decoration-color: #c28a96; }
+::selection { background: #f4dce6; color: #392342; }
+.slm-toggle.is-active { background: #8d3c61; color: #fffafb; }
+@media(max-width:650px) {
+  .featured-next { border-color: #cf9eaf; color: #8d3c61; }
+  .featured-next:hover { background: #faedf2; }
+  .featured-scroll { scrollbar-color: #a4486d #faedf2; }
+  .featured-scroll::-webkit-scrollbar-thumb { background: #a4486d; }
+  .featured-scroll::-webkit-scrollbar-track { background: #faedf2; }
+}
