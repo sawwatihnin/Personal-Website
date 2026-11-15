@@ -1970,8 +1970,11 @@ main section { scroll-margin-top: 20px; }
 .hero-inquiries a:hover strong { text-decoration-color: currentColor; }
 @media(max-width:650px) { .hero-inquiries a { font-size: 16px; } }
 
-/* A visible mobile cue makes the horizontal logo collection discoverable. */
+/* The featured-logo row moves continuously and pauses for interaction. */
 .featured-scroll-cue { display: none; }
+.featured-scroll { scrollbar-width: none; scroll-behavior: auto; }
+.featured-scroll::-webkit-scrollbar { display: none; }
+.featured-scroll:focus-visible { outline: 2px solid #a4486d; outline-offset: 4px; }
 @media(max-width:650px) {
   .featured-bar .featured-scroll-cue { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 4px; color: #563c60; font: 500 14px/1.5 var(--font-body); }
   .featured-next { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; width: 44px; height: 44px; border: 1px solid #b29cb4; border-radius: 50%; color: #392342; background: #fffafb; cursor: pointer; }
@@ -1982,6 +1985,7 @@ main section { scroll-margin-top: 20px; }
   .featured-scroll::-webkit-scrollbar-thumb { background: #785c86; border-radius: 4px; }
   .featured-scroll::-webkit-scrollbar-track { background: #f4edf3; border-radius: 4px; }
 }
+@media(prefers-reduced-motion:reduce) { .featured-scroll { overflow-x: auto; scrollbar-width: thin; } .featured-scroll::-webkit-scrollbar { display: block; height: 4px; } }
 
 /* A restrained sunset, rose and berry accent palette. */
 :root { --accent-dim: #8d3c61; --border-hi: #ad6d80; --pink: #8d3c61; --border: #e2c7cf; }

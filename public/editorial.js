@@ -26,20 +26,34 @@
     });
   });
   const logos = document.getElementById('featured-logos');
-  const nextLogos = document.querySelector('.featured-next');
-  const cue = document.querySelector('.featured-scroll-cue span');
-  const updateLogoCue = () => {
-    const atEnd = logos.scrollLeft + logos.clientWidth >= logos.scrollWidth - 2;
-    nextLogos.disabled = atEnd;
-    cue.textContent = atEnd ? 'Swipe back to explore' : 'Swipe to explore more';
-  };
-  nextLogos.addEventListener('click', () => {
-    logos.scrollBy({left: logos.clientWidth * 0.75, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const originalLogos = [...logos.children];
+  const duplicateLogos = originalLogos.map(logo => {
+    const copy = logo.cloneNode(true);
+    copy.setAttribute('aria-hidden', 'true');
+    copy.tabIndex = -1;
+    return copy;
   });
-  logos.addEventListener('scroll', updateLogoCue, {passive: true});
-  window.addEventListener('resize', updateLogoCue);
-  window.addEventListener('load', updateLogoCue, {once: true});
-  updateLogoCue();
+  logos.append(...duplicateLogos);
+  let paused = false;
+  let lastFrame = 0;
+  const marquee = timestamp => {
+    if (!lastFrame) lastFrame = timestamp;
+    const elapsed = timestamp - lastFrame;
+    lastFrame = timestamp;
+    const loopWidth = logos.scrollWidth / 2;
+    if (!paused && !reducedMotion.matches) {
+      logos.scrollLeft += elapsed * 0.025;
+      if (logos.scrollLeft >= loopWidth) logos.scrollLeft -= loopWidth;
+    }
+    requestAnimationFrame(marquee);
+  };
+  logos.addEventListener('mouseenter', () => { paused = true; });
+  logos.addEventListener('mouseleave', () => { paused = false; });
+  logos.addEventListener('focusin', () => { paused = true; });
+  logos.addEventListener('focusout', () => { paused = false; });
+  reducedMotion.addEventListener('change', () => { lastFrame = 0; });
+  requestAnimationFrame(marquee);
   const toggle = document.getElementById('projects-toggle');
   const archive = document.getElementById('all-projects');
   toggle.addEventListener('click', () => {
