@@ -1972,7 +1972,10 @@ main section { scroll-margin-top: 20px; }
 
 /* The featured-logo row moves continuously and pauses for interaction. */
 .featured-scroll-cue { display: none; }
-.featured-scroll { scrollbar-width: none; scroll-behavior: auto; }
+.featured-scroll { display: flex; justify-content: flex-start; gap: 0; overflow: hidden; scrollbar-width: none; scroll-behavior: auto; }
+.featured-track { display: flex; align-items: center; justify-content: flex-start; flex: 0 0 auto; gap: 27px; min-width: max-content; padding: 4px 14px 4px 2px; animation: featured-marquee 38s linear infinite; }
+.featured-scroll.is-paused .featured-track { animation-play-state: paused; }
+@keyframes featured-marquee { from { transform: translateX(0); } to { transform: translateX(-100%); } }
 .featured-scroll::-webkit-scrollbar { display: none; }
 .featured-scroll:focus-visible { outline: 2px solid #a4486d; outline-offset: 4px; }
 @media(max-width:650px) {
@@ -1985,7 +1988,7 @@ main section { scroll-margin-top: 20px; }
   .featured-scroll::-webkit-scrollbar-thumb { background: #785c86; border-radius: 4px; }
   .featured-scroll::-webkit-scrollbar-track { background: #f4edf3; border-radius: 4px; }
 }
-@media(prefers-reduced-motion:reduce) { .featured-scroll { overflow-x: auto; scrollbar-width: thin; } .featured-scroll::-webkit-scrollbar { display: block; height: 4px; } }
+@media(prefers-reduced-motion:reduce) { .featured-scroll { overflow-x: auto; scrollbar-width: thin; } .featured-track { animation: none; } .featured-scroll::-webkit-scrollbar { display: block; height: 4px; } }
 
 /* A restrained sunset, rose and berry accent palette. */
 :root { --accent-dim: #8d3c61; --border-hi: #ad6d80; --pink: #8d3c61; --border: #e2c7cf; }

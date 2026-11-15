@@ -27,33 +27,21 @@
   });
   const logos = document.getElementById('featured-logos');
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-  const originalLogos = [...logos.children];
-  const duplicateLogos = originalLogos.map(logo => {
-    const copy = logo.cloneNode(true);
-    copy.setAttribute('aria-hidden', 'true');
-    copy.tabIndex = -1;
-    return copy;
+  const track = logos.querySelector('.featured-track');
+  const duplicateTrack = track.cloneNode(true);
+  duplicateTrack.setAttribute('aria-hidden', 'true');
+  duplicateTrack.querySelectorAll('a').forEach(link => { link.tabIndex = -1; });
+  logos.append(duplicateTrack);
+  const pauseMarquee = () => { logos.classList.add('is-paused'); };
+  const resumeMarquee = () => { logos.classList.remove('is-paused'); };
+  logos.addEventListener('mouseenter', pauseMarquee);
+  logos.addEventListener('mouseleave', resumeMarquee);
+  logos.addEventListener('focusin', pauseMarquee);
+  logos.addEventListener('focusout', resumeMarquee);
+  reducedMotion.addEventListener('change', () => {
+    logos.classList.toggle('reduce-motion', reducedMotion.matches);
   });
-  logos.append(...duplicateLogos);
-  let paused = false;
-  let lastFrame = 0;
-  const marquee = timestamp => {
-    if (!lastFrame) lastFrame = timestamp;
-    const elapsed = timestamp - lastFrame;
-    lastFrame = timestamp;
-    const loopWidth = logos.scrollWidth / 2;
-    if (!paused && !reducedMotion.matches) {
-      logos.scrollLeft += elapsed * 0.025;
-      if (logos.scrollLeft >= loopWidth) logos.scrollLeft -= loopWidth;
-    }
-    requestAnimationFrame(marquee);
-  };
-  logos.addEventListener('mouseenter', () => { paused = true; });
-  logos.addEventListener('mouseleave', () => { paused = false; });
-  logos.addEventListener('focusin', () => { paused = true; });
-  logos.addEventListener('focusout', () => { paused = false; });
-  reducedMotion.addEventListener('change', () => { lastFrame = 0; });
-  requestAnimationFrame(marquee);
+  logos.classList.toggle('reduce-motion', reducedMotion.matches);
   const toggle = document.getElementById('projects-toggle');
   const archive = document.getElementById('all-projects');
   toggle.addEventListener('click', () => {
