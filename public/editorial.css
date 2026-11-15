@@ -1989,6 +1989,9 @@ main section { scroll-margin-top: 20px; }
   .featured-scroll::-webkit-scrollbar-track { background: #f4edf3; border-radius: 4px; }
 }
 @media(prefers-reduced-motion:reduce) { .featured-scroll { overflow-x: auto; scrollbar-width: thin; } .featured-track { animation: none; } .featured-scroll::-webkit-scrollbar { display: block; height: 4px; } }
+@media(min-width:651px) {
+  .featured-track { flex: 0 0 100%; min-width: 100%; justify-content: space-around; gap: 18px; padding-inline: 10px; }
+}
 
 /* A restrained sunset, rose and berry accent palette. */
 :root { --accent-dim: #8d3c61; --border-hi: #ad6d80; --pink: #8d3c61; --border: #e2c7cf; }
