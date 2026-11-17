@@ -1744,6 +1744,8 @@ section { padding-top: 56px; padding-bottom: 56px; }
 .brand-bi img { width: 90px; height: 36px; }
 .brand-voices img { width: 100px; height: 36px; }
 .brand-innovate img { width: 110px; height: 36px; }
+.brand-iw { width: 64px; height: 64px; max-width: 64px; }
+.brand-iw img { display: block; width: 64px; height: 64px; object-fit: contain; }
 .timeline { border-color: #785c86; }
 .t-item { padding-bottom: 38px; }
 .t-item::before { background: #785c86; }
